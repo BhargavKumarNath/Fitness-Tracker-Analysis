@@ -1,5 +1,3 @@
-# .github/workflows/ci.yml
-
 name: PySpark ETL CI Pipeline
 
 on:
@@ -25,14 +23,24 @@ jobs:
           context: .
           load: true
           tags: fitness-tracker-ci:latest
+      
+      # Step 4: Run Unit Tests
+      - name: Run Unit Tests
+        run: |
+          docker run --rm \
+            --mount type=bind,source=${{ github.workspace }}/src,target=/app/src \
+            --mount type=bind,source=${{ github.workspace }}/tests,target=/app/tests \
+            fitness-tracker-ci:latest \
+            python3 -m pytest /app/tests  
 
-      # Step 4: Run ETL Script
+      # Step 5: Run ETL Script
       - name: Run ETL Script
         run: |
           docker run --name etl-runner \
             --mount type=bind,source=${{ github.workspace }}/data_lake,target=/app/data_lake \
-            fitness-tracker-ci:latest
+            fitness-tracker-ci:latest \
+            spark-submit /app/src/etl_pipeline.py
 
-      # Step 5: Verify ETL Output
+      # Step 6: Verify ETL Output
       - name: Verify ETL Output
         run: ls -lh ${{ github.workspace }}/data_lake/processed/fitness_data/_SUCCESS

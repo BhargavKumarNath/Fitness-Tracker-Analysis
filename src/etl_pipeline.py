@@ -2,8 +2,20 @@
 
 import os
 from pathlib import Path
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, to_date, date_format, when, year, month
+
+def transform_data(df: DataFrame) -> DataFrame:
+    """
+    Applies all transformations to the raw fitness data.
+    This function is now a testable unit.
+    """
+    df_transformed = df.withColumn("day_of_week", date_format(col("date"), "E"))
+    df_transformed = df_transformed.withColumn(
+        "calories_to_steps_ratio",
+        when(col("steps") > 0, col("calories_burned") / col("steps")).otherwise(0)
+    )
+    return df_transformed
 
 def main():
     raw_data_path = "/app/data_lake/raw/synthetic_user_data"
@@ -23,12 +35,8 @@ def main():
     df = df.withColumn("date", to_date(col("date")))
     print(f"Successfully extracted {df.count()} records from Parquet files.")
 
-    # TRANSFORM
-    df_transformed = df.withColumn("day_of_week", date_format(col("date"), "E"))
-    df_transformed = df_transformed.withColumn(
-        "calories_to_steps_ratio",
-        when(col("steps") > 0, col("calories_burned") / col("steps")).otherwise(0)
-    )
+    # TRANSFORM (calls the testable function)
+    df_transformed = transform_data(df)
     print("Transformation complete. New features added.")
 
     # LOAD
@@ -42,6 +50,7 @@ def main():
 
     print(f"Data successfully loaded to {processed_data_path}")
     spark.stop()
+
 
 if __name__ == "__main__":
     main()
