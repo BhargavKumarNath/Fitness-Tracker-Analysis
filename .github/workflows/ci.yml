@@ -1,0 +1,34 @@
+# .github/workflows/ci.yml
+
+name: PySpark ETL CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-run-etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          load: true
+          tags: fitness-tracker-ci:latest
+
+      - name: Run ETL Script
+        run: |
+          docker run --name etl-runner \
+            --mount type=bind,source=${{ github.workspace }}/data_lake,target=/app/data_lake \
+            fitness-tracker-ci:latest \
+            spark-submit /app/src/etl_pipeline.py
+
+      - name: Verify ETL Output
+        run: ls -lh ${{ github.workspace }}/data_lake/processed/fitness_data/_SUCCESS
