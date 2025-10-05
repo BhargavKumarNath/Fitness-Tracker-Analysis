@@ -10,12 +10,15 @@ jobs:
   build-and-run-etl:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout code
       - name: Check out repo
         uses: actions/checkout@v3
 
+      # Step 2: Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      # Step 3: Build Docker image
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
@@ -23,12 +26,13 @@ jobs:
           load: true
           tags: fitness-tracker-ci:latest
 
+      # Step 4: Run ETL Script
       - name: Run ETL Script
         run: |
           docker run --name etl-runner \
             --mount type=bind,source=${{ github.workspace }}/data_lake,target=/app/data_lake \
-            fitness-tracker-ci:latest \
-            spark-submit /app/src/etl_pipeline.py
+            fitness-tracker-ci:latest
 
+      # Step 5: Verify ETL Output
       - name: Verify ETL Output
         run: ls -lh ${{ github.workspace }}/data_lake/processed/fitness_data/_SUCCESS

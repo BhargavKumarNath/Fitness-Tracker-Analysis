@@ -16,7 +16,8 @@ RUN apt-get update && \
         python3-pip \
         wget \
         bash \
-        tini && \
+        tini \
+        procps && \
     rm -rf /var/lib/apt/lists/*
 
 # --- Install Spark ---
@@ -25,11 +26,20 @@ RUN wget -q "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-
     mv "/opt/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}" "${SPARK_HOME}" && \
     rm "spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz"
 
-# --- Install Jupyter ---
-RUN pip3 install notebook jupyterlab
+# --- Set working directory ---
+WORKDIR /app
 
-# --- Expose port for Jupyter ---
+# --- Copy project files ---
+COPY . .
+
+# --- Install Python dependencies ---
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# --- Expose port for Jupyter (optional, can remove if not needed) ---
 EXPOSE 8888
 
-# --- Start Jupyter automatically ---
-CMD ["tini", "--", "python3", "-m", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+# # --- Start Jupyter automatically ---
+# CMD ["tini", "--", "python3", "-m", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+
+# --- Default command for CI/CD: run ETL script ---
+CMD ["spark-submit", "src/etl_pipeline.py"]
