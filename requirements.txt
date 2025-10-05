@@ -1,0 +1,5 @@
+# Python dependencies for the Fitness Tracker project
+pyspark==3.5.0
+pandas
+numpy
+jupyter

@@ -1,0 +1,146 @@
+{
+    "dataset_overview": {
+        "total_files": 183,
+        "time_range": [
+            "2023-04-01",
+            "2023-09-30"
+        ],
+        "num_records": 358497,
+        "num_users": 1959
+    },
+    "monthly_summary": [
+        {
+            "month": "2023-04",
+            "num_records": 58770,
+            "num_users": 1959,
+            "avg_steps": 6327.714905564063,
+            "avg_calories": 752.3638131699846,
+            "avg_hr": 119.38420963076399,
+            "avg_sleep": 7.002549940445806
+        },
+        {
+            "month": "2023-05",
+            "num_records": 60729,
+            "num_users": 1959,
+            "avg_steps": 6339.984669597721,
+            "avg_calories": 753.7282854978675,
+            "avg_hr": 119.56343756689556,
+            "avg_sleep": 7.004536382947191
+        },
+        {
+            "month": "2023-06",
+            "num_records": 58770,
+            "num_users": 1959,
+            "avg_steps": 6337.949106687085,
+            "avg_calories": 752.9795456865747,
+            "avg_hr": 119.60032329419772,
+            "avg_sleep": 7.000287901990811
+        },
+        {
+            "month": "2023-07",
+            "num_records": 60729,
+            "num_users": 1959,
+            "avg_steps": 6398.743829142584,
+            "avg_calories": 758.1519106193088,
+            "avg_hr": 119.61402295443692,
+            "avg_sleep": 6.985557970656523
+        },
+        {
+            "month": "2023-08",
+            "num_records": 60729,
+            "num_users": 1959,
+            "avg_steps": 6310.56156037478,
+            "avg_calories": 751.1148153271089,
+            "avg_hr": 119.37948920614534,
+            "avg_sleep": 7.004956281183619
+        },
+        {
+            "month": "2023-09",
+            "num_records": 58770,
+            "num_users": 1959,
+            "avg_steps": 6370.440547898587,
+            "avg_calories": 756.1933922069082,
+            "avg_hr": 119.5987578696614,
+            "avg_sleep": 7.001646928705122
+        }
+    ],
+    "activity_summary": [
+        {
+            "activity_type": "cycling",
+            "num_records": 51379,
+            "num_users": 1959,
+            "avg_steps": 2754.9361022986045,
+            "min_steps": 500,
+            "max_steps": 4999,
+            "avg_calories": 775.4018412191753,
+            "avg_hr": 124.51544405301777,
+            "avg_sleep": 7.003108273808365
+        },
+        {
+            "activity_type": "gym_workout",
+            "num_records": 51405,
+            "num_users": 1959,
+            "avg_steps": 3496.2113607625715,
+            "min_steps": 1000,
+            "max_steps": 5999,
+            "avg_calories": 600.4481081606848,
+            "avg_hr": 129.60854002528936,
+            "avg_sleep": 7.01582258535162
+        },
+        {
+            "activity_type": "hiking",
+            "num_records": 51171,
+            "num_users": 1959,
+            "avg_steps": 15990.771980223173,
+            "min_steps": 7000,
+            "max_steps": 24999,
+            "avg_calories": 1499.115077876141,
+            "avg_hr": 134.47597271892283,
+            "avg_sleep": 6.993332551640578
+        },
+        {
+            "activity_type": "running",
+            "num_records": 50851,
+            "num_users": 1959,
+            "avg_steps": 12499.090853670528,
+            "min_steps": 5000,
+            "max_steps": 19998,
+            "avg_calories": 1099.1238547914495,
+            "avg_hr": 144.54433541129967,
+            "avg_sleep": 6.998144775913945
+        },
+        {
+            "activity_type": "swimming",
+            "num_records": 51520,
+            "num_users": 1959,
+            "avg_steps": 549.0619177018633,
+            "min_steps": 100,
+            "max_steps": 999,
+            "avg_calories": 549.4372476708074,
+            "avg_hr": 134.44444875776398,
+            "avg_sleep": 6.996717585403727
+        },
+        {
+            "activity_type": "walking",
+            "num_records": 51009,
+            "num_users": 1959,
+            "avg_steps": 8981.155737222844,
+            "min_steps": 3000,
+            "max_steps": 14999,
+            "avg_calories": 558.7292030818091,
+            "avg_hr": 89.4894822482307,
+            "avg_sleep": 6.998759238565744
+        },
+        {
+            "activity_type": "yoga",
+            "num_records": 51162,
+            "num_users": 1959,
+            "avg_steps": 274.91280637973495,
+            "min_steps": 50,
+            "max_steps": 499,
+            "avg_calories": 199.84642899026622,
+            "avg_hr": 79.47105273445135,
+            "avg_sleep": 6.99331261483132
+        }
+    ]
+}
