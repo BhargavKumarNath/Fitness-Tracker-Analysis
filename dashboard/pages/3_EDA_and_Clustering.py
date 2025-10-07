@@ -6,7 +6,7 @@ from pyspark.ml import PipelineModel
 from dashboard.utils import get_user_segments
 import sys
 import os
-sys.path.append("/app")  # make sure Python can find 'dashboard'
+sys.path.append("/app")  
 
 # @st.cache_resource
 def get_spark_session():
@@ -21,10 +21,10 @@ def load_data():
 st.set_page_config(page_title="EDA & Clustering", page_icon="📈", layout="wide")
 st.title("📈 Exploratory Data Analysis & User Clustering")
 
-spark = get_spark_session() # Get the spark session
+spark = get_spark_session() 
 df = load_data()
 
-# --- Visualizations ---
+# Visualizations 
 st.header("Activity Analysis")
 activity_summary = df.groupby("activity_type").agg(
     avg_steps=("steps", "mean"),
@@ -32,9 +32,9 @@ activity_summary = df.groupby("activity_type").agg(
 ).reset_index()
 st.bar_chart(activity_summary.set_index("activity_type")['avg_steps'], height=400)
 
-# --- User Segmentation ---
+# User Segmentation
 st.header("User Segments (K-Means Clustering)")
-user_segments_df = get_user_segments(spark, df) # Pass spark and df to the function
+user_segments_df = get_user_segments(spark, df) 
 
 cluster_profiles = user_segments_df.groupby('prediction').agg(
     avg_steps=('avg_steps', 'mean'),

@@ -5,7 +5,7 @@ from pyspark.ml.clustering import KMeans
 from pyspark.ml.feature import VectorAssembler, StandardScaler
 from pyspark.ml import Pipeline
 import sys
-sys.path.append("/app")  # Docker mounts the project at /app
+sys.path.append("/app")  
 
 def get_user_segments(spark: SparkSession, df: pd.DataFrame) -> pd.DataFrame:
     """

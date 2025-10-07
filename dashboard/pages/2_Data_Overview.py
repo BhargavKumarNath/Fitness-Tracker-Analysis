@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from pyspark.sql import SparkSession
 import sys
-sys.path.append("/app")  # Docker mounts the project at /app
+sys.path.append("/app")  
 
 st.set_page_config(page_title="Data Overview", page_icon="📊", layout="wide")
 
