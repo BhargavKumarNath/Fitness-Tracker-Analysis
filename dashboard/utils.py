@@ -42,19 +42,35 @@ def download_file_from_google_drive(id: str, dest_path: str):
     URL = "https://docs.google.com/uc?export=download"
     session = requests.Session()
 
+    # Try requests first (fastest if works)
     try:
-        response = session.get(URL, params={'id': id}, stream=True, verify=False)
-    except requests.exceptions.SSLError:
-        # Fallback for strict environments
-        response = session.get(URL, params={'id': id}, stream=True, verify=False)
-    token = get_confirm_token(response)
-
-    if token:
-        params = {'id': id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True, verify=False)
-
-    save_response_content(response, dest_path)
-    return True
+        response = session.get(URL, params={'id': id}, stream=True, verify=False, timeout=10)
+        response.raise_for_status()
+        
+        token = get_confirm_token(response)
+        if token:
+            params = {'id': id, 'confirm': token}
+            response = session.get(URL, params=params, stream=True, verify=False, timeout=10)
+            
+        save_response_content(response, dest_path)
+        return True
+    except Exception as e:
+        st.warning(f"Standard download failed: {e}. Trying simplified gdown approach...")
+        try:
+            import gdown
+            # gdown handles the confirmation logic internally
+            url = f'https://drive.google.com/uc?id={id}'
+            gdown.download(url, dest_path, quiet=False, verify=False)
+            if os.path.exists(dest_path):
+                return True
+            else:
+                return False
+        except ImportError:
+             st.error("gdown not installed. Please add 'gdown' to requirements.txt")
+             return False
+        except Exception as e_gdown:
+             st.error(f"gdown failed: {e_gdown}")
+             return False
 
 def get_confirm_token(response):
     for key, value in response.cookies.items():
