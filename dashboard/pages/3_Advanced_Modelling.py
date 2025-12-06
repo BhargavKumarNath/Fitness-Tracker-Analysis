@@ -91,7 +91,7 @@ with tab1:
                     plot_bgcolor="rgba(0,0,0,0)", 
                     font=dict(color="white")
                 )
-                st.plotly_chart(fig_dist, use_container_width=True)
+                st.plotly_chart(fig_dist, width='stretch')
                 
             with col2:
                 st.subheader("🎯 Cluster Characteristics")
@@ -120,7 +120,7 @@ with tab1:
                     plot_bgcolor="rgba(0,0,0,0)",
                     font=dict(color="white")
                 )
-                st.plotly_chart(fig_bar, use_container_width=True)
+                st.plotly_chart(fig_bar, width='stretch')
             
             # 3D Visualization
             st.subheader("🌐 3D Cluster Visualization")
@@ -144,7 +144,7 @@ with tab1:
                 font=dict(color="white"),
                 height=600
             )
-            st.plotly_chart(fig_3d, use_container_width=True)
+            st.plotly_chart(fig_3d, width='stretch')
             
             # Cluster insights
             st.subheader("💡 Cluster Insights")
@@ -216,7 +216,7 @@ with tab2:
                         plot_bgcolor="rgba(0,0,0,0)",
                         font=dict(color="white")
                     )
-                    st.plotly_chart(fig_imp, use_container_width=True)
+                    st.plotly_chart(fig_imp, width='stretch')
             except Exception as e:
                 st.info(f"Feature importance visualization unavailable: {e}")
 
@@ -251,7 +251,7 @@ with tab2:
                                 plot_bgcolor="rgba(0,0,0,0)",
                                 font=dict(color="white")
                             )
-                            st.plotly_chart(fig_cm, use_container_width=True)
+                            st.plotly_chart(fig_cm, width='stretch')
                         
                         with col2:
                             st.subheader("📋 Classification Report")
@@ -332,7 +332,7 @@ with tab3:
                                 plot_bgcolor="rgba(0,0,0,0)",
                                 font=dict(color="white")
                             )
-                            st.plotly_chart(fig_scatter, use_container_width=True)
+                            st.plotly_chart(fig_scatter, width='stretch')
                         
                         with col2:
                             st.subheader("📉 Residual Distribution")
@@ -349,7 +349,7 @@ with tab3:
                                 plot_bgcolor="rgba(0,0,0,0)",
                                 font=dict(color="white")
                             )
-                            st.plotly_chart(fig_hist, use_container_width=True)
+                            st.plotly_chart(fig_hist, width='stretch')
                         
                         # Residual plot
                         st.subheader("🎯 Residual Plot")
@@ -366,7 +366,7 @@ with tab3:
                             plot_bgcolor="rgba(0,0,0,0)",
                             font=dict(color="white")
                         )
-                        st.plotly_chart(fig_residual, use_container_width=True)
+                        st.plotly_chart(fig_residual, width='stretch')
                     except Exception as e:
                         st.error(f"Error during evaluation: {e}")
         else:
@@ -399,7 +399,7 @@ with tab4:
     metrics_df = pd.DataFrame(metrics_data)
     
     st.subheader("Model Overview")
-    st.dataframe(metrics_df, use_container_width=True)
+    st.dataframe(metrics_df, width='stretch')
     
     st.info("""
     **Note on Cloud Deployment:**
@@ -426,7 +426,7 @@ with tab4:
         font=dict(color="white"),
         showlegend=False
     )
-    st.plotly_chart(fig_comparison, use_container_width=True)
+    st.plotly_chart(fig_comparison, width='stretch')
     
     # Use cases
     st.subheader("💡 Recommended Use Cases")
