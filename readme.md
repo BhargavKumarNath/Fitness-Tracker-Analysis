@@ -1,116 +1,115 @@
 # Fitness Analytics with PySpark
 
-![alt text](https://github.com/BhargavKumarNath/Fitness-Tracker-Analysis/actions/workflows/ci.yml/badge.svg)
 ![alt text](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 # 1. Project Vision
-This repository demonstrates a production grade, end-to-end data science project. The core philosophy is to build a scalable, reliable, and automated system for analyzing fitness tracker data using a modern data engineering and MLOps stack.
+This repository houses a production-grade data intelligence platform designed to ingest, process, and analyze high-volume fitness tracker data. The system implements a **Lambda Architecture** pattern, utilizing **Apache Spark** for both batch historical processing and real-time streaming analytics.
 
-The project ingests and processes a substantial dataset of **358, 497 records from 1,959 users** and showcase a full project lifecycle: from foundational ETL and advanced ML modeling with **PySpark** to robust MLOps workflow using Docker for reproducibility and **GitHub Actions** for continuous integration and testing.
+The platform serves as a reference implementation for a modern Data Science lufecycle, demonstrating:
+- **Scalable ETL:** Distribued data processing with PySpark on partitioned Parquet data lakes.
+- **Robust MLOps:** Containerized environments (Docker), automated testing gates (pytest), and CI/CD pipelines (GitHub Actions).
+- **Advanced Analytics:** Integrated Scikit-Learn pipelines for user segmentation, activity classification, and caloric forecasting.
+- **Interactive Serving:** A Streamlit based frontend for real data model inference and data exploration.
 
-# 2. Technical Architecture
-The system is designed as a modular pipeline, ensuring scalability and maintainability.
+<br> 
 
-![Alt text](plot/workflow.png)
+# 2. System Architecture
+The system is architectured as a modular, containerized ecosystem. It decouples data, generation, processing, and serving layers to ensure scalability and maintainability.
 
-# 3. Phase I: The Data Foundation - ETL with PySpark
+![System_design](system_design.svg)
 
-The realibility of the entire system depends on a robust data foundation. We choose **Apache Spark (PySpark)** as our processing engine for its ability to handle large datasets in a distributed manner and its unified API for data processing and machine learning.
+<br>
 
-**The ETL Pipeline** (`src/etl_pipeline.py`)
-* **Extraction:** The pipeline reads over 180 daily-partitioned Parquet files. We chose Parquet for its columnar storage format, which provides significant performance gains and storage efficiency.
+# 3. Data Engineering Foundation (ETL)
+The reliability of the system relies on a unified Spark ETL pipeline defined in `src/etl_pipeline.py`
 
-* **Transformation:** The core logic is encapsulated in a testable transform_data function. Key transformations include:
-    * **Schema Enforcement:** Casting string dates to DateType for proper time-series operations.
+## 3.1 Batch Processing Layer
+- **Ingestion:** Reads over 180 daily-partioned Parquet files. Parquet was selected for its columnar storage efficiency and predicate pushdown capabilities.
+- **Transformation Logic:**
+    - **Schema Enforcement:** Strict casting of string datetimes to `DataType` ensures temporal consistency.
+    - **Feature Engineering:** Calculating of derived metrics such as `calories_to_steps_ratio`, a high variance feature critical for distinguishing activity intensity (e.g. Swimming vs. Walking) 
+- **Optimised Loading:** Data is written to the Processed Data Lake partitioned by `year` and `month`. This layout enables Partition Pruning in downstream queries drastically reducing I/O overhead.
 
-    * **Feature Engineering:** Creating high-value features like `calories_to_steps_ratio`, which proved critical for distinguishing between low-step, high-intensity activities (e.g., swimming) and high-step, low-intensity ones (e.g., walking).
+<br>
 
-* Loading: The transformed data is written to `data_lake/processed/`, partitioned by `year` and `month`. This partitioning scheme is a critical optimization, allowing Spark to perform partition pruning and drastically speed up queries that filter on specific time ranges.
+## 3.2 Real-Time Streaming Layer
+To handle live data ingestion, we utilise Spark Structured Streaming:
+- **Micro-batch Processing:** Consumes data from the streaming buffer (`/streaming_input`) treating the stream as an unbounded table.
+- **Stateful Aggregation:** Computes metrics over a **30-second tumbling window**.
+- **Watermarking:** A **1-minute watermark** mechanism handles late-arriving data, allowing the engine to drop old state and manage usage efficiently in long-running production jobs.
 
-# 4. Phase II: Advanced Analytics & Machine Learning
-With a clean dataset, we used PySpark MLlib and Spark SQL to build predictive models and derive insights.
+# 4. Machine Learning & Advanced Analytics
+We employ `scikit-learn` pipelines to build modular, reproducible machine learning workflows. The training process (`src/train_dashboard_models.py`) persists serialised models to a registry for inference.
 
-## Machine Learning Models
+| Model Type | Algorithm | Use Case | Performance Metric |
+| :--- | :--- | :--- | :--- |
+| **Unsupervised** | K-Means Clustering | User Segmentation and Persona Identification | Silhouette Score |
+| **Classification** | Random Forest Classifier | Activity Type Prediction (Multi-class) | $84\%$ Accuracy |
+| **Regression** | Random Forest Regressor | Calorie Burn Prediction | $R^2$ = 0.91 |
+| **Recommendation** | ALS Collaborative Filtering | Personalized Activity Suggestions | RMSE |
 
-1. **User Segmentation (K-Means Clustering):** An unsupervised model identified three statistically distinct user personas, enabling targeted analysis and engagement strategies.
 
-2. **Activity Prediction (Logistic Regression):** A multi-class classification pipeline was trained to predict activity_type. The model achieved a strong **84% accuracy** on the test set.
+### Pipeline Architecture
+Each model is wrapped in a generic Pipeline that includes:
+1. `SimpleImputer`: Handles missing data (median strategy)
+2. `StandardScaler/OneHotEncoder`: Normalises numerical features and encodes categorical variables.
+3. `Estimator`: The core learning algorithm
 
-3. **Calorie Prediction (Linear Regression):** A regression pipeline, featuring a `OneHotEncoder` to handle categorical features, was built to predict `calories_burned`. The model was highly successful, achieving an **R² of 0.91**, indicating that our features explain 91% of the variance in calorie expenditure.
+This encapsulation ensures that raw input at inference time undergoes the exact same transformations as the training data, preventing training-serving skew.
 
-4. **Activity Recommendation (ALS):** A collaborative filtering model was trained to provide personalized activity recommendations, using the frequency of activities as an implicit user rating.
+# 5. MLOps: Reproducibility & Quality Assurance
+The project enforces software engineering best practices through containerization and automation.
 
-# 5. Phase III: Real-Time Processing with Spark Structured Streaming
+### Docker Containerization
+The `Dockerfile` defines an executation an immutable execution environment based on `openjdk:11-jre-slim`.
 
-To demonstrate a more advanced, production-ready capability, we implemented a real-time analytics pipeline.
+### CI/CD with GitHub Actions
+Every commit triggers the workflow defined in `.github/workflows/ci.yml`
+1. Build Verification: Ensures the Docker image constructs successfully.
+2. Unit Testing (`pytest`): Validates atomic transformation functions (e.g., verifying `calories_to_steps_ratio` handles division-by-zero).
+3. Integration Testing: Submits a `spark-submit` job to container to verify the end-to-end execution of the ETL pipeline against a sample dataset.
 
-* **Architecture:** A data generator script simulates a live stream of user activity.
+<br>
 
-* **Stateful Aggregation:** We used Spark Structured Streaming to consume this data, treating the stream as an unbounded table. The core of the analysis is a stateful aggregation using **30-second tumbling windows**.
+# 6. Dashboard & Serving
+The frontend is a multi-page Streamlit application (`dashboard/1_Overview.py`) that acts as the consumption layer:
+- **Data Overview:** Browsable interface for the processed data lake.
+- **Live Inference:** Interactive widgets allow stakeholders to input custom parameters (steps, heart rate) and receive real-time predictions from the loaded models.
+- **Business Intelligence:** Visualises distinct user clusters and performance metrics.
 
-* **Watermarking:** To ensure the long-running stream is resilient and does not run out of memory, a **1-minute watermark** is applied. This allows Spark to correctly handle late-arriving data and discard old state that is no longer needed. This is a critical feature for production streaming jobs.
+<br>
 
-# 6. Phase IV: MLOps - Building a Resilient, Automated System
+# 7. Local Setup & Usage
+**Prerequisites:** Docker Desktop installed.
 
-This project's core strength is its robust MLOps foundation, which ensures consistency, reliability, and automation.
+### Step 1: Build the Environment
 
-**Containerization with Docker**
-The entire environment is defined in the `Dockerfile`.
+```bash
+docker build -t fitness-tracker-app .
+```
 
-* **Reproducibility:** It starts from an `openjdk:11-jre-slim` base image to provide the necessary Java runtime for Spark. It then installs specific versions of Python, Spark, and all required Python libraries. This creates a self-contained, portable environment, eliminating the "it works on my machine" problem.
+### Step 2: Pipeline Execution (ETL & Training)
+Run the pipeline interactively to generate data and train models.
 
-* Development Workflow: The container is designed for both interactive development (via Jupyter) and automated execution (via `spark-submit`). Volume mounting is used to sync local code and data with the container, allowing for a seamless development loop.
+```bash
+# Start the container
+docker run -it --rm -p 8888:8888 --name fitness-dev \
+    --mount type=bind,source="$(pwd)",target=/app \
+    fitness-tracker-app bash
 
-## CI/CD with GitHub Actions
+# Inside the container, run the ETL and Training scripts
+python src/etl_pipeline.py
+python src/train_dashboard_models.py
+```
 
-The workflow in `.github/workflows/ci.yml` automates our testing and integration process. On every `push` to `main`, it executes the following on a clean GitHub-hosted runner:
+### Step 3: Launch Dashboard
+```bash
+docker run --rm -p 8501:8501 --name fitness-dashboard \
+    --mount type=bind,source="$(pwd)",target=/app \
+    fitness-tracker-app streamlit run /app/dashboard/1_Overview.py
+```
 
-1. **Build Docker Image**: Validates that the application and its dependencies can be successfully built.
+Access the application at `http://localhost:8501`
 
-2. **Run Unit Tests (The Quality Gate)**: This crucial step executes our `pytest` suite. It runs fast, isolated tests on our core ETL logic, including checking for edge cases like division-by-zero. **If any unit test fails, the entire workflow fails**, preventing buggy code from proceeding.
 
-3. **Run Integration Test (End-to-End Validation):** After unit tests pass, the full `src/etl_pipeline.py` is executed using `spark-submit`. This tests the entire pipeline, from data reading to writing the final output, ensuring all components work together correctly inside the container.
-
-# 7. Dashboard
-The final result is a multi-page Streamlit dashboard that serves as an interactive front-end for the entire project.
-
-* **Home Page**: Introduces the project and its architecture.
-
-* **Data Overview**: Provides a browsable view of the processed data and its schema.
-
-* **EDA & Clustering**: Showcases key visualizations and the results of our user segmentation model.
-
-* **Live Predictions**: Allows users to interact directly with our saved classification and regression models, input custom values, and receive real-time predictions.
-
-# 8. Local Setup and Execution
-**Prerequisites**: Docker Desktop must be installed and running.
-
-**Step 1: Build the Docker Image**
-Clone this repository and run the following command from the project root:
-
-`docker build -t fitness-tracker-app .`
-
-**Step 2: Data Prep & Model Training (One-Time Setup)**
-
-You must first run the main Jupyter Notebook to generate the dataset and train the ML models.
-
-1. Start an interactive container:
-
-    `docker run -it --rm -p 8888:8888 --name fitness-dev --mount type=bind,source="$(pwd)",target=/app fitness-tracker-app bash`
-
-2. Inside the container's shell, start the Jupyter server:
-
-This command is run INSIDE the container's shell
-
-`python3 -m notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''`
-
-Access the server at `http://localhost:8888` and run **all cells in notebooks/1_ETL_and_EDA.ipynb**. This will generate the necessary processed data and save the trained models to the `models/` directory.
-
-**Step 3: Launch the Streamlit Dashboard:**
-
-Once the data and models are in place, stop the previous container and launch the dashboard:
-
-`docker run --rm -p 8501:8501 --name fitness-dashboard --mount type=bind,source="$(pwd)",target=/app fitness-tracker-app streamlit run /app/dashboard/1_Home.py`
-
-Access the multi-page dashboard in your browser at: `http://localhost:8501`
 
