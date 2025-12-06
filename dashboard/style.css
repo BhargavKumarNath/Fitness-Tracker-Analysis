@@ -1,0 +1,71 @@
+/* Main app background */
+.stApp {
+    background-color: #0E1117;
+    color: #FAFAFA;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #262730;
+}
+
+/* Metric Cards */
+div.css-1r6slb0.e1tzin5v2 {
+    background-color: #1F2937;
+    border: 1px solid #374151;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #60A5FA; /* Blue-400 */
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Dataframe */
+[data-testid="stDataFrame"] {
+    border: 1px solid #374151;
+    border-radius: 5px;
+}
+
+/* Custom Box Style for Highlights */
+.highlight-box {
+    background-color: #1F2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 5px solid #60A5FA;
+    margin-bottom: 1rem;
+}
+
+.highlight-box h4 {
+    margin-top: 0;
+    color: #60A5FA;
+}
+
+/* KPI Card Style */
+.kpi-card {
+    background-color: #1F2937;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #374151;
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FAFAFA;
+}
+
+.kpi-label {
+    font-size: 1rem;
+    color: #9CA3AF;
+}
