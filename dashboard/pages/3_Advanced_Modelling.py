@@ -6,7 +6,6 @@ import numpy as np
 import sys
 import os
 
-# Add project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from dashboard.utils import load_dataset, load_user_segmentation_model, load_inference_models, get_user_segments
@@ -35,14 +34,12 @@ if df.empty:
     st.warning("Data not available. Please ensure the ETL pipeline has run.")
     st.stop()
 
-# Helper: Sample Data for Performance
-# We don't want to compute silhouette score on 1M rows on the fly
 SAMPLE_SIZE = 2000
 df_sample = df.sample(n=min(len(df), SAMPLE_SIZE), random_state=42)
 
 tab1, tab2, tab3 = st.tabs(["🧬 User Segmentation", "🏃 Activity Classification", "🔥 Calorie Regression"])
 
-# --- Tab 1: User Segmentation ---
+# Tab 1: User Segmentation
 with tab1:
     st.header("User Segmentation Analysis (K-Means)")
     
@@ -52,8 +49,7 @@ with tab1:
         st.success("✅ Model Loaded Successfully")
         
         # Precompute segments for the sample
-        # We need the user-level aggregation for the sample
-        user_df_sample = get_user_segments(df_sample) # This function aggregates by user
+        user_df_sample = get_user_segments(df_sample) 
         
         if not user_df_sample.empty:
             
@@ -86,9 +82,7 @@ with tab1:
             # Interactive Metric Calculation
             if st.button("Calculate Silhouette Score (On Sample)", type="primary"):
                 with st.spinner("Calculating..."):
-                    # We need to transform the data first using the pipeline's scaler
-                    # Accessing transformation steps
-                    preprocessor = pipeline[:-1] # All steps except the last (kmeans)
+                    preprocessor = pipeline[:-1] 
                     X_transformed = preprocessor.transform(user_df_sample[features])
                     labels = user_df_sample['prediction']
                     score = silhouette_score(X_transformed, labels)
@@ -103,7 +97,7 @@ with tab1:
     else:
         st.error("Model not found. Please check connectivity or model files.")
 
-# --- Tab 2: Classification ---
+# Tab 2: Classification
 with tab2:
     st.header("Activity Classification (Random Forest)")
     
@@ -115,13 +109,9 @@ with tab2:
         # Feature Importance
         st.subheader("Feature Importance")
         try:
-            # Assuming Random Forest is the last step named 'classifier' or 'randomforestclassifier'
-            # Check pipeline steps
             if hasattr(class_model, 'named_steps'):
                 classifier = class_model.named_steps['classifier']
                 importances = classifier.feature_importances_
-                # We need feature names. If not preserved, we assume the input columns order:
-                # ['steps', 'calories_burned', 'heart_rate_avg'] based on training script
                 feature_names_class = ['steps', 'calories_burned', 'heart_rate_avg']
                 
                 fig_imp = px.bar(x=feature_names_class, y=importances, title="Feature Importance")
@@ -152,7 +142,7 @@ with tab2:
     else:
         st.error("Classification model not found.")
 
-# --- Tab 3: Regression ---
+# Tab 3: Regression
 with tab3:
     st.header("Calorie Prediction (Regression)")
     

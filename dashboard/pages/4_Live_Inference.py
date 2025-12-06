@@ -42,7 +42,6 @@ else:
         
         if st.button("Predict Activity", type="primary"):
             # Prepare input dataframe
-            # Columns must match those used during training: ['steps', 'calories_burned', 'heart_rate_avg']
             input_data = pd.DataFrame([[steps, calories, hr]], columns=['steps', 'calories_burned', 'heart_rate_avg'])
             
             prediction = class_model.predict(input_data)[0]

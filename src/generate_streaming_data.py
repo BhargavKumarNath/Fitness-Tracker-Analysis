@@ -14,10 +14,9 @@ def generate_batch():
     # Generate 5-10 new records
     for _ in range(random.randint(5, 10)):
         activity = random.choice(activities)
-        user_id = random.randint(1, 2000)  # Simulate for our existing user base
+        user_id = random.randint(1, 2000)  
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        # More realistic data generation based on activity type
         if activity == "walking":
             steps = np.random.randint(50, 200)
             calories_burned = steps * 0.04

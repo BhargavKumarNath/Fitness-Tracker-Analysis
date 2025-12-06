@@ -3,7 +3,6 @@ import pandas as pd
 import sys
 import os
 
-# Add project root to sys.path to allow importing from dashboard module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from dashboard.utils import load_dataset
@@ -25,7 +24,7 @@ try:
 except FileNotFoundError:
     pass # Handle case where css might be missing temporarily
 
-# --- Hero Section ---
+# Hero Section
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
     <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem;">🏃 Fitness Tracker Analysis</h1>
@@ -33,10 +32,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- Data Loading ---
+# Data Loading
 df = load_dataset()
 
-# --- Key Metrics Row ---
+# Key Metrics Row
 if not df.empty:
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -50,7 +49,7 @@ if not df.empty:
     
     st.divider()
 
-# --- Main Layout: Project Context & Data Preview ---
+# Main Layout: Project Context & Data Preview
 col_context, col_preview = st.columns([1, 1.5], gap="large")
 
 with col_context:
@@ -82,7 +81,7 @@ with col_preview:
 
 st.divider()
 
-# --- Schema Reference ---
+# Schema Reference
 with st.expander("View Data Schema Reference"):
     st.markdown("""
     | Column | Description | Type |

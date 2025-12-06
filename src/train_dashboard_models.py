@@ -49,7 +49,7 @@ def train_and_save_models():
     joblib.dump(class_pipeline, os.path.join(MODELS_DIR, "activity_classifier.pkl"))
     print("Classification model saved.")
 
-    # --- 2. Regression Model (Calories Prediction) ---
+    # 2. Regression Model (Calories Prediction)
     print("Training Regression Model (Calories Burned)...")
         
     from sklearn.compose import ColumnTransformer
