@@ -1,23 +1,25 @@
-altair
-attrs
-blinker
-cachetools
-click
-fastparquet
-joblib
-matplotlib
-numpy
-pandas
-pillow
-plotly
-protobuf
-pyarrow
-pydeck
-requests
-scikit-learn
-streamlit
-toml
-tornado
-typing_extensions
-watchdog
-gdown
+# Core Dashboard Requirements
+# Optimized for Streamlit Cloud deployment
+
+# Streamlit and UI
+streamlit>=1.31.0
+plotly>=5.18.0
+
+# Data Processing
+pandas>=2.1.0
+numpy>=1.24.0
+pyarrow>=14.0.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# File Downloads
+gdown>=4.7.1
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Utilities
+python-dateutil>=2.8.2
+pytz>=2023.3
+statsmodels

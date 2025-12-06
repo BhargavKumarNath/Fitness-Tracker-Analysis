@@ -6,6 +6,7 @@ import requests
 import time
 from pathlib import Path
 import urllib3
+import hashlib
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -13,7 +14,7 @@ MODEL_URLS = {
     "user_segmentation": "1HfWsKfx0hATxI4SonagapM-Zeu6FzJoD",
     "cluster_features": "1eyaogp73oMSKzfw08zoSdPCNYRyLTXhQ",
     "activity_classifier": "1pMa9zmnnAn0xN41NnqNPUHGDzV87mN7Y", 
-    "calories_regressor": "1qd4m_l55ueKQdHi6feMSEDZS-iUMnarR"   
+    "calories_regressor": "1qd4m_l55ueKQdHi6feMSEDZS-iUMnarR"
 }
 
 # Define paths
@@ -35,171 +36,123 @@ def load_dataset():
         return pd.DataFrame()
 
 
-def download_file_from_google_drive(id: str, dest_path: str):
+def download_file_from_google_drive(id: str, dest_path: str, max_retries: int = 3):
     """
-    Downloads a file from Google Drive using its ID, handling large file warnings.
+    Downloads a file from Google Drive using gdown with retry logic.
     """
-    URL = "https://docs.google.com/uc?export=download"
-    session = requests.Session()
-
-    try:
-        import gdown
-        url = f'https://drive.google.com/uc?id={id}'
-        # use quiet=False to show progress in logs, verify=False to bypass SSL issues
-        output = gdown.download(url, dest_path, quiet=False, verify=False, fuzzy=True)
-        if output and os.path.exists(dest_path):
-            return True
-        else:
-             st.warning(f"gdown failed to download {id}. Retrying with requests...")
-    except Exception as e:
-         st.warning(f"gdown process failed: {e}. Retrying with requests...")
-
-    # Fallback to requests
-    try:
-        response = session.get(URL, params={'id': id}, stream=True, verify=False, timeout=15)
-        response.raise_for_status()
-        
-        token = get_confirm_token(response)
-        if token:
-            params = {'id': id, 'confirm': token}
-            response = session.get(URL, params=params, stream=True, verify=False, timeout=15)
+    for attempt in range(max_retries):
+        try:
+            import gdown
+            url = f'https://drive.google.com/uc?id={id}'
             
-        save_response_content(response, dest_path)
-        return True
-    except Exception as e:
-        st.error(f"Download failed for {id}: {e}")
-        return False
-
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
-    return None
-
-def save_response_content(response, dest_path):
-    CHUNK_SIZE = 32768
-    
-    # Calculate total size if available (often not available for chunked GDrive)
-    total_length = response.headers.get('content-length')
-    
-    with open(dest_path, "wb") as f:
-        if total_length is None: # no content length header
-            progress_bar = st.progress(0, text=f"Downloading {os.path.basename(dest_path)} (size unknown)...")
-            downloaded = 0
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk: # filter out keep-alive new chunks
-                    f.write(chunk)
-                    downloaded += len(chunk)
-                    # Just animate generically or update MB count
-                    progress_bar.progress(min(downloaded % 100, 100), text=f"Downloading {os.path.basename(dest_path)}: {downloaded/1024/1024:.1f} MB")
+            # Create directory if needed
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            
+            # Show progress in Streamlit
+            progress_text = f"Downloading {os.path.basename(dest_path)} (attempt {attempt + 1}/{max_retries})..."
+            progress_bar = st.progress(0, text=progress_text)
+            
+            # Download with gdown
+            output = gdown.download(url, dest_path, quiet=False, verify=False, fuzzy=True)
+            
+            progress_bar.progress(100, text=f"✓ Downloaded {os.path.basename(dest_path)}")
+            time.sleep(0.5)
             progress_bar.empty()
-        else:
-            total_length = int(total_length)
-            downloaded = 0
-            progress_bar = st.progress(0, text=f"Downloading {os.path.basename(dest_path)}...")
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk:
-                    f.write(chunk)
-                    downloaded += len(chunk)
-                    percent = int(downloaded * 100 / total_length)
-                    progress_bar.progress(percent, text=f"Downloading {os.path.basename(dest_path)}: {percent}%")
-            progress_bar.empty()
+            
+            if output and os.path.exists(dest_path):
+                return True
+            else:
+                st.warning(f"Attempt {attempt + 1} failed. Retrying...")
+                time.sleep(2)
+                
+        except Exception as e:
+            st.warning(f"Download attempt {attempt + 1} failed: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
+            else:
+                st.error(f"Failed to download {os.path.basename(dest_path)} after {max_retries} attempts")
+                return False
+    
+    return False
 
-def download_file_from_cloud(url_or_id: str, dest_path: str):
-    """
-    Router for downloading files. Checks if it's a Drive ID or URL.
-    """
-    if os.path.exists(dest_path):
-        return True # File already exists
 
-    try:
-        # Create directory if needed
-        os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-        
-        if url_or_id.startswith("http"):
-             # Standard URL download logic (Simplified from before)
-             headers = {'User-Agent': 'Mozilla/5.0'}
-             with requests.get(url_or_id, stream=True, headers=headers) as r:
-                r.raise_for_status()
-                save_response_content(r, dest_path)
-             return True
-        else:
-             # Assume Google Drive ID
-             return download_file_from_google_drive(url_or_id, dest_path)
-             
-    except Exception as e:
-        st.error(f"Failed to download {os.path.basename(dest_path)}: {e}")
-        return False
-
-@st.cache_resource(show_spinner="Loading User Segmentation Model...")
+@st.cache_resource(show_spinner=False)
 def load_user_segmentation_model():
     """
     Downloads (if needed) and loads the KMeans clustering model.
-    Cached resource to avoid reloading large pickle files in memory.
     """
     model_path = os.path.join(MODELS_DIR, "user_segmentation.pkl")
     features_path = os.path.join(MODELS_DIR, "cluster_features.pkl")
     
-    # Attempt download if not present
+    # Check if models exist, download if needed
     if not os.path.exists(model_path):
-        if "example.com" in MODEL_URLS["user_segmentation"]:
-             # Fallback check for local dev/testing without download
-             if not os.path.exists(model_path): # Double check
+        with st.spinner("Downloading user segmentation model..."):
+            if not download_file_from_google_drive(MODEL_URLS["user_segmentation"], model_path):
                 return None, None
-        else:
-             success_m = download_file_from_cloud(MODEL_URLS["user_segmentation"], model_path)
-             success_f = download_file_from_cloud(MODEL_URLS["cluster_features"], features_path)
-             if not (success_m and success_f):
-                 return None, None
+    
+    if not os.path.exists(features_path):
+        with st.spinner("Downloading cluster features..."):
+            if not download_file_from_google_drive(MODEL_URLS["cluster_features"], features_path):
+                return None, None
 
     try:
-        pipeline = joblib.load(model_path)
-        features = joblib.load(features_path)
-        return pipeline, features
-    except FileNotFoundError:
-        # Silent fail or warning handled by caller
-        return None, None
+        with st.spinner("Loading segmentation model..."):
+            pipeline = joblib.load(model_path)
+            features = joblib.load(features_path)
+            st.success("✓ Segmentation model loaded successfully")
+            return pipeline, features
     except Exception as e:
-        st.error(f"Error loading model: {e}")
+        st.error(f"Error loading segmentation model: {e}")
         return None, None
 
-@st.cache_resource(show_spinner="Loading Inference Models...")
+
+@st.cache_resource(show_spinner=False)
 def load_inference_models():
     """
     Downloads (if needed) and loads the classification and regression models.
+    Uses lazy loading to avoid memory issues.
     """
     class_model_path = os.path.join(MODELS_DIR, "activity_classifier.pkl")
     reg_model_path = os.path.join(MODELS_DIR, "calories_regressor.pkl")
 
-    # Attempt download if not present
-    if not (os.path.exists(class_model_path) and os.path.exists(reg_model_path)):
-         if "PLACEHOLDER" in MODEL_URLS["activity_classifier"]:
-             # Fallback check for local
-             if not (os.path.exists(class_model_path) and os.path.exists(reg_model_path)):
-                 return None, None
-         else:
-             download_file_from_cloud(MODEL_URLS["activity_classifier"], class_model_path)
-             download_file_from_cloud(MODEL_URLS["calories_regressor"], reg_model_path)
+    class_model = None
+    reg_model = None
+    
+    # Load classification model
+    if not os.path.exists(class_model_path):
+        with st.spinner("Downloading activity classifier (this may take a minute)..."):
+            if not download_file_from_google_drive(MODEL_URLS["activity_classifier"], class_model_path):
+                st.error("Failed to download activity classifier")
+    
+    if os.path.exists(class_model_path):
+        try:
+            with st.spinner("Loading activity classifier..."):
+                class_model = joblib.load(class_model_path)
+                st.success("✓ Activity classifier loaded")
+        except Exception as e:
+            st.error(f"Error loading classifier: {e}")
+    
+    # Load regression model
+    if not os.path.exists(reg_model_path):
+        with st.spinner("Downloading calorie regressor (this is a large file, ~3GB)..."):
+            if not download_file_from_google_drive(MODEL_URLS["calories_regressor"], reg_model_path):
+                st.error("Failed to download calorie regressor")
+    
+    if os.path.exists(reg_model_path):
+        try:
+            with st.spinner("Loading calorie regressor..."):
+                reg_model = joblib.load(reg_model_path)
+                st.success("✓ Calorie regressor loaded")
+        except Exception as e:
+            st.error(f"Error loading regressor: {e}")
 
-    try:
-        class_model = joblib.load(class_model_path)
-        reg_model = joblib.load(reg_model_path)
-        return class_model, reg_model
-    except FileNotFoundError:
-        return None, None
-    except Exception as e:
-        st.error(f"Error loading inference models: {e}")
-        return None, None
+    return class_model, reg_model
+
 
 def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
     """
     Performs user segmentation using the pre-trained KMeans model.
-    Args:
-        df: The input data as a Pandas DataFrame (raw steps data).
-    Returns:
-        A Pandas DataFrame with user_id, aggregated metrics, and cluster prediction.
     """
-    # Load model
     pipeline, features = load_user_segmentation_model()
     if pipeline is None:
         return pd.DataFrame()
@@ -220,3 +173,16 @@ def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
     user_summary_df["prediction"] = predictions
     
     return user_summary_df
+
+
+# Lazy loading wrapper for models
+def get_classifier_model():
+    """Lazy load classifier only when needed"""
+    class_model, _ = load_inference_models()
+    return class_model
+
+
+def get_regressor_model():
+    """Lazy load regressor only when needed"""
+    _, reg_model = load_inference_models()
+    return reg_model
