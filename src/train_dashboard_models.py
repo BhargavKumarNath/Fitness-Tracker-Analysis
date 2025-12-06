@@ -95,7 +95,7 @@ def train_and_save_models():
     cluster_pipeline = Pipeline([
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler()),
-        ('kmeans', KMeans(n_clusters=3, random_state=42, n_init=10))
+        ('kmeans', KMeans(n_clusters=5, random_state=42, n_init=20))
     ])
     
     cluster_pipeline.fit(user_df[cluster_features])

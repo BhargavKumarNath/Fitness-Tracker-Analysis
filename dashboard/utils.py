@@ -8,7 +8,9 @@ from pathlib import Path
 
 MODEL_URLS = {
     "user_segmentation": "1U7-gBXYkGjZVM3MKIwTdotOX81vMuRB_",
-    "cluster_features": "1PQyrCIaFGLtAz8DSRXyT2_lBN8NX2vME"
+    "cluster_features": "1PQyrCIaFGLtAz8DSRXyT2_lBN8NX2vME",
+    "activity_classifier": "1pMa9zmnnAn0xN41NnqNPUHGDzV87mN7Y", 
+    "calories_regressor": "1qd4m_l55ueKQdHi6feMSEDZS-iUMnarR"   
 }
 
 # Define paths
@@ -93,8 +95,6 @@ def download_file_from_cloud(url_or_id: str, dest_path: str):
         # Create directory if needed
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
         
-        # Heuristic: If it looks like a URL, use requests.get
-        # If it looks like a random string (Drive ID), use GDrive logic
         if url_or_id.startswith("http"):
              # Standard URL download logic (Simplified from before)
              headers = {'User-Agent': 'Mozilla/5.0'}
@@ -121,8 +121,6 @@ def load_user_segmentation_model():
     
     # Attempt download if not present
     if not os.path.exists(model_path):
-        # In a real scenario, we use the specific URL. 
-        # For now, we check if the user provided a valid URL or if we are local.
         if "example.com" in MODEL_URLS["user_segmentation"]:
              # Fallback check for local dev/testing without download
              if not os.path.exists(model_path): # Double check
@@ -153,15 +151,20 @@ def load_inference_models():
     reg_model_path = os.path.join(MODELS_DIR, "calories_regressor.pkl")
 
     # Attempt download if not present
-    # Add these keys to MODEL_URLS dict if implementing real download
-    # For now, we reuse the pattern or skip if local
-    
+    if not (os.path.exists(class_model_path) and os.path.exists(reg_model_path)):
+         if "PLACEHOLDER" in MODEL_URLS["activity_classifier"]:
+             # Fallback check for local
+             if not (os.path.exists(class_model_path) and os.path.exists(reg_model_path)):
+                 return None, None
+         else:
+             download_file_from_cloud(MODEL_URLS["activity_classifier"], class_model_path)
+             download_file_from_cloud(MODEL_URLS["calories_regressor"], reg_model_path)
+
     try:
         class_model = joblib.load(class_model_path)
         reg_model = joblib.load(reg_model_path)
         return class_model, reg_model
     except FileNotFoundError:
-        # In a real app, call download_file_from_cloud here
         return None, None
     except Exception as e:
         st.error(f"Error loading inference models: {e}")
@@ -192,7 +195,6 @@ def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
     }).reset_index()
 
     # Predict
-    # The pipeline includes 'imputer' and 'scaler', so we just pass the columns
     predictions = pipeline.predict(user_summary_df[features])
     user_summary_df["prediction"] = predictions
     
