@@ -42,35 +42,33 @@ def download_file_from_google_drive(id: str, dest_path: str):
     URL = "https://docs.google.com/uc?export=download"
     session = requests.Session()
 
-    # Try requests first (fastest if works)
     try:
-        response = session.get(URL, params={'id': id}, stream=True, verify=False, timeout=10)
+        import gdown
+        url = f'https://drive.google.com/uc?id={id}'
+        # use quiet=False to show progress in logs, verify=False to bypass SSL issues
+        output = gdown.download(url, dest_path, quiet=False, verify=False, fuzzy=True)
+        if output and os.path.exists(dest_path):
+            return True
+        else:
+             st.warning(f"gdown failed to download {id}. Retrying with requests...")
+    except Exception as e:
+         st.warning(f"gdown process failed: {e}. Retrying with requests...")
+
+    # Fallback to requests
+    try:
+        response = session.get(URL, params={'id': id}, stream=True, verify=False, timeout=15)
         response.raise_for_status()
         
         token = get_confirm_token(response)
         if token:
             params = {'id': id, 'confirm': token}
-            response = session.get(URL, params=params, stream=True, verify=False, timeout=10)
+            response = session.get(URL, params=params, stream=True, verify=False, timeout=15)
             
         save_response_content(response, dest_path)
         return True
     except Exception as e:
-        st.warning(f"Standard download failed: {e}. Trying simplified gdown approach...")
-        try:
-            import gdown
-            # gdown handles the confirmation logic internally
-            url = f'https://drive.google.com/uc?id={id}'
-            gdown.download(url, dest_path, quiet=False, verify=False)
-            if os.path.exists(dest_path):
-                return True
-            else:
-                return False
-        except ImportError:
-             st.error("gdown not installed. Please add 'gdown' to requirements.txt")
-             return False
-        except Exception as e_gdown:
-             st.error(f"gdown failed: {e_gdown}")
-             return False
+        st.error(f"Download failed for {id}: {e}")
+        return False
 
 def get_confirm_token(response):
     for key, value in response.cookies.items():
