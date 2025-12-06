@@ -5,10 +5,13 @@ import streamlit as st
 import requests
 import time
 from pathlib import Path
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 MODEL_URLS = {
-    "user_segmentation": "1U7-gBXYkGjZVM3MKIwTdotOX81vMuRB_",
-    "cluster_features": "1PQyrCIaFGLtAz8DSRXyT2_lBN8NX2vME",
+    "user_segmentation": "1HfWsKfx0hATxI4SonagapM-Zeu6FzJoD",
+    "cluster_features": "1eyaogp73oMSKzfw08zoSdPCNYRyLTXhQ",
     "activity_classifier": "1pMa9zmnnAn0xN41NnqNPUHGDzV87mN7Y", 
     "calories_regressor": "1qd4m_l55ueKQdHi6feMSEDZS-iUMnarR"   
 }
@@ -39,12 +42,16 @@ def download_file_from_google_drive(id: str, dest_path: str):
     URL = "https://docs.google.com/uc?export=download"
     session = requests.Session()
 
-    response = session.get(URL, params={'id': id}, stream=True)
+    try:
+        response = session.get(URL, params={'id': id}, stream=True, verify=False)
+    except requests.exceptions.SSLError:
+        # Fallback for strict environments
+        response = session.get(URL, params={'id': id}, stream=True, verify=False)
     token = get_confirm_token(response)
 
     if token:
         params = {'id': id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
+        response = session.get(URL, params=params, stream=True, verify=False)
 
     save_response_content(response, dest_path)
     return True
