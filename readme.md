@@ -11,6 +11,10 @@ The platform serves as a reference implementation for a modern Data Science lufe
 - **Advanced Analytics:** Integrated Scikit-Learn pipelines for user segmentation, activity classification, and caloric forecasting.
 - **Interactive Serving:** A Streamlit based frontend for real data model inference and data exploration.
 
+<br>
+
+# [Live Demo](https://fitness-tracker-analysis.streamlit.app/)
+
 <br> 
 
 # 2. System Architecture
