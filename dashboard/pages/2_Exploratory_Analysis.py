@@ -485,23 +485,34 @@ with tab5:
         # Cluster insights
         st.subheader("💡 Cluster Insights & Recommendations")
         
-        for cluster_id in sorted(user_segments['prediction'].unique()):
+        # Sort by steps for logical flow
+        cluster_means = user_segments.groupby('prediction')['avg_steps'].mean().sort_values()
+        
+        for cluster_id in cluster_means.index:
             cluster_data = user_segments[user_segments['prediction'] == cluster_id]
             avg_steps = cluster_data['avg_steps'].mean()
             avg_cal = cluster_data['avg_calories'].mean()
             
-            with st.expander(f"Cluster {cluster_id}: {len(cluster_data)} users"):
+            # Determine label
+            if avg_steps < 5000:
+                title = "Sedentary"
+                msg = "🔵 **Sedentary Users** - Focus on basic engagement and motivation"
+            elif avg_steps < 8000:
+                title = "Lightly Active"
+                msg = "🟢 **Moderate Users** - Encourage consistency and gradual increases"
+            elif avg_steps < 10000:
+                title = "Active"
+                msg = "🟢 **Active Users** - Meeting health guidelines"
+            else:
+                title = "High Performer"
+                msg = "🟡 **High Performers** - Provide advanced challenges and goals"
+
+            with st.expander(f"{title} (Cluster {cluster_id}): {len(cluster_data)} users"):
                 col1, col2, col3 = st.columns(3)
                 col1.metric("Avg Steps", f"{avg_steps:,.0f}")
                 col2.metric("Avg Calories", f"{avg_cal:,.0f}")
                 col3.metric("Users", len(cluster_data))
                 
-                # Recommendations
-                if avg_steps < 5000:
-                    st.info("🔵 **Sedentary Users** - Focus on basic engagement and motivation")
-                elif avg_steps < 8000:
-                    st.success("🟢 **Moderate Users** - Encourage consistency and gradual increases")
-                else:
-                    st.warning("🟡 **Active Users** - Provide advanced challenges and goals")
+                st.markdown(msg)
     else:
         st.error("Unable to perform user segmentation")

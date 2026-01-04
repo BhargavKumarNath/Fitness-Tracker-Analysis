@@ -148,24 +148,40 @@ with tab1:
             
             # Cluster insights
             st.subheader("💡 Cluster Insights")
-            for cluster_id in sorted(user_df_sample['prediction'].unique()):
+            
+            # Sort clusters by activity level (steps) for logical presentation
+            cluster_means = user_df_sample.groupby('prediction')['avg_steps'].mean().sort_values()
+            
+            for cluster_id in cluster_means.index:
                 cluster_data = user_df_sample[user_df_sample['prediction'] == cluster_id]
                 avg_steps = cluster_data['avg_steps'].mean()
                 avg_cal = cluster_data['avg_calories'].mean()
                 avg_hr = cluster_data['avg_hr'].mean()
                 
-                with st.expander(f"Cluster {cluster_id} Details ({len(cluster_data)} users)"):
+                # Determine label dynamically
+                if avg_steps < 5000:
+                    title = "Sedentary"
+                    msg = "🔵 **Sedentary Group** - Needs encouragement to start moving."
+                elif avg_steps < 8000:
+                     title = "Lightly Active"
+                     msg = "🟢 **Lightly Active** - Good foundation, aim for consistency."
+                elif avg_steps < 10000:
+                     title = "Active"
+                     msg = "🟢 **Active** - Meeting health guidelines."
+                elif avg_steps < 15000:
+                     title = "Very Active"
+                     msg = "🟡 **Very Active** - Exceeding average goals."
+                else:
+                     title = "Athlete"
+                     msg = "🔥 **High Performance** - Elite activity levels."
+
+                with st.expander(f"{title} (Cluster {cluster_id}) - {len(cluster_data)} users"):
                     c1, c2, c3 = st.columns(3)
                     c1.metric("Avg Steps", f"{avg_steps:,.0f}")
                     c2.metric("Avg Calories", f"{avg_cal:,.0f}")
                     c3.metric("Avg Heart Rate", f"{avg_hr:.0f} bpm")
                     
-                    if avg_steps < 6000:
-                        st.info("🔵 **Low Activity Group** - Focus on engagement strategies")
-                    elif avg_steps < 8000:
-                        st.success("🟢 **Moderate Activity Group** - Encourage consistency")
-                    else:
-                        st.warning("🟡 **High Performers** - Challenge with advanced goals")
+                    st.markdown(msg)
     else:
         st.error("⚠️ Segmentation model not available")
 

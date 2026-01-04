@@ -102,24 +102,22 @@ def _load_classifier_model_internal():
     """Internal function to load classifier - cached separately."""
     class_model_path = os.path.join(MODELS_DIR, "activity_classifier.pkl")
     
+    # Check if local model exists (preferred)
     if not os.path.exists(class_model_path):
-        with st.spinner("Downloading activity classifier (745 MB, may take 2-3 minutes)..."):
+        with st.spinner("Downloading activity classifier..."):
+             # Only download if not present locally
             if not download_file_from_google_drive(MODEL_URLS["activity_classifier"], class_model_path):
-                st.error("Failed to download activity classifier")
+                st.warning("⚠️ Classifier model not found locally or on Drive.")
                 return None
     
     if os.path.exists(class_model_path):
         try:
-            # Check file size before loading
             file_size_mb = os.path.getsize(class_model_path) / (1024 * 1024)
             st.info(f"Loading classifier model ({file_size_mb:.1f} MB)...")
             
             model = joblib.load(class_model_path)
             st.success("✓ Activity classifier loaded")
             return model
-        except MemoryError:
-            st.error("⚠️ Not enough memory to load classifier model. Streamlit Cloud has limited resources.")
-            return None
         except Exception as e:
             st.error(f"Error loading classifier: {e}")
             return None
@@ -132,27 +130,22 @@ def _load_regressor_model_internal():
     reg_model_path = os.path.join(MODELS_DIR, "calories_regressor.pkl")
     
     if not os.path.exists(reg_model_path):
-        with st.spinner("Downloading calorie regressor (3 GB - this will take several minutes)..."):
+        with st.spinner("Downloading calorie regressor..."):
             if not download_file_from_google_drive(MODEL_URLS["calories_regressor"], reg_model_path):
-                st.error("Failed to download calorie regressor")
+                st.warning("⚠️ Calorie regressor not found locally or on Drive.")
                 return None
     
     if os.path.exists(reg_model_path):
         try:
             file_size_mb = os.path.getsize(reg_model_path) / (1024 * 1024)
-            
-            if file_size_mb > 2000:  
-                st.error(f"⚠️ Calorie regressor model is too large ({file_size_mb:.1f} MB) for Streamlit Cloud's memory limits.")
-                st.info("💡 This model works locally but cannot run on Streamlit Cloud's free tier (1GB RAM limit).")
-                return None
-            
             st.info(f"Loading regressor model ({file_size_mb:.1f} MB)...")
+            
+            # Removed arbitrary 2GB limit to allow loading whatever is present
             model = joblib.load(reg_model_path)
             st.success("✓ Calorie regressor loaded")
             return model
         except MemoryError:
-            st.error("⚠️ Not enough memory to load regressor model. This model is too large for Streamlit Cloud.")
-            st.info("💡 Consider using a lighter model or deploying to a platform with more resources.")
+            st.error("⚠️ Not enough memory to load regressor model.")
             return None
         except Exception as e:
             st.error(f"Error loading regressor: {e}")

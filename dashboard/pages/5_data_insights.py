@@ -409,10 +409,15 @@ with tab4:
         steps_cal_corr = df['steps'].corr(df['calories_burned'])
         hr_cal_corr = df['heart_rate_avg'].corr(df['calories_burned'])
         
+        # Calculate dynamic efficiency
+        eff_calc = df.groupby('activity_type').agg({'calories_burned': 'sum', 'steps': 'sum'})
+        eff_calc['cal_per_step'] = eff_calc['calories_burned'] / eff_calc['steps']
+        best_activity = eff_calc['cal_per_step'].idxmax()
+        
         st.warning(f"""
         - **Steps-Calories Correlation**: {steps_cal_corr:.3f} (Strong positive)
         - **HR-Calories Correlation**: {hr_cal_corr:.3f} (Moderate positive)
-        - **Most Efficient Activity**: Hiking (highest calories per step)
+        - **Most Efficient Activity**: {best_activity} (highest calories per step)
         - **Data Quality Score**: 100% complete, 0% missing values
         """)
         
