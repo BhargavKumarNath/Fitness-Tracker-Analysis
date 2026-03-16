@@ -133,8 +133,6 @@ with tab2:
         C --> D[ML Models<br/>Training]
         D --> E[Trained Models<br/>pkl files]
         E --> F[Streamlit<br/>Dashboard]
-        B --> G[Streaming<br/>Pipeline]
-        G --> F
     ```
     """)
     
@@ -164,7 +162,7 @@ with tab2:
     with col2:
         st.markdown("### 🤖 ML Pipeline")
         st.markdown("""
-        **4 Production Models**
+        **3 Production Models**
         1. **K-Means Clustering** (10 KB)
            - User segmentation
            - 5 distinct personas
@@ -176,10 +174,6 @@ with tab2:
         3. **Random Forest Regressor** (3 GB)
            - Calorie estimation
            - R² = 0.91
-        
-        4. **ALS Recommender**
-           - Personalized suggestions
-           - Collaborative filtering
         """)
     
     st.markdown("### 🔄 MLOps & DevOps")
