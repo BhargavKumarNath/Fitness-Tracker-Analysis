@@ -117,8 +117,8 @@ def test_dashboard_model_path_rejects_traversal_or_nested_names():
 
 
 def test_baseline_predictions_are_immediate_and_bounded():
-    assert predict_activity_baseline(0, 68) == "Yoga"
-    assert predict_activity_baseline(16000, 120) == "Running"
+    assert predict_activity_baseline(0, 68) == "yoga"
+    assert predict_activity_baseline(16000, 120) == "running"
     assert predict_calories_baseline(0, 68, 8.0, "Yoga") >= 50
 
 

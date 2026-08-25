@@ -234,12 +234,12 @@ def get_regressor_model():
 def predict_activity_baseline(steps: int, heart_rate: int) -> str:
     """Return an immediate activity estimate when the classifier is unavailable."""
     if heart_rate >= 150 or steps >= 15000:
-        return "Running"
+        return "running"
     if heart_rate >= 125 or steps >= 8000:
-        return "Cycling"
+        return "cycling"
     if steps == 0 and heart_rate < 90:
-        return "Yoga"
-    return "Walking"
+        return "yoga"
+    return "walking"
 
 
 def predict_calories_baseline(

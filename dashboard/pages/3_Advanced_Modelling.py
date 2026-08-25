@@ -81,14 +81,16 @@ with tab_classification:
     if run_classification:
         class_model = get_classifier_model()
         features = df_sample[["steps", "calories_burned", "heart_rate_avg"]]
-        actual = df_sample["activity_type"]
+        actual = df_sample["activity_type"].astype(str).str.strip().str.lower()
         if class_model is not None:
             predicted = class_model.predict(features)
             source = "trained local classifier"
         else:
             predicted = [predict_activity_baseline(row.steps, row.heart_rate_avg) for row in features.itertuples()]
             source = "instant baseline"
-        accuracy = (np.asarray(predicted) == actual.to_numpy()).mean()
+        predicted = np.asarray(predicted).astype(str).astype(str)
+        predicted = np.char.lower(np.char.strip(predicted))
+        accuracy = (predicted == actual.to_numpy()).mean()
         st.success(f"Evaluation completed with the {source}.")
         st.metric("Accuracy on sample", f"{accuracy:.1%}")
         labels = sorted(set(actual.unique()) | set(predicted))
