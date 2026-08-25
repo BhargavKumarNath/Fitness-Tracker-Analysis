@@ -97,6 +97,9 @@ def load_user_segmentation_model(download_if_missing: bool = False):
             if not download_file_from_google_drive(MODEL_URLS["cluster_features"], features_path):
                 return None, None
 
+    if not model_path.exists() or not features_path.exists():
+        return None, None
+
     try:
         with st.spinner("Loading segmentation model..."):
             pipeline = joblib.load(model_path)

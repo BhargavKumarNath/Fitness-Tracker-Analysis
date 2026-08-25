@@ -134,3 +134,13 @@ def test_user_segmentation_has_local_fallback_without_model_downloads(monkeypatc
 
     assert result["prediction"].notna().all()
     assert len(result) == 2
+
+
+def test_missing_segmentation_artifacts_return_none_without_deserialization(monkeypatch, tmp_path):
+    monkeypatch.setenv("FITNESS_TRACKER_ROOT", str(tmp_path))
+    load_user_segmentation_model.clear()
+
+    pipeline, features = load_user_segmentation_model()
+
+    assert pipeline is None
+    assert features is None
