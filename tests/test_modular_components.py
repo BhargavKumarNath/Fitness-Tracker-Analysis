@@ -22,6 +22,18 @@ def test_load_raw_data_reads_nested_parquet_files(tmp_path):
     pd.testing.assert_frame_equal(result, expected)
 
 
+def test_load_raw_data_ignores_non_parquet_files(tmp_path):
+    raw_dir = tmp_path / "raw"
+    raw_dir.mkdir()
+    expected = pd.DataFrame([{"user_id": 1, "steps": 100}])
+    expected.to_parquet(raw_dir / "data.parquet", index=False)
+    (raw_dir / "data.csv").write_text("not parquet\n")
+
+    result = load_raw_data(raw_dir)
+
+    pd.testing.assert_frame_equal(result, expected)
+
+
 def test_load_raw_data_reports_missing_input(tmp_path):
     with pytest.raises(FileNotFoundError, match="No parquet files found"):
         load_raw_data(tmp_path / "missing")
@@ -41,6 +53,11 @@ def test_write_processed_data_creates_partitioned_output(tmp_path):
     assert list(output_dir.rglob("*.parquet"))
     result = pd.read_parquet(output_dir)
     assert sorted(result["steps"].tolist()) == [100, 200]
+
+
+def test_write_processed_data_requires_partition_columns(tmp_path):
+    with pytest.raises(KeyError):
+        write_processed_data(pd.DataFrame([{"steps": 100}]), tmp_path / "processed")
 
 
 def test_train_dashboard_models_writes_all_artifacts(tmp_path):
@@ -86,3 +103,8 @@ def test_dashboard_model_path_uses_current_runtime_root(monkeypatch, tmp_path):
     assert get_model_path("activity_classifier") == (
         tmp_path / "dashboard" / "models" / "activity_classifier.pkl"
     )
+
+
+def test_dashboard_model_path_rejects_traversal_or_nested_names():
+    with pytest.raises(ValueError):
+        get_model_path("../activity_classifier")

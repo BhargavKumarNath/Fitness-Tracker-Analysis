@@ -32,19 +32,24 @@ def run_pipeline(project_root: Path | str | None = None) -> dict[str, Path]:
     if "date" in raw_df.columns:
         raw_df["date"] = pd.to_datetime(raw_df["date"])
 
-    spark = __import__("pyspark.sql").sql.SparkSession.builder.master("local[1]").appName("pipeline").getOrCreate()
-    transformed = transform_data(spark.createDataFrame(raw_df))
-    transformed_df = transformed.toPandas()
+    spark = SparkSession.builder.master("local[1]").appName("pipeline").getOrCreate()
+    try:
+        transformed = transform_data(spark.createDataFrame(raw_df))
+        transformed_df = transformed.toPandas()
 
-    transformed_df = transformed_df.drop(columns=[col for col in ["year", "month"] if col in transformed_df.columns], errors="ignore")
-    transformed_df["year"] = transformed_df["date"].dt.year
-    transformed_df["month"] = transformed_df["date"].dt.month
+        transformed_df = transformed_df.drop(
+            columns=[column for column in ["year", "month"] if column in transformed_df.columns],
+            errors="ignore",
+        )
+        transformed_df["year"] = transformed_df["date"].dt.year
+        transformed_df["month"] = transformed_df["date"].dt.month
 
-    processed_dir = paths["processed_data_dir"]
-    write_processed_data(transformed_df, processed_dir)
+        processed_dir = paths["processed_data_dir"]
+        write_processed_data(transformed_df, processed_dir)
+        train_dashboard_models(transformed_df, paths["models_dir"])
+    finally:
+        spark.stop()
 
-    train_dashboard_models(transformed_df, paths["models_dir"])
-    spark.stop()
     return paths
 
 
