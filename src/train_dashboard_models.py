@@ -91,13 +91,19 @@ def train_and_save_models():
     })
     
     cluster_features = ['avg_steps', 'avg_calories', 'avg_hr']
-    
+    cluster_count = min(5, len(user_df))
+
+    if len(user_df) == 0:
+        raise ValueError("No user profiles available for clustering.")
+    if cluster_count < 1:
+        raise ValueError("At least one user record is required for clustering.")
+
     cluster_pipeline = Pipeline([
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler()),
-        ('kmeans', KMeans(n_clusters=5, random_state=42, n_init=20))
+        ('kmeans', KMeans(n_clusters=cluster_count, random_state=42, n_init=20))
     ])
-    
+
     cluster_pipeline.fit(user_df[cluster_features])
     joblib.dump(cluster_pipeline, os.path.join(MODELS_DIR, "user_segmentation.pkl"))
     
