@@ -24,13 +24,21 @@ MODELS_DIR = str(RUNTIME_PATHS["models_dir"])
 DATA_PATH = str(RUNTIME_PATHS["processed_data_dir"])
 
 
+def get_model_path(model_name: str) -> Path:
+    """Return a model artifact path for the current runtime root."""
+    if Path(model_name).name != model_name or not model_name.isidentifier():
+        raise ValueError(f"Invalid model name: {model_name}")
+    return get_runtime_paths()["models_dir"] / f"{model_name}.pkl"
+
+
 @st.cache_data
 def load_dataset() -> pd.DataFrame:
     """Load the processed dataset from Parquet using repo-root-aware paths."""
+    data_path = get_runtime_paths()["processed_data_dir"]
     try:
-        if os.path.exists(DATA_PATH):
-            return pd.read_parquet(DATA_PATH)
-        st.error(f"Data not found at {DATA_PATH}. Please run the ETL pipeline.")
+        if data_path.exists():
+            return pd.read_parquet(data_path)
+        st.error(f"Data not found at {data_path}. Please run the ETL pipeline.")
         return pd.DataFrame()
     except Exception as exc:  # pragma: no cover - UI-level failure path
         st.error(f"Error loading data: {exc}")
@@ -76,8 +84,8 @@ def download_file_from_google_drive(file_id: str, dest_path: str, max_retries: i
 @st.cache_resource(show_spinner=False)
 def load_user_segmentation_model():
     """Download and load the user segmentation model if it is not already present."""
-    model_path = os.path.join(MODELS_DIR, "user_segmentation.pkl")
-    features_path = os.path.join(MODELS_DIR, "cluster_features.pkl")
+    model_path = get_model_path("user_segmentation")
+    features_path = get_model_path("cluster_features")
 
     if not os.path.exists(model_path):
         with st.spinner("Downloading user segmentation model..."):
@@ -103,7 +111,7 @@ def load_user_segmentation_model():
 @st.cache_resource(show_spinner=False, max_entries=1)
 def _load_classifier_model_internal():
     """Load the classifier model, downloading it if needed."""
-    class_model_path = os.path.join(MODELS_DIR, "activity_classifier.pkl")
+    class_model_path = get_model_path("activity_classifier")
 
     if not os.path.exists(class_model_path):
         with st.spinner("Downloading activity classifier..."):
@@ -127,7 +135,7 @@ def _load_classifier_model_internal():
 @st.cache_resource(show_spinner=False, max_entries=1)
 def _load_regressor_model_internal():
     """Load the regressor model, downloading it if needed."""
-    reg_model_path = os.path.join(MODELS_DIR, "calories_regressor.pkl")
+    reg_model_path = get_model_path("calories_regressor")
 
     if not os.path.exists(reg_model_path):
         with st.spinner("Downloading calorie regressor..."):

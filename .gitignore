@@ -39,7 +39,7 @@ Thumbs.db
 # Generated data and model outputs
 data_lake/streaming_input/*
 !data_lake/streaming_input/.gitkeep
-models/
+/models/
 dashboard/models/*.pkl
 
 # Local runtime / generated state
