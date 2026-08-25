@@ -59,7 +59,7 @@ def train_cloud_models():
     joblib.dump(class_pipeline, class_path, compress=3) # High compression
     
     size_mb = os.path.getsize(class_path) / (1024 * 1024)
-    print(f"✅ Classifier saved: {size_mb:.1f} MB (Target: <50MB)")
+    print(f"Classifier saved: {size_mb:.1f} MB (Target: <50MB)")
 
     # --- 2. REGRESSION MODEL ---
     print("\n[2/3] Training Lightweight Calorie Regressor...")
@@ -95,7 +95,7 @@ def train_cloud_models():
     joblib.dump(reg_pipeline, reg_path, compress=3)
     
     size_mb = os.path.getsize(reg_path) / (1024 * 1024)
-    print(f"✅ Regressor saved: {size_mb:.1f} MB (Target: <50MB)")
+    print(f"Regressor saved: {size_mb:.1f} MB (Target: <50MB)")
 
     # --- 3. CLUSTERING MODEL (already small, but retraining for consistency) ---
     print("\n[3/3] Training Clustering Model...")
@@ -124,8 +124,8 @@ def train_cloud_models():
     joblib.dump(cluster_pipeline, os.path.join(MODELS_DIR, "user_segmentation.pkl"))
     joblib.dump(cluster_features, os.path.join(MODELS_DIR, "cluster_features.pkl"))
     
-    print("✅ User segmentation model saved.")
-    print("\n🎉 All models optimized for Cloud deployment!")
+    print("User segmentation model saved.")
+    print("\nAll models optimized for Cloud deployment!")
 
 if __name__ == "__main__":
     train_cloud_models()
