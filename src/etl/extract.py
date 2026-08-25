@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+import pyarrow.dataset as ds
 
 
 def load_raw_data(raw_data_dir: Path | str) -> pd.DataFrame:
@@ -10,7 +11,9 @@ def load_raw_data(raw_data_dir: Path | str) -> pd.DataFrame:
     if not parquet_files:
         raise FileNotFoundError(f"No parquet files found in {raw_dir}")
 
-    return pd.concat(
-        (pd.read_parquet(path) for path in parquet_files),
-        ignore_index=True,
+    dataset = ds.dataset(
+        [str(path) for path in parquet_files],
+        format="parquet",
+        partitioning=None,
     )
+    return dataset.to_table().to_pandas()

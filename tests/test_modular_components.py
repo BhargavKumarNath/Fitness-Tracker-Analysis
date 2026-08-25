@@ -5,7 +5,7 @@ import pytest
 
 from src.etl.extract import load_raw_data
 from src.etl.load import write_processed_data
-from src.models.training import train_dashboard_models
+from src.models.training import MODEL_TREES, train_dashboard_models
 from dashboard.utils import get_model_path
 
 
@@ -74,6 +74,10 @@ def test_train_dashboard_models_writes_all_artifacts(tmp_path):
         "cluster_features.pkl",
     }
     assert all(path.exists() for path in artifacts)
+
+
+def test_training_uses_bounded_parallel_forest_configuration():
+    assert MODEL_TREES == 50
 
 
 def test_dashboard_model_path_uses_current_runtime_root(monkeypatch, tmp_path):

@@ -9,6 +9,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+MODEL_TREES = 50
+
 
 def train_dashboard_models(df: pd.DataFrame, models_dir: Path | str) -> list[Path]:
     """Train and persist the classifier, regressor, and segmentation models."""
@@ -19,7 +21,15 @@ def train_dashboard_models(df: pd.DataFrame, models_dir: Path | str) -> list[Pat
     class_pipeline = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
         ("scaler", StandardScaler()),
-        ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+        (
+            "classifier",
+            RandomForestClassifier(
+                n_estimators=MODEL_TREES,
+                max_depth=20,
+                n_jobs=-1,
+                random_state=42,
+            ),
+        ),
     ])
     class_pipeline.fit(df[class_features], df["activity_type"])
 
@@ -39,7 +49,15 @@ def train_dashboard_models(df: pd.DataFrame, models_dir: Path | str) -> list[Pat
     )
     reg_pipeline = Pipeline([
         ("preprocessor", preprocessor),
-        ("regressor", RandomForestRegressor(n_estimators=100, random_state=42)),
+        (
+            "regressor",
+            RandomForestRegressor(
+                n_estimators=MODEL_TREES,
+                max_depth=20,
+                n_jobs=-1,
+                random_state=42,
+            ),
+        ),
     ])
     reg_pipeline.fit(df[reg_features], df["calories_burned"])
 
