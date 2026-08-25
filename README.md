@@ -166,7 +166,7 @@ dashboard/models/cluster_features.pkl
 streamlit run dashboard/1_Overview.py
 ```
 
-Open `http://localhost:8501`. If a model file is missing, the dashboard can attempt to download it using the identifiers configured in `dashboard/utils.py`. Generating the artifacts locally is preferable for repeatable offline runs.
+Open `http://localhost:8501`. The dashboard does not download multi-gigabyte models while a page is loading. If an artifact is missing, live inference uses a fast local estimate and exploratory segmentation uses deterministic activity bands. Generating the trained artifacts locally is available when model-backed predictions are required.
 
 ### Run the tests
 

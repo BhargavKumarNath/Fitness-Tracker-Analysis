@@ -59,7 +59,7 @@ def download_file_from_google_drive(file_id: str, dest_path: str, max_retries: i
             progress_text = f"Downloading {os.path.basename(dest_path)} (attempt {attempt}/{max_retries})..."
             progress_bar = st.progress(0, text=progress_text)
 
-            output = gdown.download(url, dest_path, quiet=False, verify=False, fuzzy=True)
+            output = gdown.download(url, dest_path, quiet=False, verify=False)
 
             progress_bar.progress(100, text=f"Downloaded {os.path.basename(dest_path)}")
             time.sleep(0.5)
@@ -82,17 +82,17 @@ def download_file_from_google_drive(file_id: str, dest_path: str, max_retries: i
 
 
 @st.cache_resource(show_spinner=False)
-def load_user_segmentation_model():
+def load_user_segmentation_model(download_if_missing: bool = False):
     """Download and load the user segmentation model if it is not already present."""
     model_path = get_model_path("user_segmentation")
     features_path = get_model_path("cluster_features")
 
-    if not os.path.exists(model_path):
+    if download_if_missing and not os.path.exists(model_path):
         with st.spinner("Downloading user segmentation model..."):
             if not download_file_from_google_drive(MODEL_URLS["user_segmentation"], model_path):
                 return None, None
 
-    if not os.path.exists(features_path):
+    if download_if_missing and not os.path.exists(features_path):
         with st.spinner("Downloading cluster features..."):
             if not download_file_from_google_drive(MODEL_URLS["cluster_features"], features_path):
                 return None, None
@@ -170,10 +170,8 @@ def load_inference_models():
 
 
 def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
-    """Perform user segmentation via the pretrained KMeans model."""
+    """Perform user segmentation without blocking on remote model downloads."""
     pipeline, features = load_user_segmentation_model()
-    if pipeline is None:
-        return pd.DataFrame()
 
     user_summary_df = (
         df.groupby("user_id")
@@ -190,6 +188,9 @@ def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
         .reset_index()
     )
 
+    if pipeline is None:
+        return _build_baseline_segments(user_summary_df)
+
     try:
         predictions = pipeline.predict(user_summary_df[features])
         user_summary_df["prediction"] = predictions
@@ -197,6 +198,22 @@ def get_user_segments(df: pd.DataFrame) -> pd.DataFrame:
     except Exception as exc:
         st.error(f"Error during segmentation: {exc}")
         return pd.DataFrame()
+
+
+def _build_baseline_segments(user_summary_df: pd.DataFrame) -> pd.DataFrame:
+    """Create deterministic activity bands when the optional model is absent."""
+    if user_summary_df.empty:
+        return user_summary_df.assign(prediction=pd.Series(dtype="int64"))
+
+    ranked_steps = user_summary_df["avg_steps"].rank(method="first")
+    cluster_count = min(5, len(user_summary_df))
+    user_summary_df = user_summary_df.copy()
+    user_summary_df["prediction"] = (
+        ((ranked_steps - 1) * cluster_count / len(user_summary_df))
+        .astype(int)
+        .clip(upper=cluster_count - 1)
+    )
+    return user_summary_df
 
 
 def get_classifier_model():

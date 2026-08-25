@@ -8,6 +8,8 @@ from src.etl.load import write_processed_data
 from src.models.training import MODEL_TREES, train_dashboard_models
 from dashboard.utils import (
     get_model_path,
+    get_user_segments,
+    load_user_segmentation_model,
     predict_activity_baseline,
     predict_calories_baseline,
 )
@@ -118,3 +120,17 @@ def test_baseline_predictions_are_immediate_and_bounded():
     assert predict_activity_baseline(0, 68) == "Yoga"
     assert predict_activity_baseline(16000, 120) == "Running"
     assert predict_calories_baseline(0, 68, 8.0, "Yoga") >= 50
+
+
+def test_user_segmentation_has_local_fallback_without_model_downloads(monkeypatch, tmp_path):
+    monkeypatch.setenv("FITNESS_TRACKER_ROOT", str(tmp_path))
+    load_user_segmentation_model.clear()
+    frame = pd.DataFrame([
+        {"user_id": 1, "steps": 1000, "calories_burned": 100.0, "heart_rate_avg": 70},
+        {"user_id": 2, "steps": 10000, "calories_burned": 300.0, "heart_rate_avg": 130},
+    ])
+
+    result = get_user_segments(frame)
+
+    assert result["prediction"].notna().all()
+    assert len(result) == 2
