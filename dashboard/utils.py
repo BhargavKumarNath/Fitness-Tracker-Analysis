@@ -117,7 +117,10 @@ def _load_classifier_model_internal():
     class_model_path = get_model_path("activity_classifier")
 
     if not os.path.exists(class_model_path):
-        st.warning("Activity classifier is not available locally. Using the fast baseline.")
+        st.info(
+            "The trained activity model is not installed in this deployment, "
+            "so this result will use a quick approximate estimate."
+        )
         return None
 
     if os.path.exists(class_model_path):
@@ -139,7 +142,10 @@ def _load_regressor_model_internal():
     reg_model_path = get_model_path("calories_regressor")
 
     if not os.path.exists(reg_model_path):
-        st.warning("Calorie regressor is not available locally. Using the fast baseline.")
+        st.info(
+            "The trained calorie model is not installed in this deployment, "
+            "so this result will use a quick approximate estimate."
+        )
         return None
 
     if os.path.exists(reg_model_path):
