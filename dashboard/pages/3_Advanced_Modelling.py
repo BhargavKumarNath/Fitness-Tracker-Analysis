@@ -1,483 +1,137 @@
-import streamlit as st
+import os
+import sys
+
+import numpy as np
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-import numpy as np
-import sys
-import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-
-from dashboard.utils import load_dataset, load_user_segmentation_model, get_user_segments, get_classifier_model, get_regressor_model
+import streamlit as st
 from sklearn.metrics import confusion_matrix, classification_report, mean_squared_error, r2_score
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
+from dashboard.utils import (
+    get_classifier_model,
+    get_regressor_model,
+    get_user_segments,
+    load_dataset,
+    predict_activity_baseline,
+    predict_calories_baseline,
+)
 
 st.set_page_config(page_title="Advanced Modeling", page_icon="🧠", layout="wide")
 
-# Load CSS
+
 def load_css(file_name):
     try:
-        with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-    except:
+        with open(file_name) as file:
+            st.markdown(f"<style>{file.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
         pass
 
+
 load_css("dashboard/style.css")
+st.title("🧠 Advanced Modeling")
+st.markdown("Explore behavior segments and test predictions without waiting for large model downloads.")
 
-st.title("🧠 Advanced Machine Learning Models")
-st.markdown("Deep dive into model performance, feature importance, and interactive evaluation.")
-
-if 'STREAMLIT_SHARING_MODE' in os.environ or os.getenv('STREAMLIT_RUNTIME_ENV') == 'cloud':
-    st.warning("⚠️ **Running on Streamlit Cloud**: Large models (>1GB) may fail to load due to memory limits. User segmentation and classification models should work fine.")
-
-# Load Data with error handling
-with st.spinner("Loading dataset..."):
-    df = load_dataset()
-
+df = load_dataset()
 if df.empty:
-    st.error("⚠️ Data not available. Please ensure the ETL pipeline has run.")
+    st.error("No processed data is available. Run the pipeline before opening this page.")
     st.stop()
 
-# Sample for performance
-SAMPLE_SIZE = 2000
-df_sample = df.sample(n=min(len(df), SAMPLE_SIZE), random_state=42)
+df_sample = df.sample(n=min(len(df), 2000), random_state=42)
+tab_segments, tab_classification, tab_regression, tab_comparison = st.tabs(
+    ["🧬 User Segmentation", "🏃 Activity Classification", "🔥 Calorie Regression", "📊 Model Comparison"]
+)
 
-# Create tabs for different models
-tab1, tab2, tab3, tab4 = st.tabs([
-    "🧬 User Segmentation", 
-    "🏃 Activity Classification", 
-    "🔥 Calorie Regression",
-    "📊 Model Comparison"
-])
-
-# TAB 1: User Segmentation (Small model - should always work)
-with tab1:
-    st.header("User Segmentation Analysis (K-Means)")
-    
-    col_info1, col_info2, col_info3 = st.columns(3)
-    with col_info1:
-        st.metric("Algorithm", "K-Means Clustering")
-    with col_info2:
-        st.metric("Features", "3 (steps, calories, HR)")
-    with col_info3:
-        st.metric("Clusters", "5")
-    
-    st.divider()
-    
-    pipeline, features = load_user_segmentation_model()
-    
-    if pipeline:
-        user_df_sample = get_user_segments(df_sample)
-        
-        if not user_df_sample.empty:
-            
-            # Visualization row
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.subheader("📊 Cluster Distribution")
-                cluster_counts = user_df_sample['prediction'].value_counts().reset_index()
-                cluster_counts.columns = ['Cluster', 'Count']
-                
-                fig_dist = px.pie(
-                    cluster_counts, 
-                    names='Cluster', 
-                    values='Count',
-                    title='User Distribution Across Clusters',
-                    hole=0.4,
-                    color_discrete_sequence=px.colors.qualitative.Set3
-                )
-                fig_dist.update_layout(
-                    paper_bgcolor="rgba(0,0,0,0)", 
-                    plot_bgcolor="rgba(0,0,0,0)", 
-                    font=dict(color="white")
-                )
-                st.plotly_chart(fig_dist, width='stretch')
-                
-            with col2:
-                st.subheader("🎯 Cluster Characteristics")
-                cluster_stats = user_df_sample.groupby('prediction').agg({
-                    'avg_steps': 'mean',
-                    'avg_calories': 'mean',
-                    'avg_hr': 'mean'
-                }).round(1)
-                
-                fig_bar = go.Figure()
-                for col in ['avg_steps', 'avg_calories', 'avg_hr']:
-                    fig_bar.add_trace(go.Bar(
-                        name=col.replace('avg_', '').title(),
-                        x=cluster_stats.index,
-                        y=cluster_stats[col],
-                        text=cluster_stats[col].round(0),
-                        textposition='auto'
-                    ))
-                
-                fig_bar.update_layout(
-                    title='Average Metrics per Cluster',
-                    barmode='group',
-                    xaxis_title='Cluster',
-                    yaxis_title='Value',
-                    paper_bgcolor="rgba(0,0,0,0)",
-                    plot_bgcolor="rgba(0,0,0,0)",
-                    font=dict(color="white")
-                )
-                st.plotly_chart(fig_bar, width='stretch')
-            
-            # 3D Visualization
-            st.subheader("🌐 3D Cluster Visualization")
-            fig_3d = px.scatter_3d(
-                user_df_sample, 
-                x='avg_steps', 
-                y='avg_calories', 
-                z='avg_hr',
-                color='prediction',
-                title="User Segmentation in 3D Feature Space",
-                labels={'prediction': 'Cluster'},
-                color_continuous_scale='Viridis'
-            )
-            fig_3d.update_layout(
-                scene=dict(
-                    xaxis=dict(backgroundcolor="rgb(20, 24, 35)", gridcolor="white"),
-                    yaxis=dict(backgroundcolor="rgb(20, 24, 35)", gridcolor="white"),
-                    zaxis=dict(backgroundcolor="rgb(20, 24, 35)", gridcolor="white")
-                ),
-                paper_bgcolor="rgba(0,0,0,0)",
-                font=dict(color="white"),
-                height=600
-            )
-            st.plotly_chart(fig_3d, width='stretch')
-            
-            # Cluster insights
-            st.subheader("💡 Cluster Insights")
-            
-            # Sort clusters by activity level (steps) for logical presentation
-            cluster_means = user_df_sample.groupby('prediction')['avg_steps'].mean().sort_values()
-            
-            for cluster_id in cluster_means.index:
-                cluster_data = user_df_sample[user_df_sample['prediction'] == cluster_id]
-                avg_steps = cluster_data['avg_steps'].mean()
-                avg_cal = cluster_data['avg_calories'].mean()
-                avg_hr = cluster_data['avg_hr'].mean()
-                
-                # Determine label dynamically
-                if avg_steps < 5000:
-                    title = "Sedentary"
-                    msg = "🔵 **Sedentary Group** - Needs encouragement to start moving."
-                elif avg_steps < 8000:
-                     title = "Lightly Active"
-                     msg = "🟢 **Lightly Active** - Good foundation, aim for consistency."
-                elif avg_steps < 10000:
-                     title = "Active"
-                     msg = "🟢 **Active** - Meeting health guidelines."
-                elif avg_steps < 15000:
-                     title = "Very Active"
-                     msg = "🟡 **Very Active** - Exceeding average goals."
-                else:
-                     title = "Athlete"
-                     msg = "🔥 **High Performance** - Elite activity levels."
-
-                with st.expander(f"{title} (Cluster {cluster_id}) - {len(cluster_data)} users"):
-                    c1, c2, c3 = st.columns(3)
-                    c1.metric("Avg Steps", f"{avg_steps:,.0f}")
-                    c2.metric("Avg Calories", f"{avg_cal:,.0f}")
-                    c3.metric("Avg Heart Rate", f"{avg_hr:.0f} bpm")
-                    
-                    st.markdown(msg)
+with tab_segments:
+    st.header("User Segmentation")
+    st.caption("Users are grouped by average steps, calories burned, and heart rate.")
+    user_segments = get_user_segments(df_sample)
+    if user_segments.empty:
+        st.info("There are not enough user records to create segments.")
     else:
-        st.error("⚠️ Segmentation model not available")
+        left, right = st.columns(2)
+        with left:
+            st.metric("Users analyzed", f"{len(user_segments):,}")
+        with right:
+            st.metric("Groups created", user_segments["prediction"].nunique())
 
-# TAB 2: Classification 
-with tab2:
-    st.header("Activity Classification (Random Forest)")
-    
-    col_info1, col_info2, col_info3 = st.columns(3)
-    with col_info1:
-        st.metric("Algorithm", "Random Forest")
-    with col_info2:
-        st.metric("Accuracy", "84%")
-    with col_info3:
-        st.metric("Features", "3")
-    
-    st.divider()
-    
-    try:
+        fig = px.scatter_3d(
+            user_segments,
+            x="avg_steps",
+            y="avg_calories",
+            z="avg_hr",
+            color="prediction",
+            hover_data=["user_id"],
+            title="User groups by average behavior",
+        )
+        st.plotly_chart(fig, use_container_width=True)
+        summary = user_segments.groupby("prediction").agg(
+            Users=("user_id", "count"),
+            Avg_Steps=("avg_steps", "mean"),
+            Avg_Calories=("avg_calories", "mean"),
+            Avg_Heart_Rate=("avg_hr", "mean"),
+        ).round(1)
+        st.dataframe(summary, use_container_width=True)
+
+with tab_classification:
+    st.header("Activity Classification")
+    st.caption("Evaluate the local classifier when available, or use the instant baseline for a working demo.")
+    run_classification = st.button("Run classification evaluation", key="run_classification")
+    if run_classification:
         class_model = get_classifier_model()
-        
-        if class_model:
-            st.success("✅ Classifier Loaded Successfully")
-            
-            # Feature Importance
-            st.subheader("📊 Feature Importance")
-            try:
-                if hasattr(class_model, 'named_steps'):
-                    classifier = class_model.named_steps['classifier']
-                    importances = classifier.feature_importances_
-                    feature_names = ['steps', 'calories_burned', 'heart_rate_avg']
-                    
-                    importance_df = pd.DataFrame({
-                        'Feature': feature_names,
-                        'Importance': importances
-                    }).sort_values('Importance', ascending=False)
-                    
-                    fig_imp = px.bar(
-                        importance_df,
-                        x='Importance',
-                        y='Feature',
-                        orientation='h',
-                        title="Feature Importance for Activity Prediction",
-                        color='Importance',
-                        color_continuous_scale='Blues'
-                    )
-                    fig_imp.update_layout(
-                        paper_bgcolor="rgba(0,0,0,0)",
-                        plot_bgcolor="rgba(0,0,0,0)",
-                        font=dict(color="white")
-                    )
-                    st.plotly_chart(fig_imp, width='stretch')
-            except Exception as e:
-                st.info(f"Feature importance visualization unavailable: {e}")
-
-            # Evaluation
-            if st.checkbox("🔍 Run Model Evaluation on Sample Data"):
-                with st.spinner("Running predictions..."):
-                    try:
-                        X_test = df_sample[['steps', 'calories_burned', 'heart_rate_avg']]
-                        y_test = df_sample['activity_type']
-                        
-                        y_pred = class_model.predict(X_test)
-                        
-                        # Metrics
-                        col1, col2 = st.columns(2)
-                        
-                        with col1:
-                            st.subheader("📈 Confusion Matrix")
-                            labels = sorted(y_test.unique())
-                            cm = confusion_matrix(y_test, y_pred, labels=labels)
-                            
-                            fig_cm = px.imshow(
-                                cm,
-                                x=labels,
-                                y=labels,
-                                text_auto=True,
-                                title="Confusion Matrix",
-                                color_continuous_scale='Blues',
-                                labels=dict(x="Predicted", y="Actual")
-                            )
-                            fig_cm.update_layout(
-                                paper_bgcolor="rgba(0,0,0,0)",
-                                plot_bgcolor="rgba(0,0,0,0)",
-                                font=dict(color="white")
-                            )
-                            st.plotly_chart(fig_cm, width='stretch')
-                        
-                        with col2:
-                            st.subheader("📋 Classification Report")
-                            report = classification_report(y_test, y_pred, output_dict=True)
-                            report_df = pd.DataFrame(report).transpose()
-                            st.dataframe(
-                                report_df.style.background_gradient(cmap='Blues'),
-                                height=400
-                            )
-                    except Exception as e:
-                        st.error(f"Error during evaluation: {e}")
+        features = df_sample[["steps", "calories_burned", "heart_rate_avg"]]
+        actual = df_sample["activity_type"]
+        if class_model is not None:
+            predicted = class_model.predict(features)
+            source = "trained local classifier"
         else:
-            st.error("⚠️ Classification model could not be loaded")
-            st.info("💡 This may be due to memory constraints on Streamlit Cloud. The model works fine locally.")
-    except Exception as e:
-        st.error(f"⚠️ Error loading classifier: {e}")
+            predicted = [predict_activity_baseline(row.steps, row.heart_rate_avg) for row in features.itertuples()]
+            source = "instant baseline"
+        accuracy = (np.asarray(predicted) == actual.to_numpy()).mean()
+        st.success(f"Evaluation completed with the {source}.")
+        st.metric("Accuracy on sample", f"{accuracy:.1%}")
+        labels = sorted(set(actual.unique()) | set(predicted))
+        matrix = confusion_matrix(actual, predicted, labels=labels)
+        st.plotly_chart(
+            px.imshow(matrix, x=labels, y=labels, text_auto=True, labels={"x": "Predicted", "y": "Actual"}, title="Confusion matrix"),
+            use_container_width=True,
+        )
+        report = classification_report(actual, predicted, labels=labels, output_dict=True, zero_division=0)
+        st.dataframe(pd.DataFrame(report).transpose().round(3), use_container_width=True)
 
-# TAB 3: Regression
-with tab3:
-    st.header("Calorie Prediction (Regression)")
-    
-    col_info1, col_info2, col_info3 = st.columns(3)
-    with col_info1:
-        st.metric("Algorithm", "Random Forest Regressor")
-    with col_info2:
-        st.metric("R² Score", "0.91")
-    with col_info3:
-        st.metric("RMSE", "131")
-    
-    st.divider()
-    
-    try:
+with tab_regression:
+    st.header("Calorie Regression")
+    st.caption("Evaluate the local regressor when available, or use the instant baseline for a working demo.")
+    run_regression = st.button("Run regression evaluation", key="run_regression")
+    if run_regression:
         reg_model = get_regressor_model()
-        
-        if reg_model:
-            st.success("✅ Regressor Loaded Successfully")
-            
-            if st.checkbox("🔍 Run Regression Evaluation"):
-                with st.spinner("Making predictions..."):
-                    try:
-                        X_reg = df_sample[['steps', 'heart_rate_avg', 'sleep_hours', 'activity_type']]
-                        y_true = df_sample['calories_burned']
-                        
-                        y_pred = reg_model.predict(X_reg)
-                        
-                        # Metrics
-                        rmse = np.sqrt(mean_squared_error(y_true, y_pred))
-                        r2 = r2_score(y_true, y_pred)
-                        
-                        m1, m2 = st.columns(2)
-                        m1.metric("RMSE", f"{rmse:.2f}")
-                        m2.metric("R² Score", f"{r2:.3f}")
-                        
-                        # Visualizations
-                        col1, col2 = st.columns(2)
-                        
-                        with col1:
-                            st.subheader("📊 Actual vs Predicted")
-                            fig_scatter = px.scatter(
-                                x=y_true,
-                                y=y_pred,
-                                labels={'x': 'Actual Calories', 'y': 'Predicted Calories'},
-                                title="Prediction Accuracy",
-                                opacity=0.6,
-                                color=y_true-y_pred,
-                                color_continuous_scale='RdYlGn_r'
-                            )
-                            fig_scatter.add_shape(
-                                type="line",
-                                x0=y_true.min(),
-                                y0=y_true.min(),
-                                x1=y_true.max(),
-                                y1=y_true.max(),
-                                line=dict(color="Red", dash="dash")
-                            )
-                            fig_scatter.update_layout(
-                                paper_bgcolor="rgba(0,0,0,0)",
-                                plot_bgcolor="rgba(0,0,0,0)",
-                                font=dict(color="white")
-                            )
-                            st.plotly_chart(fig_scatter, width='stretch')
-                        
-                        with col2:
-                            st.subheader("📉 Residual Distribution")
-                            residuals = y_true - y_pred
-                            fig_hist = px.histogram(
-                                residuals,
-                                nbins=50,
-                                title="Error Distribution",
-                                labels={'value': 'Residual (Actual - Predicted)'},
-                                color_discrete_sequence=['#636EFA']
-                            )
-                            fig_hist.update_layout(
-                                paper_bgcolor="rgba(0,0,0,0)",
-                                plot_bgcolor="rgba(0,0,0,0)",
-                                font=dict(color="white")
-                            )
-                            st.plotly_chart(fig_hist, width='stretch')
-                        
-                        # Residual plot
-                        st.subheader("🎯 Residual Plot")
-                        fig_residual = px.scatter(
-                            x=y_pred,
-                            y=residuals,
-                            labels={'x': 'Predicted Calories', 'y': 'Residuals'},
-                            title="Residuals vs Predicted Values",
-                            opacity=0.6
-                        )
-                        fig_residual.add_hline(y=0, line_dash="dash", line_color="red")
-                        fig_residual.update_layout(
-                            paper_bgcolor="rgba(0,0,0,0)",
-                            plot_bgcolor="rgba(0,0,0,0)",
-                            font=dict(color="white")
-                        )
-                        st.plotly_chart(fig_residual, width='stretch')
-                    except Exception as e:
-                        st.error(f"Error during evaluation: {e}")
+        features = df_sample[["steps", "heart_rate_avg", "sleep_hours", "activity_type"]]
+        actual = df_sample["calories_burned"]
+        if reg_model is not None:
+            predicted = reg_model.predict(features)
+            source = "trained local regressor"
         else:
-            st.error("⚠️ Regression model could not be loaded")
-            st.info("💡 This 3GB model exceeds Streamlit Cloud's memory limits. It works fine when running locally.")
-            st.markdown("""
-            **Alternatives for Cloud Deployment:**
-            1. Train a smaller model (e.g., reduce `n_estimators`)
-            2. Use a simpler algorithm (e.g., LinearRegression)
-            3. Deploy to a platform with more resources (AWS, GCP, Azure)
-            """)
-    except Exception as e:
-        st.error(f"⚠️ Error loading regressor: {e}")
+            predicted = [
+                predict_calories_baseline(row.steps, row.heart_rate_avg, row.sleep_hours, row.activity_type)
+                for row in features.itertuples()
+            ]
+            source = "instant baseline"
+        rmse = np.sqrt(mean_squared_error(actual, predicted))
+        st.success(f"Evaluation completed with the {source}.")
+        first, second = st.columns(2)
+        first.metric("RMSE on sample", f"{rmse:,.1f}")
+        second.metric("R² on sample", f"{r2_score(actual, predicted):.3f}")
+        chart = px.scatter(x=actual, y=predicted, labels={"x": "Actual calories", "y": "Predicted calories"}, title="Actual vs predicted")
+        st.plotly_chart(chart, use_container_width=True)
 
-# TAB 4: Model Comparison
-with tab4:
-    st.header("📊 Model Performance Comparison")
-    
-    # Model metrics summary
-    metrics_data = {
-        'Model': ['User Segmentation', 'Activity Classification', 'Calorie Regression'],
-        'Algorithm': ['K-Means', 'Random Forest', 'Random Forest'],
-        'Primary Metric': ['Silhouette Score', 'Accuracy', 'R² Score'],
-        'Score': [0.45, 0.84, 0.91],
-        'Training Time': ['< 1 min', '~5 mins', '~10 mins'],
-        'Model Size': ['10 KB', '745 MB', '3 GB'],
-        'Cloud Compatible': ['✅ Yes', '⚠️ Maybe', '❌ No']
-    }
-    
-    metrics_df = pd.DataFrame(metrics_data)
-    
-    st.subheader("Model Overview")
-    st.dataframe(metrics_df, width='stretch')
-    
-    st.info("""
-    **Note on Cloud Deployment:**
-    - ✅ **User Segmentation** (10 KB): Always works
-    - ⚠️ **Activity Classification** (745 MB): Works with caching, may timeout on first load
-    - ❌ **Calorie Regression** (3 GB): Exceeds Streamlit Cloud's 1GB RAM limit
-    """)
-    
-    # Performance comparison chart
-    st.subheader("Performance Scores")
-    fig_comparison = px.bar(
-        metrics_df,
-        x='Model',
-        y='Score',
-        color='Model',
-        title='Model Performance Comparison',
-        text='Score',
-        color_discrete_sequence=px.colors.qualitative.Set3
-    )
-    fig_comparison.update_traces(texttemplate='%{text:.2f}', textposition='outside')
-    fig_comparison.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="white"),
-        showlegend=False
-    )
-    st.plotly_chart(fig_comparison, width='stretch')
-    
-    # Use cases
-    st.subheader("💡 Recommended Use Cases")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        with st.container():
-            st.markdown("### 🧬 User Segmentation")
-            st.write("""
-            **Best for:**
-            - Marketing campaigns
-            - Personalized recommendations
-            - Targeted engagement
-            - User profiling
-            """)
-    
-    with col2:
-        with st.container():
-            st.markdown("### 🏃 Activity Classification")
-            st.write("""
-            **Best for:**
-            - Automatic activity detection
-            - Workout logging
-            - Activity recommendations
-            - Fitness tracking apps
-            """)
-    
-    with col3:
-        with st.container():
-            st.markdown("### 🔥 Calorie Prediction")
-            st.write("""
-            **Best for:**
-            - Nutrition planning
-            - Calorie goal setting
-            - Weight management
-            - Diet recommendations
-            """)
+with tab_comparison:
+    st.header("Model Availability")
+    st.caption("Model artifacts are optional runtime files. The dashboard remains usable without downloading them.")
+    availability = pd.DataFrame([
+        {"Capability": "User segmentation", "Default behavior": "Local activity bands", "Requires model": "No"},
+        {"Capability": "Activity classification", "Default behavior": "Instant baseline", "Requires model": "No"},
+        {"Capability": "Calorie prediction", "Default behavior": "Instant baseline", "Requires model": "No"},
+    ])
+    st.dataframe(availability, hide_index=True, use_container_width=True)
+    st.info("For trained-model evaluation, place compatible artifacts in dashboard/models/ and rerun the selected evaluation.")
