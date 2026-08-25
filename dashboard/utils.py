@@ -114,10 +114,8 @@ def _load_classifier_model_internal():
     class_model_path = get_model_path("activity_classifier")
 
     if not os.path.exists(class_model_path):
-        with st.spinner("Downloading activity classifier..."):
-            if not download_file_from_google_drive(MODEL_URLS["activity_classifier"], class_model_path):
-                st.warning("Classifier model not found locally or on Drive.")
-                return None
+        st.warning("Activity classifier is not available locally. Using the fast baseline.")
+        return None
 
     if os.path.exists(class_model_path):
         try:
@@ -138,10 +136,8 @@ def _load_regressor_model_internal():
     reg_model_path = get_model_path("calories_regressor")
 
     if not os.path.exists(reg_model_path):
-        with st.spinner("Downloading calorie regressor..."):
-            if not download_file_from_google_drive(MODEL_URLS["calories_regressor"], reg_model_path):
-                st.warning("Calorie regressor not found locally or on Drive.")
-                return None
+        st.warning("Calorie regressor is not available locally. Using the fast baseline.")
+        return None
 
     if os.path.exists(reg_model_path):
         try:
@@ -213,3 +209,30 @@ def get_regressor_model():
     """Lazy-load the regressor only when needed."""
     _, reg_model = load_inference_models()
     return reg_model
+
+
+def predict_activity_baseline(steps: int, heart_rate: int) -> str:
+    """Return an immediate activity estimate when the classifier is unavailable."""
+    if heart_rate >= 150 or steps >= 15000:
+        return "Running"
+    if heart_rate >= 125 or steps >= 8000:
+        return "Cycling"
+    if steps == 0 and heart_rate < 90:
+        return "Yoga"
+    return "Walking"
+
+
+def predict_calories_baseline(
+    steps: int, heart_rate: int, sleep_hours: float, activity_type: str
+) -> float:
+    """Estimate calories without loading a remote or oversized model artifact."""
+    activity_factor = {
+        "Walking": 1.0,
+        "Running": 1.35,
+        "Cycling": 1.2,
+        "Yoga": 0.75,
+        "HIIT": 1.45,
+        "Strength Training": 1.15,
+    }.get(activity_type, 1.0)
+    sleep_adjustment = max(0.85, min(1.1, 1.0 + (7.5 - sleep_hours) * 0.02))
+    return max(50.0, (80.0 + steps * 0.035 + max(0, heart_rate - 60) * 1.5) * activity_factor * sleep_adjustment)

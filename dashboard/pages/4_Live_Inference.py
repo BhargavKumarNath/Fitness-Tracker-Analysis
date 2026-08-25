@@ -6,7 +6,12 @@ import os
 # Add project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from dashboard.utils import load_inference_models
+from dashboard.utils import (
+    get_classifier_model,
+    get_regressor_model,
+    predict_activity_baseline,
+    predict_calories_baseline,
+)
 
 # Set page config
 st.set_page_config(page_title="Live Predictions", page_icon="🔮", layout="wide")
@@ -21,17 +26,12 @@ try:
 except:
     pass
 
-class_model, reg_model = load_inference_models()
-
 st.title("🔮 Live Machine Learning Predictions")
 
-if class_model is None or reg_model is None:
-    st.error("⚠️ Models not found. Please run 'src/train_dashboard_models.py' locally to generate models.")
-else:
-    # Use tabs for different prediction tasks
-    tab1, tab2 = st.tabs(["🏃 Activity Prediction", "🔥 Calories Prediction"])
+# Keep first render independent of model downloads and multi-gigabyte artifacts.
+tab1, tab2 = st.tabs(["🏃 Activity Prediction", "🔥 Calories Prediction"])
 
-    with tab1:
+with tab1:
         st.markdown("### Predict Activity Type")
         st.markdown("Enter your metrics to predict the type of activity you performed.")
         
@@ -44,12 +44,17 @@ else:
             # Prepare input dataframe
             input_data = pd.DataFrame([[steps, calories, hr]], columns=['steps', 'calories_burned', 'heart_rate_avg'])
             
-            prediction = class_model.predict(input_data)[0]
+            class_model = get_classifier_model()
+            prediction = (
+                class_model.predict(input_data)[0]
+                if class_model is not None
+                else predict_activity_baseline(steps, hr)
+            )
             
             st.markdown("---")
             st.success(f"### Predicted Activity: **{prediction}**")
 
-    with tab2:
+with tab2:
         st.markdown("### Predict Calories Burned")
         st.markdown("Estimate calories burned based on your activity and stats.")
         
@@ -66,7 +71,12 @@ else:
             input_reg_data = pd.DataFrame([[steps_reg, hr_reg, sleep_reg, activity_reg]], 
                                           columns=['steps', 'heart_rate_avg', 'sleep_hours', 'activity_type'])
             
-            cal_prediction = reg_model.predict(input_reg_data)[0]
+            reg_model = get_regressor_model()
+            cal_prediction = (
+                reg_model.predict(input_reg_data)[0]
+                if reg_model is not None
+                else predict_calories_baseline(steps_reg, hr_reg, sleep_reg, activity_reg)
+            )
             
             st.markdown("---")
             st.success(f"### Predicted Calories Burned: **{cal_prediction:,.0f} kcal**")

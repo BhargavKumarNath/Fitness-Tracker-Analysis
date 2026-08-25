@@ -6,7 +6,11 @@ import pytest
 from src.etl.extract import load_raw_data
 from src.etl.load import write_processed_data
 from src.models.training import MODEL_TREES, train_dashboard_models
-from dashboard.utils import get_model_path
+from dashboard.utils import (
+    get_model_path,
+    predict_activity_baseline,
+    predict_calories_baseline,
+)
 
 
 def test_load_raw_data_reads_nested_parquet_files(tmp_path):
@@ -108,3 +112,9 @@ def test_dashboard_model_path_uses_current_runtime_root(monkeypatch, tmp_path):
 def test_dashboard_model_path_rejects_traversal_or_nested_names():
     with pytest.raises(ValueError):
         get_model_path("../activity_classifier")
+
+
+def test_baseline_predictions_are_immediate_and_bounded():
+    assert predict_activity_baseline(0, 68) == "Yoga"
+    assert predict_activity_baseline(16000, 120) == "Running"
+    assert predict_calories_baseline(0, 68, 8.0, "Yoga") >= 50
