@@ -1,4 +1,5 @@
 import gc
+import json
 import os
 import time
 from pathlib import Path
@@ -43,6 +44,42 @@ def load_dataset() -> pd.DataFrame:
     except Exception as exc:  # pragma: no cover - UI-level failure path
         st.error(f"Error loading data: {exc}")
         return pd.DataFrame()
+
+
+# Fallback categories match the real training data (src/models/training.py
+# fits its OneHotEncoder on activity_type as-is: lowercase, snake_case).
+# Used only when the processed dataset itself is unavailable to read from.
+_FALLBACK_ACTIVITY_CATEGORIES = ["cycling", "gym_workout", "hiking", "running", "swimming", "walking", "yoga"]
+
+
+@st.cache_data
+def get_activity_categories() -> list[str]:
+    """Single source of truth for activity labels, shared by every consumer.
+
+    Every UI element that lets a user pick an activity_type must build its
+    options from this function rather than a separately hand-typed list, so
+    it cannot drift from the categories the model was actually fit on.
+    """
+    df = load_dataset()
+    if not df.empty and "activity_type" in df.columns:
+        return sorted(df["activity_type"].dropna().unique().tolist())
+    return _FALLBACK_ACTIVITY_CATEGORIES
+
+
+@st.cache_data
+def load_model_metrics() -> dict | None:
+    """Load the held-out evaluation metrics the training script writes for itself.
+
+    Returns None if the pipeline has not been run yet, the dashboard treats
+    that as "not yet computed" rather than falling back to a guessed number.
+    """
+    metrics_path = get_runtime_paths()["models_dir"] / "metrics.json"
+    if not metrics_path.exists():
+        return None
+    try:
+        return json.loads(metrics_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def download_file_from_google_drive(file_id: str, dest_path: str, max_retries: int = 3) -> bool:
@@ -251,14 +288,23 @@ def predict_activity_baseline(steps: int, heart_rate: int) -> str:
 def predict_calories_baseline(
     steps: int, heart_rate: int, sleep_hours: float, activity_type: str
 ) -> float:
-    """Estimate calories without loading a remote or oversized model artifact."""
+    """Estimate calories without loading a remote or oversized model artifact.
+
+    Keyed on the real, lowercase activity_type values (see
+    get_activity_categories), not a separate hand-typed label set. This is
+    the same category-drift bug this file previously had in its
+    OneHotEncoder-facing dropdown, just on the baseline path instead of the
+    trained-model path, and since the trained models are not downloaded by
+    default, this baseline is what most live visitors actually see.
+    """
     activity_factor = {
-        "Walking": 1.0,
-        "Running": 1.35,
-        "Cycling": 1.2,
-        "Yoga": 0.75,
-        "HIIT": 1.45,
-        "Strength Training": 1.15,
+        "walking": 1.0,
+        "running": 1.35,
+        "cycling": 1.2,
+        "swimming": 1.1,
+        "yoga": 0.75,
+        "hiking": 1.45,
+        "gym_workout": 1.15,
     }.get(activity_type, 1.0)
     sleep_adjustment = max(0.85, min(1.1, 1.0 + (7.5 - sleep_hours) * 0.02))
     return max(50.0, (80.0 + steps * 0.035 + max(0, heart_rate - 60) * 1.5) * activity_factor * sleep_adjustment)

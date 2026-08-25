@@ -7,6 +7,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from dashboard.utils import (
+    get_activity_categories,
     get_classifier_model,
     get_regressor_model,
     predict_activity_baseline,
@@ -59,8 +60,11 @@ with tab2:
         st.markdown("Estimate calories burned based on your activity and stats.")
         
         col_r1, col_r2, col_r3 = st.columns(3)
-        activity_options = ['Walking', 'Running', 'Cycling', 'Yoga', 'HIIT', 'Strength Training'] 
-        
+        # Sourced from the processed dataset itself (get_activity_categories),
+        # not a separately hand-typed list, so this cannot drift from the
+        # categories the regressor's encoder was actually fit on.
+        activity_options = get_activity_categories()
+
         activity_reg = col_r1.selectbox("Activity Type", activity_options, key="reg_act")
         steps_reg = col_r2.slider("Steps", 0, 25000, 8000, key="reg_steps")
         hr_reg = col_r3.slider("Average Heart Rate", 60, 180, 130, key="reg_hr")

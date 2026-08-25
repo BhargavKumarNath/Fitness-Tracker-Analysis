@@ -1,0 +1,10 @@
+{
+  "activity_classifier": {
+    "held_out_accuracy": 0.8928870292887029
+  },
+  "calories_regressor": {
+    "held_out_r2": 0.9179935422809524,
+    "held_out_rmse": 126.15418248548002
+  },
+  "methodology": "Held-out metrics come from an 80/20 split (stratified for the classifier), evaluated with the same pipeline and hyperparameters as the shipped model. The shipped model itself is fit on 100% of the processed data, this function never scored it before, so these numbers previously did not exist anywhere in this repository."
+}

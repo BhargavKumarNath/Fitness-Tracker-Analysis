@@ -6,7 +6,18 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from dashboard.utils import load_dataset
+from dashboard.utils import get_model_path, load_dataset, load_model_metrics
+
+
+def _format_artifact_size(model_name: str) -> str:
+    """Read the real file size off disk rather than asserting a fixed label that can go stale."""
+    path = get_model_path(model_name)
+    if not path.exists():
+        return "not yet generated"
+    size_mb = path.stat().st_size / (1024 * 1024)
+    if size_mb >= 1024:
+        return f"{size_mb / 1024:.1f} GB"
+    return f"{size_mb:.0f} MB"
 
 st.set_page_config(
     page_title="Fitness Analytics Platform",
@@ -161,20 +172,34 @@ with tab2:
     
     with col2:
         st.markdown("### 🤖 ML Pipeline")
-        st.markdown("""
+
+        metrics = load_model_metrics()
+        class_accuracy = (metrics or {}).get("activity_classifier", {}).get("held_out_accuracy")
+        reg_r2 = (metrics or {}).get("calories_regressor", {}).get("held_out_r2")
+        class_accuracy_display = f"{class_accuracy:.1%}" if class_accuracy is not None else "not yet computed"
+        reg_r2_display = f"{reg_r2:.3f}" if reg_r2 is not None else "not yet computed"
+        class_size = _format_artifact_size("activity_classifier")
+        reg_size = _format_artifact_size("calories_regressor")
+
+        st.markdown(f"""
         **3 Production Models**
         1. **K-Means Clustering** (10 KB)
            - User segmentation
-           - 5 distinct personas
-        
-        2. **Random Forest Classifier** (745 MB)
+           - up to 5 personas (capped at the user count)
+
+        2. **Random Forest Classifier** ({class_size})
            - Activity prediction
-           - 84% accuracy
-        
-        3. **Random Forest Regressor** (3 GB)
+           - {class_accuracy_display} held-out accuracy
+
+        3. **Random Forest Regressor** ({reg_size})
            - Calorie estimation
-           - R² = 0.91
+           - R² = {reg_r2_display} (held-out)
         """)
+        st.caption(
+            "Held-out metrics come from train_dashboard_models.py's own 80/20 evaluation "
+            "split (dashboard/models/metrics.json), computed by the script that trains the "
+            "shipped models, not carried over from a different notebook."
+        )
     
     st.markdown("### 🔄 MLOps & DevOps")
     
