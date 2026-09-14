@@ -1,5 +1,7 @@
 # Fitness Tracker Analysis
 
+**Live site:** [fitness-tracker-analytics.vercel.app](https://fitness-tracker-analytics.vercel.app)
+
 A batch pipeline that cleans synthetic fitness tracker data (steps, calories, heart rate, sleep, activity type), trains a few models on it, and serves the results as a static dashboard. No backend, no live API. The Python side runs once and writes files; the frontend just reads them.
 
 ## Motivation
@@ -40,7 +42,7 @@ There's also a plain rule-based baseline (`src/predictions.py`) with no model be
 
 ## Frontend
 
-`frontend/` is a statically exported Next.js app, deployed on Vercel, with no API routes. Every page renders from precomputed JSON written by the export step. Two things happen in the browser instead of at build time: filtering queries the parquet file directly via DuckDB-WASM, and the 3D user segmentation view (`react-three-fiber`) is lazy-loaded so it's not part of the main bundle. Exact schemas for each JSON artifact are in `frontend/DATA_CONTRACTS.md`.
+`frontend/` is a statically exported Next.js app, deployed on Vercel at [fitness-tracker-analytics.vercel.app](https://fitness-tracker-analytics.vercel.app), with no API routes. Every page renders from precomputed JSON written by the export step. Two things happen in the browser instead of at build time: filtering queries the parquet file directly via DuckDB-WASM, and the 3D user segmentation view (`react-three-fiber`) is lazy-loaded so it's not part of the main bundle. Exact schemas for each JSON artifact are in `frontend/DATA_CONTRACTS.md`.
 
 ## Getting Started
 
