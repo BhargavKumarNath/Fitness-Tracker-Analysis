@@ -47,3 +47,5 @@ project_refactor.md
 CLAUDE.md
 frontend_imp.md
 .gitignore
+.vercel
+.env*
