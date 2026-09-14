@@ -1,0 +1,6195 @@
+{
+  "categories": [
+    "cycling",
+    "gym_workout",
+    "hiking",
+    "running",
+    "swimming",
+    "walking",
+    "yoga"
+  ],
+  "summary": [
+    {
+      "activityType": "cycling",
+      "count": 51379,
+      "steps": {
+        "mean": 2754.9361022986045,
+        "median": 2757.0,
+        "std": 1299.6818377992788
+      },
+      "calories": {
+        "mean": 775.4018412191753,
+        "median": 776.3,
+        "std": 174.8631533858422
+      },
+      "heartRate": {
+        "mean": 124.51544405301777,
+        "median": 124.0,
+        "std": 14.363432598809805
+      },
+      "sleepHours": {
+        "mean": 7.0031082738083645,
+        "median": 7.01,
+        "std": 1.72720515926833
+      }
+    },
+    {
+      "activityType": "gym_workout",
+      "count": 51405,
+      "steps": {
+        "mean": 3496.2113607625715,
+        "median": 3502.0,
+        "std": 1436.357761502674
+      },
+      "calories": {
+        "mean": 600.4481081606848,
+        "median": 600.0,
+        "std": 172.67104989556185
+      },
+      "heartRate": {
+        "mean": 129.60854002528936,
+        "median": 130.0,
+        "std": 17.332334109265773
+      },
+      "sleepHours": {
+        "mean": 7.01582258535162,
+        "median": 7.02,
+        "std": 1.7366655329712193
+      }
+    },
+    {
+      "activityType": "hiking",
+      "count": 51171,
+      "steps": {
+        "mean": 15990.771980223173,
+        "median": 16015.0,
+        "std": 5204.9656967315495
+      },
+      "calories": {
+        "mean": 1499.1150778761405,
+        "median": 1499.55,
+        "std": 312.4924472935002
+      },
+      "heartRate": {
+        "mean": 134.47597271892283,
+        "median": 135.0,
+        "std": 14.401859156563292
+      },
+      "sleepHours": {
+        "mean": 6.993332551640576,
+        "median": 6.99,
+        "std": 1.7312620704151789
+      }
+    },
+    {
+      "activityType": "running",
+      "count": 50851,
+      "steps": {
+        "mean": 12499.090853670528,
+        "median": 12505.0,
+        "std": 4340.872544821896
+      },
+      "calories": {
+        "mean": 1099.1238547914495,
+        "median": 1101.16,
+        "std": 273.94458413782536
+      },
+      "heartRate": {
+        "mean": 144.54433541129967,
+        "median": 145.0,
+        "std": 14.49138135735688
+      },
+      "sleepHours": {
+        "mean": 6.998144775913945,
+        "median": 7.0,
+        "std": 1.7262681763502565
+      }
+    },
+    {
+      "activityType": "swimming",
+      "count": 51520,
+      "steps": {
+        "mean": 549.0619177018633,
+        "median": 548.0,
+        "std": 260.1688436741516
+      },
+      "calories": {
+        "mean": 549.4372476708074,
+        "median": 549.0,
+        "std": 144.26533496056757
+      },
+      "heartRate": {
+        "mean": 134.44444875776398,
+        "median": 134.0,
+        "std": 14.450106799887974
+      },
+      "sleepHours": {
+        "mean": 6.996717585403727,
+        "median": 6.99,
+        "std": 1.7313176398408303
+      }
+    },
+    {
+      "activityType": "walking",
+      "count": 51009,
+      "steps": {
+        "mean": 8981.155737222844,
+        "median": 8952.0,
+        "std": 3466.1582704254565
+      },
+      "calories": {
+        "mean": 558.7292030818091,
+        "median": 558.0,
+        "std": 150.28448359078794
+      },
+      "heartRate": {
+        "mean": 89.4894822482307,
+        "median": 89.0,
+        "std": 11.574443505266181
+      },
+      "sleepHours": {
+        "mean": 6.998759238565744,
+        "median": 7.01,
+        "std": 1.734137810864875
+      }
+    },
+    {
+      "activityType": "yoga",
+      "count": 51162,
+      "steps": {
+        "mean": 274.91280637973495,
+        "median": 274.0,
+        "std": 129.914156893988
+      },
+      "calories": {
+        "mean": 199.84642899026622,
+        "median": 200.0,
+        "std": 57.797177433587756
+      },
+      "heartRate": {
+        "mean": 79.47105273445135,
+        "median": 79.0,
+        "std": 11.54876821162647
+      },
+      "sleepHours": {
+        "mean": 6.99331261483132,
+        "median": 6.99,
+        "std": 1.7253963838771718
+      }
+    }
+  ],
+  "stepsCaloriesSample": [
+    {
+      "steps": 11458,
+      "calories": 724.32,
+      "activityType": "walking"
+    },
+    {
+      "steps": 8400,
+      "calories": 1305.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 3792,
+      "calories": 890.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1888,
+      "calories": 701.8,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 388,
+      "calories": 624.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 21043,
+      "calories": 1709.15,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 5620,
+      "calories": 525.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 10460,
+      "calories": 1498.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 22246,
+      "calories": 2009.3,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 236,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3910,
+      "calories": 883.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 257,
+      "calories": 538.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 5202,
+      "calories": 446.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 17160,
+      "calories": 1464.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 19963,
+      "calories": 1628.78,
+      "activityType": "running"
+    },
+    {
+      "steps": 13081,
+      "calories": 1059.05,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 735,
+      "calories": 535.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 17647,
+      "calories": 1530.82,
+      "activityType": "running"
+    },
+    {
+      "steps": 10324,
+      "calories": 1125.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 849,
+      "calories": 449.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 20527,
+      "calories": 1821.35,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 2499,
+      "calories": 898.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 16452,
+      "calories": 1278.12,
+      "activityType": "running"
+    },
+    {
+      "steps": 499,
+      "calories": 307.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 421,
+      "calories": 427.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 12368,
+      "calories": 1048.08,
+      "activityType": "running"
+    },
+    {
+      "steps": 7598,
+      "calories": 925.88,
+      "activityType": "running"
+    },
+    {
+      "steps": 1756,
+      "calories": 698.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 5572,
+      "calories": 806.32,
+      "activityType": "running"
+    },
+    {
+      "steps": 4819,
+      "calories": 562.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 416,
+      "calories": 754.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 943,
+      "calories": 339.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 9192,
+      "calories": 1219.6,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 4919,
+      "calories": 1138.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 214,
+      "calories": 137.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 2799,
+      "calories": 896.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 245,
+      "calories": 307.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 14061,
+      "calories": 1214.66,
+      "activityType": "running"
+    },
+    {
+      "steps": 14064,
+      "calories": 1370.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 2605,
+      "calories": 845.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 80,
+      "calories": 218.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 445,
+      "calories": 167.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1402,
+      "calories": 591.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 14819,
+      "calories": 1162.95,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8809,
+      "calories": 524.36,
+      "activityType": "walking"
+    },
+    {
+      "steps": 547,
+      "calories": 714.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 8708,
+      "calories": 950.48,
+      "activityType": "running"
+    },
+    {
+      "steps": 7594,
+      "calories": 738.64,
+      "activityType": "running"
+    },
+    {
+      "steps": 4587,
+      "calories": 495.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 985,
+      "calories": 690.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 13397,
+      "calories": 1275.82,
+      "activityType": "running"
+    },
+    {
+      "steps": 481,
+      "calories": 190.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 332,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 113,
+      "calories": 551.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 283,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 21004,
+      "calories": 1958.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 4803,
+      "calories": 884.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 5028,
+      "calories": 551.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 901,
+      "calories": 361.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 294,
+      "calories": 228.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 526,
+      "calories": 753.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 367,
+      "calories": 448.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 2180,
+      "calories": 721.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 4016,
+      "calories": 719.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 7018,
+      "calories": 486.72,
+      "activityType": "walking"
+    },
+    {
+      "steps": 13793,
+      "calories": 1588.65,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 451,
+      "calories": 560.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 6064,
+      "calories": 535.56,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2948,
+      "calories": 861.8,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 587,
+      "calories": 532.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 628,
+      "calories": 676.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 17464,
+      "calories": 1481.84,
+      "activityType": "running"
+    },
+    {
+      "steps": 4344,
+      "calories": 915.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 6534,
+      "calories": 799.04,
+      "activityType": "running"
+    },
+    {
+      "steps": 258,
+      "calories": 253.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 18412,
+      "calories": 1470.72,
+      "activityType": "running"
+    },
+    {
+      "steps": 3310,
+      "calories": 592.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 375,
+      "calories": 553.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3419,
+      "calories": 808.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3886,
+      "calories": 831.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 21306,
+      "calories": 1958.3,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 11738,
+      "calories": 1164.28,
+      "activityType": "running"
+    },
+    {
+      "steps": 8103,
+      "calories": 1079.15,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 7027,
+      "calories": 830.35,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 492,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 928,
+      "calories": 433.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 293,
+      "calories": 168.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 900,
+      "calories": 402.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 17083,
+      "calories": 1510.15,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 10257,
+      "calories": 1037.85,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 329,
+      "calories": 206.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 7182,
+      "calories": 505.28,
+      "activityType": "walking"
+    },
+    {
+      "steps": 6099,
+      "calories": 731.94,
+      "activityType": "running"
+    },
+    {
+      "steps": 492,
+      "calories": 132.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 442,
+      "calories": 245.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 477,
+      "calories": 224.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 4785,
+      "calories": 602.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 4912,
+      "calories": 927.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1397,
+      "calories": 664.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 116,
+      "calories": 295.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 15774,
+      "calories": 1435.44,
+      "activityType": "running"
+    },
+    {
+      "steps": 9162,
+      "calories": 511.48,
+      "activityType": "walking"
+    },
+    {
+      "steps": 19229,
+      "calories": 1396.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 201,
+      "calories": 264.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 678,
+      "calories": 628.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 18409,
+      "calories": 1478.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 3570,
+      "calories": 679.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 319,
+      "calories": 167.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 11222,
+      "calories": 614.88,
+      "activityType": "walking"
+    },
+    {
+      "steps": 23725,
+      "calories": 2037.25,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 108,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 5338,
+      "calories": 831.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 83,
+      "calories": 190.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3769,
+      "calories": 392.76,
+      "activityType": "walking"
+    },
+    {
+      "steps": 4152,
+      "calories": 1090.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 15491,
+      "calories": 1677.55,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8749,
+      "calories": 1399.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 911,
+      "calories": 480.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 8359,
+      "calories": 613.36,
+      "activityType": "walking"
+    },
+    {
+      "steps": 5678,
+      "calories": 507.12,
+      "activityType": "walking"
+    },
+    {
+      "steps": 6915,
+      "calories": 907.9,
+      "activityType": "running"
+    },
+    {
+      "steps": 52,
+      "calories": 269.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 14777,
+      "calories": 874.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 7110,
+      "calories": 467.4,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2830,
+      "calories": 741.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 10000,
+      "calories": 1305.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 19419,
+      "calories": 1435.14,
+      "activityType": "running"
+    },
+    {
+      "steps": 18500,
+      "calories": 1488.0,
+      "activityType": "running"
+    },
+    {
+      "steps": 288,
+      "calories": 242.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 22456,
+      "calories": 1871.8,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 7041,
+      "calories": 458.64,
+      "activityType": "walking"
+    },
+    {
+      "steps": 276,
+      "calories": 159.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 5650,
+      "calories": 684.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 15498,
+      "calories": 1137.88,
+      "activityType": "running"
+    },
+    {
+      "steps": 5990,
+      "calories": 748.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3603,
+      "calories": 621.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3293,
+      "calories": 635.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1776,
+      "calories": 514.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1947,
+      "calories": 829.7,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 347,
+      "calories": 673.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 926,
+      "calories": 680.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3285,
+      "calories": 658.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3129,
+      "calories": 952.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 9276,
+      "calories": 571.04,
+      "activityType": "walking"
+    },
+    {
+      "steps": 3444,
+      "calories": 248.76,
+      "activityType": "walking"
+    },
+    {
+      "steps": 23204,
+      "calories": 1625.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 351,
+      "calories": 119.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 441,
+      "calories": 459.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 12748,
+      "calories": 685.92,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2114,
+      "calories": 601.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 7451,
+      "calories": 906.06,
+      "activityType": "running"
+    },
+    {
+      "steps": 18499,
+      "calories": 1430.94,
+      "activityType": "running"
+    },
+    {
+      "steps": 7156,
+      "calories": 740.36,
+      "activityType": "running"
+    },
+    {
+      "steps": 4336,
+      "calories": 304.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 9889,
+      "calories": 1140.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 13568,
+      "calories": 1671.4,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 206,
+      "calories": 236.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 785,
+      "calories": 525.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 7807,
+      "calories": 925.35,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 399,
+      "calories": 643.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 478,
+      "calories": 296.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 10406,
+      "calories": 531.24,
+      "activityType": "walking"
+    },
+    {
+      "steps": 5577,
+      "calories": 572.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 15016,
+      "calories": 1309.96,
+      "activityType": "running"
+    },
+    {
+      "steps": 9458,
+      "calories": 992.9,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 109,
+      "calories": 250.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1356,
+      "calories": 488.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 7056,
+      "calories": 768.36,
+      "activityType": "running"
+    },
+    {
+      "steps": 16408,
+      "calories": 1506.4,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 2876,
+      "calories": 485.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3973,
+      "calories": 344.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 150,
+      "calories": 140.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 2470,
+      "calories": 762.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 7677,
+      "calories": 1014.85,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 1677,
+      "calories": 836.7,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 8221,
+      "calories": 856.26,
+      "activityType": "running"
+    },
+    {
+      "steps": 4649,
+      "calories": 334.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 1391,
+      "calories": 494.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 10790,
+      "calories": 624.6,
+      "activityType": "walking"
+    },
+    {
+      "steps": 3745,
+      "calories": 1069.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 24590,
+      "calories": 1763.5,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 1411,
+      "calories": 654.1,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 15987,
+      "calories": 1309.22,
+      "activityType": "running"
+    },
+    {
+      "steps": 3527,
+      "calories": 871.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 7929,
+      "calories": 569.16,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2084,
+      "calories": 858.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 6194,
+      "calories": 827.64,
+      "activityType": "running"
+    },
+    {
+      "steps": 19940,
+      "calories": 1910.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 9485,
+      "calories": 1328.25,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 479,
+      "calories": 195.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1300,
+      "calories": 707.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 313,
+      "calories": 244.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3691,
+      "calories": 426.64,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1520,
+      "calories": 653.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 5673,
+      "calories": 717.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 13088,
+      "calories": 1194.28,
+      "activityType": "running"
+    },
+    {
+      "steps": 19251,
+      "calories": 1531.55,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 131,
+      "calories": 147.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3829,
+      "calories": 320.16,
+      "activityType": "walking"
+    },
+    {
+      "steps": 15889,
+      "calories": 1296.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 321,
+      "calories": 226.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 8323,
+      "calories": 601.92,
+      "activityType": "walking"
+    },
+    {
+      "steps": 132,
+      "calories": 115.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 12179,
+      "calories": 696.16,
+      "activityType": "walking"
+    },
+    {
+      "steps": 148,
+      "calories": 198.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 14431,
+      "calories": 1530.55,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 10288,
+      "calories": 1162.4,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8499,
+      "calories": 553.96,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1730,
+      "calories": 728.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 8393,
+      "calories": 589.72,
+      "activityType": "walking"
+    },
+    {
+      "steps": 16378,
+      "calories": 1362.68,
+      "activityType": "running"
+    },
+    {
+      "steps": 13100,
+      "calories": 1064.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 5275,
+      "calories": 410.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 13635,
+      "calories": 665.4,
+      "activityType": "walking"
+    },
+    {
+      "steps": 3263,
+      "calories": 948.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 444,
+      "calories": 124.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 13471,
+      "calories": 708.84,
+      "activityType": "walking"
+    },
+    {
+      "steps": 14581,
+      "calories": 814.24,
+      "activityType": "walking"
+    },
+    {
+      "steps": 165,
+      "calories": 369.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 4942,
+      "calories": 803.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 5424,
+      "calories": 723.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 6851,
+      "calories": 468.04,
+      "activityType": "walking"
+    },
+    {
+      "steps": 13578,
+      "calories": 1299.68,
+      "activityType": "running"
+    },
+    {
+      "steps": 3091,
+      "calories": 756.1,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 7721,
+      "calories": 899.26,
+      "activityType": "running"
+    },
+    {
+      "steps": 1771,
+      "calories": 356.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 5185,
+      "calories": 667.1,
+      "activityType": "running"
+    },
+    {
+      "steps": 441,
+      "calories": 481.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 9295,
+      "calories": 474.8,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1524,
+      "calories": 771.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3084,
+      "calories": 958.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 8915,
+      "calories": 763.9,
+      "activityType": "running"
+    },
+    {
+      "steps": 17528,
+      "calories": 1857.4,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8835,
+      "calories": 555.4,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1930,
+      "calories": 648.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 445,
+      "calories": 226.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 2323,
+      "calories": 829.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 12602,
+      "calories": 704.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 14766,
+      "calories": 1127.96,
+      "activityType": "running"
+    },
+    {
+      "steps": 5780,
+      "calories": 576.8,
+      "activityType": "running"
+    },
+    {
+      "steps": 3125,
+      "calories": 839.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 537,
+      "calories": 637.7,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 4592,
+      "calories": 582.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 5206,
+      "calories": 471.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 802,
+      "calories": 666.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3880,
+      "calories": 597.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 709,
+      "calories": 771.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 378,
+      "calories": 174.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 18025,
+      "calories": 1524.5,
+      "activityType": "running"
+    },
+    {
+      "steps": 5201,
+      "calories": 705.06,
+      "activityType": "running"
+    },
+    {
+      "steps": 975,
+      "calories": 758.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 8031,
+      "calories": 463.24,
+      "activityType": "walking"
+    },
+    {
+      "steps": 19724,
+      "calories": 1941.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 10944,
+      "calories": 716.76,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1930,
+      "calories": 757.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 22006,
+      "calories": 1539.3,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 803,
+      "calories": 521.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 18205,
+      "calories": 1908.25,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 270,
+      "calories": 552.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 15642,
+      "calories": 1767.1,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 18250,
+      "calories": 1444.0,
+      "activityType": "running"
+    },
+    {
+      "steps": 61,
+      "calories": 137.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 903,
+      "calories": 689.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 18565,
+      "calories": 1338.9,
+      "activityType": "running"
+    },
+    {
+      "steps": 912,
+      "calories": 360.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 4343,
+      "calories": 1035.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 232,
+      "calories": 273.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 16089,
+      "calories": 1309.34,
+      "activityType": "running"
+    },
+    {
+      "steps": 7966,
+      "calories": 462.64,
+      "activityType": "walking"
+    },
+    {
+      "steps": 9624,
+      "calories": 801.44,
+      "activityType": "running"
+    },
+    {
+      "steps": 24739,
+      "calories": 2161.95,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 233,
+      "calories": 297.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 11992,
+      "calories": 1092.52,
+      "activityType": "running"
+    },
+    {
+      "steps": 278,
+      "calories": 218.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 15754,
+      "calories": 1170.24,
+      "activityType": "running"
+    },
+    {
+      "steps": 352,
+      "calories": 239.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 435,
+      "calories": 780.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 8941,
+      "calories": 828.46,
+      "activityType": "running"
+    },
+    {
+      "steps": 207,
+      "calories": 753.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 6867,
+      "calories": 782.02,
+      "activityType": "running"
+    },
+    {
+      "steps": 625,
+      "calories": 615.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 16536,
+      "calories": 1323.16,
+      "activityType": "running"
+    },
+    {
+      "steps": 11751,
+      "calories": 977.06,
+      "activityType": "running"
+    },
+    {
+      "steps": 23800,
+      "calories": 1757.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 432,
+      "calories": 334.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 2024,
+      "calories": 779.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 2121,
+      "calories": 577.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 6465,
+      "calories": 650.9,
+      "activityType": "running"
+    },
+    {
+      "steps": 10241,
+      "calories": 1168.05,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8211,
+      "calories": 458.44,
+      "activityType": "walking"
+    },
+    {
+      "steps": 5061,
+      "calories": 714.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 7121,
+      "calories": 779.26,
+      "activityType": "running"
+    },
+    {
+      "steps": 3566,
+      "calories": 441.64,
+      "activityType": "walking"
+    },
+    {
+      "steps": 18753,
+      "calories": 1609.18,
+      "activityType": "running"
+    },
+    {
+      "steps": 4155,
+      "calories": 730.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 10739,
+      "calories": 554.56,
+      "activityType": "walking"
+    },
+    {
+      "steps": 481,
+      "calories": 111.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 781,
+      "calories": 671.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 606,
+      "calories": 731.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3324,
+      "calories": 861.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1634,
+      "calories": 860.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 309,
+      "calories": 104.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 24940,
+      "calories": 1668.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 465,
+      "calories": 529.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 13871,
+      "calories": 807.84,
+      "activityType": "walking"
+    },
+    {
+      "steps": 18610,
+      "calories": 1410.6,
+      "activityType": "running"
+    },
+    {
+      "steps": 6034,
+      "calories": 850.04,
+      "activityType": "running"
+    },
+    {
+      "steps": 6248,
+      "calories": 487.92,
+      "activityType": "walking"
+    },
+    {
+      "steps": 9690,
+      "calories": 1063.5,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 5916,
+      "calories": 628.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3566,
+      "calories": 698.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 127,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1246,
+      "calories": 660.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3891,
+      "calories": 386.64,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1753,
+      "calories": 530.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 14673,
+      "calories": 790.92,
+      "activityType": "walking"
+    },
+    {
+      "steps": 18450,
+      "calories": 1439.0,
+      "activityType": "running"
+    },
+    {
+      "steps": 7935,
+      "calories": 1182.75,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 16518,
+      "calories": 1349.08,
+      "activityType": "running"
+    },
+    {
+      "steps": 13024,
+      "calories": 624.96,
+      "activityType": "walking"
+    },
+    {
+      "steps": 479,
+      "calories": 568.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 389,
+      "calories": 732.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 423,
+      "calories": 123.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 10966,
+      "calories": 1415.3,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 5001,
+      "calories": 511.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 237,
+      "calories": 130.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 324,
+      "calories": 755.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3901,
+      "calories": 939.1,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 1540,
+      "calories": 731.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 482,
+      "calories": 287.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 14985,
+      "calories": 1344.1,
+      "activityType": "running"
+    },
+    {
+      "steps": 3799,
+      "calories": 1000.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3659,
+      "calories": 524.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 751,
+      "calories": 792.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 7341,
+      "calories": 770.46,
+      "activityType": "running"
+    },
+    {
+      "steps": 8099,
+      "calories": 1038.95,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 399,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 13464,
+      "calories": 1300.84,
+      "activityType": "running"
+    },
+    {
+      "steps": 2089,
+      "calories": 396.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 19711,
+      "calories": 1539.66,
+      "activityType": "running"
+    },
+    {
+      "steps": 783,
+      "calories": 593.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 918,
+      "calories": 665.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 15291,
+      "calories": 1347.46,
+      "activityType": "running"
+    },
+    {
+      "steps": 13117,
+      "calories": 748.68,
+      "activityType": "walking"
+    },
+    {
+      "steps": 12705,
+      "calories": 679.2,
+      "activityType": "walking"
+    },
+    {
+      "steps": 756,
+      "calories": 479.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3800,
+      "calories": 1012.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 17934,
+      "calories": 1317.04,
+      "activityType": "running"
+    },
+    {
+      "steps": 319,
+      "calories": 409.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 3769,
+      "calories": 497.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 6248,
+      "calories": 743.88,
+      "activityType": "running"
+    },
+    {
+      "steps": 11424,
+      "calories": 630.96,
+      "activityType": "walking"
+    },
+    {
+      "steps": 13857,
+      "calories": 1183.42,
+      "activityType": "running"
+    },
+    {
+      "steps": 2345,
+      "calories": 763.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 898,
+      "calories": 653.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 342,
+      "calories": 252.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 4733,
+      "calories": 339.32,
+      "activityType": "walking"
+    },
+    {
+      "steps": 8207,
+      "calories": 717.42,
+      "activityType": "running"
+    },
+    {
+      "steps": 351,
+      "calories": 215.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3577,
+      "calories": 583.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 20680,
+      "calories": 2024.0,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 19075,
+      "calories": 1768.75,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 383,
+      "calories": 173.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 298,
+      "calories": 277.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 5859,
+      "calories": 322.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 6290,
+      "calories": 713.4,
+      "activityType": "running"
+    },
+    {
+      "steps": 4422,
+      "calories": 1126.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 15447,
+      "calories": 1412.35,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 187,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 2741,
+      "calories": 868.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 494,
+      "calories": 135.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 121,
+      "calories": 732.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 1700,
+      "calories": 771.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3230,
+      "calories": 430.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 3478,
+      "calories": 685.8,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 17271,
+      "calories": 1831.55,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 499,
+      "calories": 273.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 515,
+      "calories": 621.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 19413,
+      "calories": 1607.78,
+      "activityType": "running"
+    },
+    {
+      "steps": 406,
+      "calories": 149.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 21646,
+      "calories": 1749.3,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 362,
+      "calories": 240.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 5544,
+      "calories": 401.76,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2117,
+      "calories": 675.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 5036,
+      "calories": 648.16,
+      "activityType": "running"
+    },
+    {
+      "steps": 940,
+      "calories": 636.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 15790,
+      "calories": 1424.5,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 3873,
+      "calories": 734.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 713,
+      "calories": 603.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 211,
+      "calories": 469.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 13774,
+      "calories": 1344.7,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 330,
+      "calories": 685.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 23465,
+      "calories": 1745.25,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 6820,
+      "calories": 464.8,
+      "activityType": "walking"
+    },
+    {
+      "steps": 2389,
+      "calories": 875.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 4783,
+      "calories": 908.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 17803,
+      "calories": 1300.18,
+      "activityType": "running"
+    },
+    {
+      "steps": 59,
+      "calories": 268.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 15183,
+      "calories": 1307.98,
+      "activityType": "running"
+    },
+    {
+      "steps": 726,
+      "calories": 530.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 2080,
+      "calories": 515.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 2265,
+      "calories": 356.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 2103,
+      "calories": 672.3,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 12203,
+      "calories": 729.12,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1542,
+      "calories": 431.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 8739,
+      "calories": 1336.95,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 163,
+      "calories": 165.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 509,
+      "calories": 565.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 7791,
+      "calories": 816.46,
+      "activityType": "running"
+    },
+    {
+      "steps": 12837,
+      "calories": 1611.85,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 845,
+      "calories": 447.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 7592,
+      "calories": 915.6,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 4360,
+      "calories": 833.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 7397,
+      "calories": 748.82,
+      "activityType": "running"
+    },
+    {
+      "steps": 13457,
+      "calories": 1649.85,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 6139,
+      "calories": 679.34,
+      "activityType": "running"
+    },
+    {
+      "steps": 200,
+      "calories": 778.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 1862,
+      "calories": 748.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 22929,
+      "calories": 1860.45,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 417,
+      "calories": 286.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 9732,
+      "calories": 595.28,
+      "activityType": "walking"
+    },
+    {
+      "steps": 4547,
+      "calories": 881.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 234,
+      "calories": 168.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 4178,
+      "calories": 1063.8,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 12969,
+      "calories": 757.76,
+      "activityType": "walking"
+    },
+    {
+      "steps": 4767,
+      "calories": 849.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 224,
+      "calories": 146.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 3914,
+      "calories": 834.4,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 3201,
+      "calories": 421.04,
+      "activityType": "walking"
+    },
+    {
+      "steps": 306,
+      "calories": 157.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 2136,
+      "calories": 753.6,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 14014,
+      "calories": 1162.84,
+      "activityType": "running"
+    },
+    {
+      "steps": 300,
+      "calories": 175.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 7219,
+      "calories": 719.14,
+      "activityType": "running"
+    },
+    {
+      "steps": 1096,
+      "calories": 489.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 13877,
+      "calories": 742.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1821,
+      "calories": 867.1,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 5543,
+      "calories": 503.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 575,
+      "calories": 388.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 17462,
+      "calories": 1611.1,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 3732,
+      "calories": 813.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 14177,
+      "calories": 733.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 15055,
+      "calories": 1217.3,
+      "activityType": "running"
+    },
+    {
+      "steps": 17204,
+      "calories": 1733.2,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 15579,
+      "calories": 1219.74,
+      "activityType": "running"
+    },
+    {
+      "steps": 10591,
+      "calories": 1128.55,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 411,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 11214,
+      "calories": 619.56,
+      "activityType": "walking"
+    },
+    {
+      "steps": 375,
+      "calories": 186.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 109,
+      "calories": 277.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 539,
+      "calories": 533.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 21773,
+      "calories": 1997.65,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 357,
+      "calories": 136.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1873,
+      "calories": 556.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 2120,
+      "calories": 846.0,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 12409,
+      "calories": 1136.54,
+      "activityType": "running"
+    },
+    {
+      "steps": 7138,
+      "calories": 889.28,
+      "activityType": "running"
+    },
+    {
+      "steps": 543,
+      "calories": 671.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 193,
+      "calories": 264.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 180,
+      "calories": 295.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 454,
+      "calories": 297.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 14570,
+      "calories": 856.8,
+      "activityType": "walking"
+    },
+    {
+      "steps": 22177,
+      "calories": 1843.85,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 11627,
+      "calories": 582.08,
+      "activityType": "walking"
+    },
+    {
+      "steps": 335,
+      "calories": 291.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 7916,
+      "calories": 938.8,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 2065,
+      "calories": 432.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "steps": 4934,
+      "calories": 473.36,
+      "activityType": "walking"
+    },
+    {
+      "steps": 515,
+      "calories": 419.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 483,
+      "calories": 697.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 168,
+      "calories": 108.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 725,
+      "calories": 798.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 22505,
+      "calories": 2084.25,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8767,
+      "calories": 951.02,
+      "activityType": "running"
+    },
+    {
+      "steps": 1709,
+      "calories": 496.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 775,
+      "calories": 644.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 715,
+      "calories": 708.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 453,
+      "calories": 185.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 8534,
+      "calories": 535.36,
+      "activityType": "walking"
+    },
+    {
+      "steps": 9234,
+      "calories": 1166.7,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 8693,
+      "calories": 847.58,
+      "activityType": "running"
+    },
+    {
+      "steps": 1505,
+      "calories": 780.5,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 12465,
+      "calories": 724.6,
+      "activityType": "walking"
+    },
+    {
+      "steps": 5650,
+      "calories": 769.0,
+      "activityType": "running"
+    },
+    {
+      "steps": 17764,
+      "calories": 1435.84,
+      "activityType": "running"
+    },
+    {
+      "steps": 14949,
+      "calories": 1333.94,
+      "activityType": "running"
+    },
+    {
+      "steps": 52,
+      "calories": 241.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1892,
+      "calories": 679.2,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 7900,
+      "calories": 578.0,
+      "activityType": "walking"
+    },
+    {
+      "steps": 394,
+      "calories": 262.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 4061,
+      "calories": 425.44,
+      "activityType": "walking"
+    },
+    {
+      "steps": 1388,
+      "calories": 698.8,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 13187,
+      "calories": 1236.22,
+      "activityType": "running"
+    },
+    {
+      "steps": 311,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "steps": 1469,
+      "calories": 783.9,
+      "activityType": "cycling"
+    },
+    {
+      "steps": 11990,
+      "calories": 1393.5,
+      "activityType": "hiking"
+    },
+    {
+      "steps": 13530,
+      "calories": 1140.8,
+      "activityType": "running"
+    },
+    {
+      "steps": 14298,
+      "calories": 1222.88,
+      "activityType": "running"
+    },
+    {
+      "steps": 890,
+      "calories": 773.0,
+      "activityType": "swimming"
+    },
+    {
+      "steps": 183,
+      "calories": 170.0,
+      "activityType": "yoga"
+    }
+  ],
+  "heartRateCaloriesSample": [
+    {
+      "heartRate": 82,
+      "calories": 724.32,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 141,
+      "calories": 1305.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 147,
+      "calories": 890.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 129,
+      "calories": 701.8,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 143,
+      "calories": 624.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 151,
+      "calories": 1709.15,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 122,
+      "calories": 525.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 149,
+      "calories": 1498.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 151,
+      "calories": 2009.3,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 69,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 136,
+      "calories": 883.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 122,
+      "calories": 538.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 76,
+      "calories": 446.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 137,
+      "calories": 1464.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 125,
+      "calories": 1628.78,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 132,
+      "calories": 1059.05,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 128,
+      "calories": 535.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 154,
+      "calories": 1530.82,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 121,
+      "calories": 1125.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 148,
+      "calories": 449.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 142,
+      "calories": 1821.35,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 121,
+      "calories": 898.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 143,
+      "calories": 1278.12,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 124,
+      "calories": 307.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 156,
+      "calories": 427.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 123,
+      "calories": 1048.08,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 129,
+      "calories": 925.88,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 115,
+      "calories": 698.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 146,
+      "calories": 806.32,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 136,
+      "calories": 562.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 157,
+      "calories": 754.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 148,
+      "calories": 339.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 119,
+      "calories": 1219.6,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 141,
+      "calories": 1138.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 69,
+      "calories": 137.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 111,
+      "calories": 896.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 158,
+      "calories": 307.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 133,
+      "calories": 1214.66,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 121,
+      "calories": 1370.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 154,
+      "calories": 845.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 63,
+      "calories": 218.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 77,
+      "calories": 167.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 146,
+      "calories": 591.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 142,
+      "calories": 1162.95,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 82,
+      "calories": 524.36,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 144,
+      "calories": 714.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 144,
+      "calories": 950.48,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 155,
+      "calories": 738.64,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 153,
+      "calories": 495.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 131,
+      "calories": 690.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 146,
+      "calories": 1275.82,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 80,
+      "calories": 190.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 72,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 124,
+      "calories": 551.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 71,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 121,
+      "calories": 1958.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 110,
+      "calories": 884.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 100,
+      "calories": 551.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 121,
+      "calories": 361.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 97,
+      "calories": 228.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 118,
+      "calories": 753.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 157,
+      "calories": 448.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 133,
+      "calories": 721.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 130,
+      "calories": 719.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 97,
+      "calories": 486.72,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 150,
+      "calories": 1588.65,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 138,
+      "calories": 560.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 95,
+      "calories": 535.56,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 130,
+      "calories": 861.8,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 118,
+      "calories": 532.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 153,
+      "calories": 676.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 138,
+      "calories": 1481.84,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 137,
+      "calories": 915.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 162,
+      "calories": 799.04,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 63,
+      "calories": 253.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 123,
+      "calories": 1470.72,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 106,
+      "calories": 592.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 130,
+      "calories": 553.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 157,
+      "calories": 808.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 158,
+      "calories": 831.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 136,
+      "calories": 1958.3,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 154,
+      "calories": 1164.28,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 113,
+      "calories": 1079.15,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 134,
+      "calories": 830.35,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 77,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 148,
+      "calories": 433.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 99,
+      "calories": 168.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 143,
+      "calories": 402.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 118,
+      "calories": 1510.15,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 128,
+      "calories": 1037.85,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 95,
+      "calories": 206.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 81,
+      "calories": 505.28,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 153,
+      "calories": 731.94,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 76,
+      "calories": 132.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 77,
+      "calories": 245.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 62,
+      "calories": 224.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 154,
+      "calories": 602.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 139,
+      "calories": 927.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 145,
+      "calories": 664.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 65,
+      "calories": 295.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 142,
+      "calories": 1435.44,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 73,
+      "calories": 511.48,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 138,
+      "calories": 1396.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 71,
+      "calories": 264.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 153,
+      "calories": 628.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 130,
+      "calories": 1478.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 140,
+      "calories": 679.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 95,
+      "calories": 167.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 87,
+      "calories": 614.88,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 145,
+      "calories": 2037.25,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 95,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 110,
+      "calories": 831.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 62,
+      "calories": 190.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 86,
+      "calories": 392.76,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 119,
+      "calories": 1090.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 114,
+      "calories": 1677.55,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 152,
+      "calories": 1399.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 119,
+      "calories": 480.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 105,
+      "calories": 613.36,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 87,
+      "calories": 507.12,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 124,
+      "calories": 907.9,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 66,
+      "calories": 269.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 77,
+      "calories": 874.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 81,
+      "calories": 467.4,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 119,
+      "calories": 741.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 112,
+      "calories": 1305.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 165,
+      "calories": 1435.14,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 163,
+      "calories": 1488.0,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 63,
+      "calories": 242.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 118,
+      "calories": 1871.8,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 101,
+      "calories": 458.64,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 79,
+      "calories": 159.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 148,
+      "calories": 684.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 120,
+      "calories": 1137.88,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 119,
+      "calories": 748.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 113,
+      "calories": 621.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 100,
+      "calories": 635.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 111,
+      "calories": 514.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 124,
+      "calories": 829.7,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 128,
+      "calories": 673.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 138,
+      "calories": 680.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 112,
+      "calories": 658.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 102,
+      "calories": 952.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 83,
+      "calories": 571.04,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 92,
+      "calories": 248.76,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 125,
+      "calories": 1625.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 82,
+      "calories": 119.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 157,
+      "calories": 459.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 70,
+      "calories": 685.92,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 124,
+      "calories": 601.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 120,
+      "calories": 906.06,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 160,
+      "calories": 1430.94,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 140,
+      "calories": 740.36,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 145,
+      "calories": 304.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 133,
+      "calories": 1140.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 118,
+      "calories": 1671.4,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 81,
+      "calories": 236.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 144,
+      "calories": 525.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 133,
+      "calories": 925.35,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 112,
+      "calories": 643.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 81,
+      "calories": 296.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 91,
+      "calories": 531.24,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 136,
+      "calories": 572.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 127,
+      "calories": 1309.96,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 115,
+      "calories": 992.9,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 98,
+      "calories": 250.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 137,
+      "calories": 488.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 130,
+      "calories": 768.36,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 153,
+      "calories": 1506.4,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 134,
+      "calories": 485.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 157,
+      "calories": 344.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 72,
+      "calories": 140.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 117,
+      "calories": 762.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 136,
+      "calories": 1014.85,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 145,
+      "calories": 836.7,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 146,
+      "calories": 856.26,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 154,
+      "calories": 334.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 136,
+      "calories": 494.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 105,
+      "calories": 624.6,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 138,
+      "calories": 1069.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 129,
+      "calories": 1763.5,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 125,
+      "calories": 654.1,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 150,
+      "calories": 1309.22,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 106,
+      "calories": 871.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 101,
+      "calories": 569.16,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 147,
+      "calories": 858.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 136,
+      "calories": 827.64,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 141,
+      "calories": 1910.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 138,
+      "calories": 1328.25,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 62,
+      "calories": 195.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 101,
+      "calories": 707.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 88,
+      "calories": 244.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 108,
+      "calories": 426.64,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 141,
+      "calories": 653.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 128,
+      "calories": 717.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 147,
+      "calories": 1194.28,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 146,
+      "calories": 1531.55,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 64,
+      "calories": 147.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 93,
+      "calories": 320.16,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 129,
+      "calories": 1296.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 71,
+      "calories": 226.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 86,
+      "calories": 601.92,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 70,
+      "calories": 115.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 106,
+      "calories": 696.16,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 84,
+      "calories": 198.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 136,
+      "calories": 1530.55,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 119,
+      "calories": 1162.4,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 72,
+      "calories": 553.96,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 112,
+      "calories": 728.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 80,
+      "calories": 589.72,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 126,
+      "calories": 1362.68,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 155,
+      "calories": 1064.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 112,
+      "calories": 410.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 78,
+      "calories": 665.4,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 136,
+      "calories": 948.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 95,
+      "calories": 124.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 94,
+      "calories": 708.84,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 79,
+      "calories": 814.24,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 136,
+      "calories": 369.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 157,
+      "calories": 803.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 109,
+      "calories": 723.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 109,
+      "calories": 468.04,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 145,
+      "calories": 1299.68,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 131,
+      "calories": 756.1,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 126,
+      "calories": 899.26,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 126,
+      "calories": 356.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 158,
+      "calories": 667.1,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 128,
+      "calories": 481.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 80,
+      "calories": 474.8,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 114,
+      "calories": 771.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 129,
+      "calories": 958.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 148,
+      "calories": 763.9,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 142,
+      "calories": 1857.4,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 97,
+      "calories": 555.4,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 104,
+      "calories": 648.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 89,
+      "calories": 226.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 106,
+      "calories": 829.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 72,
+      "calories": 704.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 135,
+      "calories": 1127.96,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 125,
+      "calories": 576.8,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 112,
+      "calories": 839.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 136,
+      "calories": 637.7,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 152,
+      "calories": 582.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 133,
+      "calories": 471.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 126,
+      "calories": 666.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 126,
+      "calories": 597.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 148,
+      "calories": 771.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 96,
+      "calories": 174.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 123,
+      "calories": 1524.5,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 127,
+      "calories": 705.06,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 105,
+      "calories": 758.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 107,
+      "calories": 463.24,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 159,
+      "calories": 1941.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 72,
+      "calories": 716.76,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 130,
+      "calories": 757.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 147,
+      "calories": 1539.3,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 126,
+      "calories": 521.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 113,
+      "calories": 1908.25,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 134,
+      "calories": 552.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 113,
+      "calories": 1767.1,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 140,
+      "calories": 1444.0,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 90,
+      "calories": 137.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 110,
+      "calories": 689.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 133,
+      "calories": 1338.9,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 125,
+      "calories": 360.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 121,
+      "calories": 1035.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 96,
+      "calories": 273.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 150,
+      "calories": 1309.34,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 77,
+      "calories": 462.64,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 135,
+      "calories": 801.44,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 112,
+      "calories": 2161.95,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 83,
+      "calories": 297.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 168,
+      "calories": 1092.52,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 79,
+      "calories": 218.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 120,
+      "calories": 1170.24,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 70,
+      "calories": 239.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 126,
+      "calories": 780.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 133,
+      "calories": 828.46,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 157,
+      "calories": 753.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 122,
+      "calories": 782.02,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 120,
+      "calories": 615.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 159,
+      "calories": 1323.16,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 152,
+      "calories": 977.06,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 149,
+      "calories": 1757.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 149,
+      "calories": 334.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 108,
+      "calories": 779.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 117,
+      "calories": 577.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 168,
+      "calories": 650.9,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 128,
+      "calories": 1168.05,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 93,
+      "calories": 458.44,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 118,
+      "calories": 714.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 156,
+      "calories": 779.26,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 106,
+      "calories": 441.64,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 132,
+      "calories": 1609.18,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 148,
+      "calories": 730.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 101,
+      "calories": 554.56,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 93,
+      "calories": 111.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 154,
+      "calories": 671.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 142,
+      "calories": 731.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 111,
+      "calories": 861.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 127,
+      "calories": 860.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 68,
+      "calories": 104.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 154,
+      "calories": 1668.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 121,
+      "calories": 529.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 87,
+      "calories": 807.84,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 142,
+      "calories": 1410.6,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 133,
+      "calories": 850.04,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 73,
+      "calories": 487.92,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 137,
+      "calories": 1063.5,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 106,
+      "calories": 628.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 138,
+      "calories": 698.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 91,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 116,
+      "calories": 660.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 78,
+      "calories": 386.64,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 137,
+      "calories": 530.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 105,
+      "calories": 790.92,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 164,
+      "calories": 1439.0,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 141,
+      "calories": 1182.75,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 159,
+      "calories": 1349.08,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 81,
+      "calories": 624.96,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 128,
+      "calories": 568.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 142,
+      "calories": 732.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 86,
+      "calories": 123.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 156,
+      "calories": 1415.3,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 139,
+      "calories": 511.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 92,
+      "calories": 130.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 152,
+      "calories": 755.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 120,
+      "calories": 939.1,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 118,
+      "calories": 731.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 98,
+      "calories": 287.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 134,
+      "calories": 1344.1,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 136,
+      "calories": 1000.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 157,
+      "calories": 524.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 118,
+      "calories": 792.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 120,
+      "calories": 770.46,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 122,
+      "calories": 1038.95,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 99,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 151,
+      "calories": 1300.84,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 122,
+      "calories": 396.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 158,
+      "calories": 1539.66,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 134,
+      "calories": 593.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 134,
+      "calories": 665.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 131,
+      "calories": 1347.46,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 99,
+      "calories": 748.68,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 81,
+      "calories": 679.2,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 114,
+      "calories": 479.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 108,
+      "calories": 1012.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 169,
+      "calories": 1317.04,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 134,
+      "calories": 409.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 118,
+      "calories": 497.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 165,
+      "calories": 743.88,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 76,
+      "calories": 630.96,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 147,
+      "calories": 1183.42,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 121,
+      "calories": 763.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 128,
+      "calories": 653.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 68,
+      "calories": 252.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 106,
+      "calories": 339.32,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 120,
+      "calories": 717.42,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 75,
+      "calories": 215.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 125,
+      "calories": 583.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 156,
+      "calories": 2024.0,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 145,
+      "calories": 1768.75,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 80,
+      "calories": 173.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 95,
+      "calories": 277.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 147,
+      "calories": 322.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 129,
+      "calories": 713.4,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 148,
+      "calories": 1126.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 113,
+      "calories": 1412.35,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 86,
+      "calories": 232.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 117,
+      "calories": 868.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 64,
+      "calories": 135.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 135,
+      "calories": 732.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 139,
+      "calories": 771.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 127,
+      "calories": 430.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 123,
+      "calories": 685.8,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 140,
+      "calories": 1831.55,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 93,
+      "calories": 273.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 156,
+      "calories": 621.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 165,
+      "calories": 1607.78,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 69,
+      "calories": 149.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 122,
+      "calories": 1749.3,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 77,
+      "calories": 240.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 81,
+      "calories": 401.76,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 124,
+      "calories": 675.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 142,
+      "calories": 648.16,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 120,
+      "calories": 636.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 152,
+      "calories": 1424.5,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 127,
+      "calories": 734.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 140,
+      "calories": 603.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 143,
+      "calories": 469.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 122,
+      "calories": 1344.7,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 142,
+      "calories": 685.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 130,
+      "calories": 1745.25,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 76,
+      "calories": 464.8,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 126,
+      "calories": 875.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 144,
+      "calories": 908.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 147,
+      "calories": 1300.18,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 79,
+      "calories": 268.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 122,
+      "calories": 1307.98,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 112,
+      "calories": 530.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 140,
+      "calories": 515.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 130,
+      "calories": 356.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 113,
+      "calories": 672.3,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 105,
+      "calories": 729.12,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 117,
+      "calories": 431.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 152,
+      "calories": 1336.95,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 77,
+      "calories": 165.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 114,
+      "calories": 565.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 162,
+      "calories": 816.46,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 122,
+      "calories": 1611.85,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 127,
+      "calories": 447.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 122,
+      "calories": 915.6,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 116,
+      "calories": 833.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 166,
+      "calories": 748.82,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 153,
+      "calories": 1649.85,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 168,
+      "calories": 679.34,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 113,
+      "calories": 778.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 109,
+      "calories": 748.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 144,
+      "calories": 1860.45,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 98,
+      "calories": 286.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 107,
+      "calories": 595.28,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 132,
+      "calories": 881.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 65,
+      "calories": 168.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 124,
+      "calories": 1063.8,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 89,
+      "calories": 757.76,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 122,
+      "calories": 849.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 60,
+      "calories": 146.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 138,
+      "calories": 834.4,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 82,
+      "calories": 421.04,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 97,
+      "calories": 157.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 110,
+      "calories": 753.6,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 145,
+      "calories": 1162.84,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 62,
+      "calories": 175.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 139,
+      "calories": 719.14,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 130,
+      "calories": 489.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 90,
+      "calories": 742.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 146,
+      "calories": 867.1,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 128,
+      "calories": 503.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 140,
+      "calories": 388.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 136,
+      "calories": 1611.1,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 120,
+      "calories": 813.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 83,
+      "calories": 733.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 155,
+      "calories": 1217.3,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 153,
+      "calories": 1733.2,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 165,
+      "calories": 1219.74,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 123,
+      "calories": 1128.55,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 66,
+      "calories": 231.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 94,
+      "calories": 619.56,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 77,
+      "calories": 186.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 95,
+      "calories": 277.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 124,
+      "calories": 533.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 110,
+      "calories": 1997.65,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 80,
+      "calories": 136.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 145,
+      "calories": 556.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 139,
+      "calories": 846.0,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 143,
+      "calories": 1136.54,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 126,
+      "calories": 889.28,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 147,
+      "calories": 671.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 69,
+      "calories": 264.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 75,
+      "calories": 295.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 96,
+      "calories": 297.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 96,
+      "calories": 856.8,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 148,
+      "calories": 1843.85,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 80,
+      "calories": 582.08,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 85,
+      "calories": 291.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 145,
+      "calories": 938.8,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 119,
+      "calories": 432.0,
+      "activityType": "gym_workout"
+    },
+    {
+      "heartRate": 105,
+      "calories": 473.36,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 126,
+      "calories": 419.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 148,
+      "calories": 697.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 79,
+      "calories": 108.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 128,
+      "calories": 798.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 128,
+      "calories": 2084.25,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 134,
+      "calories": 951.02,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 133,
+      "calories": 496.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 112,
+      "calories": 644.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 114,
+      "calories": 708.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 91,
+      "calories": 185.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 101,
+      "calories": 535.36,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 129,
+      "calories": 1166.7,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 125,
+      "calories": 847.58,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 142,
+      "calories": 780.5,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 105,
+      "calories": 724.6,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 121,
+      "calories": 769.0,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 126,
+      "calories": 1435.84,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 156,
+      "calories": 1333.94,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 93,
+      "calories": 241.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 148,
+      "calories": 679.2,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 73,
+      "calories": 578.0,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 92,
+      "calories": 262.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 70,
+      "calories": 425.44,
+      "activityType": "walking"
+    },
+    {
+      "heartRate": 111,
+      "calories": 698.8,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 124,
+      "calories": 1236.22,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 84,
+      "calories": 125.0,
+      "activityType": "yoga"
+    },
+    {
+      "heartRate": 114,
+      "calories": 783.9,
+      "activityType": "cycling"
+    },
+    {
+      "heartRate": 114,
+      "calories": 1393.5,
+      "activityType": "hiking"
+    },
+    {
+      "heartRate": 139,
+      "calories": 1140.8,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 158,
+      "calories": 1222.88,
+      "activityType": "running"
+    },
+    {
+      "heartRate": 129,
+      "calories": 773.0,
+      "activityType": "swimming"
+    },
+    {
+      "heartRate": 91,
+      "calories": 170.0,
+      "activityType": "yoga"
+    }
+  ],
+  "histograms": {
+    "steps": [
+      {
+        "start": 50.0,
+        "end": 548.98,
+        "count": 77474
+      },
+      {
+        "start": 548.98,
+        "end": 1047.96,
+        "count": 31956
+      },
+      {
+        "start": 1047.96,
+        "end": 1546.94,
+        "count": 10753
+      },
+      {
+        "start": 1546.94,
+        "end": 2045.92,
+        "count": 10664
+      },
+      {
+        "start": 2045.92,
+        "end": 2544.9,
+        "count": 10945
+      },
+      {
+        "start": 2544.9,
+        "end": 3043.88,
+        "count": 11145
+      },
+      {
+        "start": 3043.88,
+        "end": 3542.86,
+        "count": 12854
+      },
+      {
+        "start": 3542.86,
+        "end": 4041.84,
+        "count": 13147
+      },
+      {
+        "start": 4041.84,
+        "end": 4540.82,
+        "count": 13020
+      },
+      {
+        "start": 4540.82,
+        "end": 5039.8,
+        "count": 12722
+      },
+      {
+        "start": 5039.8,
+        "end": 5538.78,
+        "count": 8947
+      },
+      {
+        "start": 5538.78,
+        "end": 6037.76,
+        "count": 8379
+      },
+      {
+        "start": 6037.76,
+        "end": 6536.74,
+        "count": 3808
+      },
+      {
+        "start": 6536.74,
+        "end": 7035.72,
+        "count": 4016
+      },
+      {
+        "start": 7035.72,
+        "end": 7534.7,
+        "count": 5169
+      },
+      {
+        "start": 7534.7,
+        "end": 8033.68,
+        "count": 5349
+      },
+      {
+        "start": 8033.68,
+        "end": 8532.66,
+        "count": 5377
+      },
+      {
+        "start": 8532.66,
+        "end": 9031.64,
+        "count": 5225
+      },
+      {
+        "start": 9031.64,
+        "end": 9530.62,
+        "count": 5169
+      },
+      {
+        "start": 9530.62,
+        "end": 10029.6,
+        "count": 5160
+      },
+      {
+        "start": 10029.6,
+        "end": 10528.58,
+        "count": 5159
+      },
+      {
+        "start": 10528.58,
+        "end": 11027.56,
+        "count": 5192
+      },
+      {
+        "start": 11027.56,
+        "end": 11526.54,
+        "count": 5133
+      },
+      {
+        "start": 11526.54,
+        "end": 12025.52,
+        "count": 5262
+      },
+      {
+        "start": 12025.52,
+        "end": 12524.5,
+        "count": 5272
+      },
+      {
+        "start": 12524.5,
+        "end": 13023.48,
+        "count": 5266
+      },
+      {
+        "start": 13023.48,
+        "end": 13522.46,
+        "count": 5026
+      },
+      {
+        "start": 13522.46,
+        "end": 14021.44,
+        "count": 5139
+      },
+      {
+        "start": 14021.44,
+        "end": 14520.42,
+        "count": 5272
+      },
+      {
+        "start": 14520.42,
+        "end": 15019.4,
+        "count": 5161
+      },
+      {
+        "start": 15019.4,
+        "end": 15518.38,
+        "count": 3097
+      },
+      {
+        "start": 15518.38,
+        "end": 16017.36,
+        "count": 3200
+      },
+      {
+        "start": 16017.36,
+        "end": 16516.34,
+        "count": 3161
+      },
+      {
+        "start": 16516.34,
+        "end": 17015.32,
+        "count": 3076
+      },
+      {
+        "start": 17015.32,
+        "end": 17514.3,
+        "count": 3119
+      },
+      {
+        "start": 17514.3,
+        "end": 18013.28,
+        "count": 2996
+      },
+      {
+        "start": 18013.28,
+        "end": 18512.26,
+        "count": 3143
+      },
+      {
+        "start": 18512.26,
+        "end": 19011.24,
+        "count": 3149
+      },
+      {
+        "start": 19011.24,
+        "end": 19510.22,
+        "count": 3123
+      },
+      {
+        "start": 19510.22,
+        "end": 20009.2,
+        "count": 3051
+      },
+      {
+        "start": 20009.2,
+        "end": 20508.18,
+        "count": 1382
+      },
+      {
+        "start": 20508.18,
+        "end": 21007.16,
+        "count": 1455
+      },
+      {
+        "start": 21007.16,
+        "end": 21506.14,
+        "count": 1504
+      },
+      {
+        "start": 21506.14,
+        "end": 22005.12,
+        "count": 1402
+      },
+      {
+        "start": 22005.12,
+        "end": 22504.1,
+        "count": 1380
+      },
+      {
+        "start": 22504.1,
+        "end": 23003.08,
+        "count": 1419
+      },
+      {
+        "start": 23003.08,
+        "end": 23502.06,
+        "count": 1442
+      },
+      {
+        "start": 23502.06,
+        "end": 24001.04,
+        "count": 1430
+      },
+      {
+        "start": 24001.04,
+        "end": 24500.02,
+        "count": 1439
+      },
+      {
+        "start": 24500.02,
+        "end": 24999.0,
+        "count": 1368
+      }
+    ],
+    "calories_burned": [
+      {
+        "start": 100.0,
+        "end": 142.911,
+        "count": 10989
+      },
+      {
+        "start": 142.911,
+        "end": 185.822,
+        "count": 10843
+      },
+      {
+        "start": 185.822,
+        "end": 228.733,
+        "count": 11072
+      },
+      {
+        "start": 228.733,
+        "end": 271.644,
+        "count": 11711
+      },
+      {
+        "start": 271.644,
+        "end": 314.555,
+        "count": 11787
+      },
+      {
+        "start": 314.555,
+        "end": 357.466,
+        "count": 10733
+      },
+      {
+        "start": 357.466,
+        "end": 400.377,
+        "count": 12054
+      },
+      {
+        "start": 400.377,
+        "end": 443.288,
+        "count": 13446
+      },
+      {
+        "start": 443.288,
+        "end": 486.199,
+        "count": 14178
+      },
+      {
+        "start": 486.199,
+        "end": 529.11,
+        "count": 14729
+      },
+      {
+        "start": 529.11,
+        "end": 572.021,
+        "count": 15661
+      },
+      {
+        "start": 572.021,
+        "end": 614.932,
+        "count": 16263
+      },
+      {
+        "start": 614.932,
+        "end": 657.843,
+        "count": 17228
+      },
+      {
+        "start": 657.843,
+        "end": 700.754,
+        "count": 17960
+      },
+      {
+        "start": 700.754,
+        "end": 743.665,
+        "count": 18507
+      },
+      {
+        "start": 743.665,
+        "end": 786.576,
+        "count": 18279
+      },
+      {
+        "start": 786.576,
+        "end": 829.487,
+        "count": 14588
+      },
+      {
+        "start": 829.487,
+        "end": 872.398,
+        "count": 11837
+      },
+      {
+        "start": 872.398,
+        "end": 915.309,
+        "count": 9287
+      },
+      {
+        "start": 915.309,
+        "end": 958.22,
+        "count": 6474
+      },
+      {
+        "start": 958.22,
+        "end": 1001.131,
+        "count": 6116
+      },
+      {
+        "start": 1001.131,
+        "end": 1044.042,
+        "count": 5615
+      },
+      {
+        "start": 1044.042,
+        "end": 1086.953,
+        "count": 5299
+      },
+      {
+        "start": 1086.953,
+        "end": 1129.864,
+        "count": 5053
+      },
+      {
+        "start": 1129.864,
+        "end": 1172.775,
+        "count": 4684
+      },
+      {
+        "start": 1172.775,
+        "end": 1215.686,
+        "count": 4438
+      },
+      {
+        "start": 1215.686,
+        "end": 1258.597,
+        "count": 4478
+      },
+      {
+        "start": 1258.597,
+        "end": 1301.508,
+        "count": 4487
+      },
+      {
+        "start": 1301.508,
+        "end": 1344.419,
+        "count": 4770
+      },
+      {
+        "start": 1344.419,
+        "end": 1387.33,
+        "count": 4867
+      },
+      {
+        "start": 1387.33,
+        "end": 1430.241,
+        "count": 4961
+      },
+      {
+        "start": 1430.241,
+        "end": 1473.152,
+        "count": 4271
+      },
+      {
+        "start": 1473.152,
+        "end": 1516.063,
+        "count": 4001
+      },
+      {
+        "start": 1516.063,
+        "end": 1558.974,
+        "count": 3777
+      },
+      {
+        "start": 1558.974,
+        "end": 1601.885,
+        "count": 3304
+      },
+      {
+        "start": 1601.885,
+        "end": 1644.796,
+        "count": 3017
+      },
+      {
+        "start": 1644.796,
+        "end": 1687.707,
+        "count": 2687
+      },
+      {
+        "start": 1687.707,
+        "end": 1730.618,
+        "count": 2255
+      },
+      {
+        "start": 1730.618,
+        "end": 1773.529,
+        "count": 2054
+      },
+      {
+        "start": 1773.529,
+        "end": 1816.44,
+        "count": 1803
+      },
+      {
+        "start": 1816.44,
+        "end": 1859.351,
+        "count": 1632
+      },
+      {
+        "start": 1859.351,
+        "end": 1902.262,
+        "count": 1592
+      },
+      {
+        "start": 1902.262,
+        "end": 1945.173,
+        "count": 1337
+      },
+      {
+        "start": 1945.173,
+        "end": 1988.084,
+        "count": 1207
+      },
+      {
+        "start": 1988.084,
+        "end": 2030.995,
+        "count": 979
+      },
+      {
+        "start": 2030.995,
+        "end": 2073.906,
+        "count": 772
+      },
+      {
+        "start": 2073.906,
+        "end": 2116.817,
+        "count": 628
+      },
+      {
+        "start": 2116.817,
+        "end": 2159.728,
+        "count": 429
+      },
+      {
+        "start": 2159.728,
+        "end": 2202.639,
+        "count": 264
+      },
+      {
+        "start": 2202.639,
+        "end": 2245.55,
+        "count": 94
+      }
+    ],
+    "heart_rate_avg": [
+      {
+        "start": 60.0,
+        "end": 62.18,
+        "count": 3942
+      },
+      {
+        "start": 62.18,
+        "end": 64.36,
+        "count": 2470
+      },
+      {
+        "start": 64.36,
+        "end": 66.54,
+        "count": 2587
+      },
+      {
+        "start": 66.54,
+        "end": 68.72,
+        "count": 2494
+      },
+      {
+        "start": 68.72,
+        "end": 70.9,
+        "count": 3923
+      },
+      {
+        "start": 70.9,
+        "end": 73.08,
+        "count": 7593
+      },
+      {
+        "start": 73.08,
+        "end": 75.26,
+        "count": 5262
+      },
+      {
+        "start": 75.26,
+        "end": 77.44,
+        "count": 5192
+      },
+      {
+        "start": 77.44,
+        "end": 79.62,
+        "count": 5007
+      },
+      {
+        "start": 79.62,
+        "end": 81.8,
+        "count": 5136
+      },
+      {
+        "start": 81.8,
+        "end": 83.98,
+        "count": 5106
+      },
+      {
+        "start": 83.98,
+        "end": 86.16,
+        "count": 7580
+      },
+      {
+        "start": 86.16,
+        "end": 88.34,
+        "count": 5093
+      },
+      {
+        "start": 88.34,
+        "end": 90.52,
+        "count": 5086
+      },
+      {
+        "start": 90.52,
+        "end": 92.7,
+        "count": 5016
+      },
+      {
+        "start": 92.7,
+        "end": 94.88,
+        "count": 5058
+      },
+      {
+        "start": 94.88,
+        "end": 97.06,
+        "count": 7683
+      },
+      {
+        "start": 97.06,
+        "end": 99.24,
+        "count": 5124
+      },
+      {
+        "start": 99.24,
+        "end": 101.42,
+        "count": 6325
+      },
+      {
+        "start": 101.42,
+        "end": 103.6,
+        "count": 6211
+      },
+      {
+        "start": 103.6,
+        "end": 105.78,
+        "count": 6330
+      },
+      {
+        "start": 105.78,
+        "end": 107.96,
+        "count": 6296
+      },
+      {
+        "start": 107.96,
+        "end": 110.14,
+        "count": 10209
+      },
+      {
+        "start": 110.14,
+        "end": 112.32,
+        "count": 8021
+      },
+      {
+        "start": 112.32,
+        "end": 114.5,
+        "count": 7715
+      },
+      {
+        "start": 114.5,
+        "end": 116.68,
+        "count": 7731
+      },
+      {
+        "start": 116.68,
+        "end": 118.86,
+        "count": 8014
+      },
+      {
+        "start": 118.86,
+        "end": 121.04,
+        "count": 13931
+      },
+      {
+        "start": 121.04,
+        "end": 123.22,
+        "count": 10065
+      },
+      {
+        "start": 123.22,
+        "end": 125.4,
+        "count": 9882
+      },
+      {
+        "start": 125.4,
+        "end": 127.58,
+        "count": 10130
+      },
+      {
+        "start": 127.58,
+        "end": 129.76,
+        "count": 9935
+      },
+      {
+        "start": 129.76,
+        "end": 131.94,
+        "count": 9948
+      },
+      {
+        "start": 131.94,
+        "end": 134.12,
+        "count": 14807
+      },
+      {
+        "start": 134.12,
+        "end": 136.3,
+        "count": 9955
+      },
+      {
+        "start": 136.3,
+        "end": 138.48,
+        "count": 9833
+      },
+      {
+        "start": 138.48,
+        "end": 140.66,
+        "count": 9804
+      },
+      {
+        "start": 140.66,
+        "end": 142.84,
+        "count": 9863
+      },
+      {
+        "start": 142.84,
+        "end": 145.02,
+        "count": 14856
+      },
+      {
+        "start": 145.02,
+        "end": 147.2,
+        "count": 9785
+      },
+      {
+        "start": 147.2,
+        "end": 149.38,
+        "count": 9936
+      },
+      {
+        "start": 149.38,
+        "end": 151.56,
+        "count": 7814
+      },
+      {
+        "start": 151.56,
+        "end": 153.74,
+        "count": 7848
+      },
+      {
+        "start": 153.74,
+        "end": 155.92,
+        "count": 7814
+      },
+      {
+        "start": 155.92,
+        "end": 158.1,
+        "count": 11799
+      },
+      {
+        "start": 158.1,
+        "end": 160.28,
+        "count": 4988
+      },
+      {
+        "start": 160.28,
+        "end": 162.46,
+        "count": 2076
+      },
+      {
+        "start": 162.46,
+        "end": 164.64,
+        "count": 2036
+      },
+      {
+        "start": 164.64,
+        "end": 166.82,
+        "count": 2103
+      },
+      {
+        "start": 166.82,
+        "end": 169.0,
+        "count": 3085
+      }
+    ],
+    "sleep_hours": [
+      {
+        "start": 4.0,
+        "end": 4.12,
+        "count": 6849
+      },
+      {
+        "start": 4.12,
+        "end": 4.24,
+        "count": 7167
+      },
+      {
+        "start": 4.24,
+        "end": 4.36,
+        "count": 7067
+      },
+      {
+        "start": 4.36,
+        "end": 4.48,
+        "count": 7235
+      },
+      {
+        "start": 4.48,
+        "end": 4.6,
+        "count": 7123
+      },
+      {
+        "start": 4.6,
+        "end": 4.72,
+        "count": 7212
+      },
+      {
+        "start": 4.72,
+        "end": 4.84,
+        "count": 7094
+      },
+      {
+        "start": 4.84,
+        "end": 4.96,
+        "count": 7204
+      },
+      {
+        "start": 4.96,
+        "end": 5.08,
+        "count": 7173
+      },
+      {
+        "start": 5.08,
+        "end": 5.2,
+        "count": 7136
+      },
+      {
+        "start": 5.2,
+        "end": 5.32,
+        "count": 7275
+      },
+      {
+        "start": 5.32,
+        "end": 5.44,
+        "count": 7087
+      },
+      {
+        "start": 5.44,
+        "end": 5.56,
+        "count": 7865
+      },
+      {
+        "start": 5.56,
+        "end": 5.68,
+        "count": 6485
+      },
+      {
+        "start": 5.68,
+        "end": 5.8,
+        "count": 7265
+      },
+      {
+        "start": 5.8,
+        "end": 5.92,
+        "count": 7122
+      },
+      {
+        "start": 5.92,
+        "end": 6.04,
+        "count": 7032
+      },
+      {
+        "start": 6.04,
+        "end": 6.16,
+        "count": 7159
+      },
+      {
+        "start": 6.16,
+        "end": 6.28,
+        "count": 7242
+      },
+      {
+        "start": 6.28,
+        "end": 6.4,
+        "count": 7195
+      },
+      {
+        "start": 6.4,
+        "end": 6.52,
+        "count": 7270
+      },
+      {
+        "start": 6.52,
+        "end": 6.64,
+        "count": 7055
+      },
+      {
+        "start": 6.64,
+        "end": 6.76,
+        "count": 7058
+      },
+      {
+        "start": 6.76,
+        "end": 6.88,
+        "count": 7259
+      },
+      {
+        "start": 6.88,
+        "end": 7.0,
+        "count": 7153
+      },
+      {
+        "start": 7.0,
+        "end": 7.12,
+        "count": 7250
+      },
+      {
+        "start": 7.12,
+        "end": 7.24,
+        "count": 7232
+      },
+      {
+        "start": 7.24,
+        "end": 7.36,
+        "count": 7257
+      },
+      {
+        "start": 7.36,
+        "end": 7.48,
+        "count": 7125
+      },
+      {
+        "start": 7.48,
+        "end": 7.6,
+        "count": 7069
+      },
+      {
+        "start": 7.6,
+        "end": 7.72,
+        "count": 7278
+      },
+      {
+        "start": 7.72,
+        "end": 7.84,
+        "count": 7212
+      },
+      {
+        "start": 7.84,
+        "end": 7.96,
+        "count": 7134
+      },
+      {
+        "start": 7.96,
+        "end": 8.08,
+        "count": 7224
+      },
+      {
+        "start": 8.08,
+        "end": 8.2,
+        "count": 7119
+      },
+      {
+        "start": 8.2,
+        "end": 8.32,
+        "count": 7121
+      },
+      {
+        "start": 8.32,
+        "end": 8.44,
+        "count": 7311
+      },
+      {
+        "start": 8.44,
+        "end": 8.56,
+        "count": 7182
+      },
+      {
+        "start": 8.56,
+        "end": 8.68,
+        "count": 7224
+      },
+      {
+        "start": 8.68,
+        "end": 8.8,
+        "count": 7163
+      },
+      {
+        "start": 8.8,
+        "end": 8.92,
+        "count": 7345
+      },
+      {
+        "start": 8.92,
+        "end": 9.04,
+        "count": 7167
+      },
+      {
+        "start": 9.04,
+        "end": 9.16,
+        "count": 7240
+      },
+      {
+        "start": 9.16,
+        "end": 9.28,
+        "count": 7021
+      },
+      {
+        "start": 9.28,
+        "end": 9.4,
+        "count": 7045
+      },
+      {
+        "start": 9.4,
+        "end": 9.52,
+        "count": 7204
+      },
+      {
+        "start": 9.52,
+        "end": 9.64,
+        "count": 7185
+      },
+      {
+        "start": 9.64,
+        "end": 9.76,
+        "count": 7028
+      },
+      {
+        "start": 9.76,
+        "end": 9.88,
+        "count": 7122
+      },
+      {
+        "start": 9.88,
+        "end": 10.0,
+        "count": 7457
+      }
+    ]
+  }
+}

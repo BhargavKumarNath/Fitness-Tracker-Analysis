@@ -1,0 +1,223 @@
+{
+  "statistics": [
+    {
+      "metric": "steps",
+      "mean": 6347.601795830928,
+      "median": 4053.0,
+      "std": 6444.956548578771,
+      "min": 50,
+      "max": 24999,
+      "q1": 726.0,
+      "q3": 10764.0,
+      "iqr": 10038.0,
+      "skewness": 0.9823098928326773,
+      "kurtosis": -0.09019229896652403
+    },
+    {
+      "metric": "calories_burned",
+      "mean": 754.0926114026059,
+      "median": 678.32,
+      "std": 441.33353402422154,
+      "min": 100.0,
+      "max": 2245.55,
+      "q1": 434.0,
+      "q3": 966.6,
+      "iqr": 532.6,
+      "skewness": 0.8569586253507437,
+      "kurtosis": 0.22740722696841287
+    },
+    {
+      "metric": "heart_rate_avg",
+      "mean": 119.52330145022134,
+      "median": 123.0,
+      "std": 26.98683654316144,
+      "min": 60,
+      "max": 169,
+      "q1": 100.0,
+      "q3": 141.0,
+      "iqr": 41.0,
+      "skewness": -0.35801782584424313,
+      "kurtosis": -0.8509040436717701
+    },
+    {
+      "metric": "sleep_hours",
+      "mean": 6.999896791326008,
+      "median": 7.0,
+      "std": 1.7303321843744783,
+      "min": 4.0,
+      "max": 10.0,
+      "q1": 5.5,
+      "q3": 8.5,
+      "iqr": 3.0,
+      "skewness": -0.0011709584692643864,
+      "kurtosis": -1.1986104682942902
+    }
+  ],
+  "completeness": [
+    {
+      "column": "user_id",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "int64",
+      "uniqueValues": 1959,
+      "sampleValue": "1"
+    },
+    {
+      "column": "date",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "datetime64[s]",
+      "uniqueValues": 183,
+      "sampleValue": "2023-04-13 00:00:00"
+    },
+    {
+      "column": "steps",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "int64",
+      "uniqueValues": 24654,
+      "sampleValue": "10062"
+    },
+    {
+      "column": "calories_burned",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "float64",
+      "uniqueValues": 62478,
+      "sampleValue": "1471.1"
+    },
+    {
+      "column": "heart_rate_avg",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "int64",
+      "uniqueValues": 110,
+      "sampleValue": "154"
+    },
+    {
+      "column": "sleep_hours",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "float64",
+      "uniqueValues": 601,
+      "sampleValue": "6.0"
+    },
+    {
+      "column": "activity_type",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "str",
+      "uniqueValues": 7,
+      "sampleValue": "hiking"
+    },
+    {
+      "column": "day_of_week",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "str",
+      "uniqueValues": 7,
+      "sampleValue": "Thu"
+    },
+    {
+      "column": "calories_to_steps_ratio",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "float64",
+      "uniqueValues": 318145,
+      "sampleValue": "0.14620353806400316"
+    },
+    {
+      "column": "year",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "category",
+      "uniqueValues": 1,
+      "sampleValue": "2023"
+    },
+    {
+      "column": "month",
+      "missing": 0,
+      "completeness": 100.0,
+      "dtype": "category",
+      "uniqueValues": 6,
+      "sampleValue": "4"
+    }
+  ],
+  "duplicates": {
+    "count": 0,
+    "percentage": 0.0,
+    "uniqueRecords": 358497
+  },
+  "validity": [
+    {
+      "metric": "steps",
+      "expectedMin": 0,
+      "expectedMax": 50000,
+      "outOfRange": 0,
+      "validPercentage": 100.0
+    },
+    {
+      "metric": "calories_burned",
+      "expectedMin": 0,
+      "expectedMax": 5000,
+      "outOfRange": 0,
+      "validPercentage": 100.0
+    },
+    {
+      "metric": "heart_rate_avg",
+      "expectedMin": 40,
+      "expectedMax": 220,
+      "outOfRange": 0,
+      "validPercentage": 100.0
+    },
+    {
+      "metric": "sleep_hours",
+      "expectedMin": 0,
+      "expectedMax": 24,
+      "outOfRange": 0,
+      "validPercentage": 100.0
+    }
+  ],
+  "outliers": [
+    {
+      "metric": "steps",
+      "count": 0,
+      "percentage": 0.0,
+      "lowerBound": -14331.0,
+      "upperBound": 25821.0
+    },
+    {
+      "metric": "calories_burned",
+      "count": 11124,
+      "percentage": 3.1029548364421458,
+      "lowerBound": -364.9000000000001,
+      "upperBound": 1765.5
+    },
+    {
+      "metric": "heart_rate_avg",
+      "count": 0,
+      "percentage": 0.0,
+      "lowerBound": 38.5,
+      "upperBound": 202.5
+    },
+    {
+      "metric": "sleep_hours",
+      "count": 0,
+      "percentage": 0.0,
+      "lowerBound": 1.0,
+      "upperBound": 13.0
+    }
+  ],
+  "findings": {
+    "mostPopularActivity": "swimming",
+    "averageSteps": 6347.601795830928,
+    "highPerformerPercentage": 27.205248579486017,
+    "averageHeartRate": 119.52330145022134,
+    "averageSleepHours": 6.999896791326008,
+    "heartRateMin": 60.0,
+    "heartRateMax": 169.0,
+    "stepsCaloriesCorrelation": 0.8447115010023165,
+    "heartRateCaloriesCorrelation": 0.5190370149275922,
+    "mostEfficientActivity": "swimming"
+  }
+}

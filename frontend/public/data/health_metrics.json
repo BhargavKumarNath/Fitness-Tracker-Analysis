@@ -1,0 +1,348 @@
+{
+  "numericColumns": [
+    "steps",
+    "calories_burned",
+    "heart_rate_avg",
+    "sleep_hours"
+  ],
+  "correlation": [
+    [
+      1.0,
+      0.8447115,
+      0.26904395,
+      -0.00145789
+    ],
+    [
+      0.8447115,
+      1.0,
+      0.51903701,
+      -0.00100739
+    ],
+    [
+      0.26904395,
+      0.51903701,
+      1.0,
+      0.00080785
+    ],
+    [
+      -0.00145789,
+      -0.00100739,
+      0.00080785,
+      1.0
+    ]
+  ],
+  "heartRateByActivity": [
+    {
+      "activityType": "cycling",
+      "average": 124.51544405301777
+    },
+    {
+      "activityType": "gym_workout",
+      "average": 129.60854002528936
+    },
+    {
+      "activityType": "hiking",
+      "average": 134.47597271892283
+    },
+    {
+      "activityType": "running",
+      "average": 144.54433541129967
+    },
+    {
+      "activityType": "swimming",
+      "average": 134.44444875776398
+    },
+    {
+      "activityType": "walking",
+      "average": 89.4894822482307
+    },
+    {
+      "activityType": "yoga",
+      "average": 79.47105273445135
+    }
+  ],
+  "sleepByActivity": [
+    {
+      "activityType": "cycling",
+      "average": 7.003108273808365
+    },
+    {
+      "activityType": "gym_workout",
+      "average": 7.01582258535162
+    },
+    {
+      "activityType": "hiking",
+      "average": 6.993332551640578
+    },
+    {
+      "activityType": "running",
+      "average": 6.998144775913945
+    },
+    {
+      "activityType": "swimming",
+      "average": 6.996717585403727
+    },
+    {
+      "activityType": "walking",
+      "average": 6.998759238565744
+    },
+    {
+      "activityType": "yoga",
+      "average": 6.99331261483132
+    }
+  ],
+  "heartRateHistogram": [
+    {
+      "start": 60.0,
+      "end": 63.6333,
+      "count": 5180
+    },
+    {
+      "start": 63.6333,
+      "end": 67.2667,
+      "count": 5120
+    },
+    {
+      "start": 67.2667,
+      "end": 70.9,
+      "count": 5116
+    },
+    {
+      "start": 70.9,
+      "end": 74.5333,
+      "count": 10205
+    },
+    {
+      "start": 74.5333,
+      "end": 78.1667,
+      "count": 10360
+    },
+    {
+      "start": 78.1667,
+      "end": 81.8,
+      "count": 7625
+    },
+    {
+      "start": 81.8,
+      "end": 85.4333,
+      "count": 10159
+    },
+    {
+      "start": 85.4333,
+      "end": 89.0667,
+      "count": 10204
+    },
+    {
+      "start": 89.0667,
+      "end": 92.7,
+      "count": 7518
+    },
+    {
+      "start": 92.7,
+      "end": 96.3333,
+      "count": 10186
+    },
+    {
+      "start": 96.3333,
+      "end": 99.9667,
+      "count": 7679
+    },
+    {
+      "start": 99.9667,
+      "end": 103.6,
+      "count": 12536
+    },
+    {
+      "start": 103.6,
+      "end": 107.2333,
+      "count": 12626
+    },
+    {
+      "start": 107.2333,
+      "end": 110.8667,
+      "count": 10209
+    },
+    {
+      "start": 110.8667,
+      "end": 114.5,
+      "count": 15736
+    },
+    {
+      "start": 114.5,
+      "end": 118.1333,
+      "count": 15745
+    },
+    {
+      "start": 118.1333,
+      "end": 121.7667,
+      "count": 13931
+    },
+    {
+      "start": 121.7667,
+      "end": 125.4,
+      "count": 19947
+    },
+    {
+      "start": 125.4,
+      "end": 129.0333,
+      "count": 20065
+    },
+    {
+      "start": 129.0333,
+      "end": 132.6667,
+      "count": 14844
+    },
+    {
+      "start": 132.6667,
+      "end": 136.3,
+      "count": 19866
+    },
+    {
+      "start": 136.3,
+      "end": 139.9333,
+      "count": 14747
+    },
+    {
+      "start": 139.9333,
+      "end": 143.5667,
+      "count": 19794
+    },
+    {
+      "start": 143.5667,
+      "end": 147.2,
+      "count": 19600
+    },
+    {
+      "start": 147.2,
+      "end": 150.8333,
+      "count": 13823
+    },
+    {
+      "start": 150.8333,
+      "end": 154.4667,
+      "count": 15658
+    },
+    {
+      "start": 154.4667,
+      "end": 158.1,
+      "count": 15730
+    },
+    {
+      "start": 158.1,
+      "end": 161.7333,
+      "count": 6050
+    },
+    {
+      "start": 161.7333,
+      "end": 165.3667,
+      "count": 4093
+    },
+    {
+      "start": 165.3667,
+      "end": 169.0,
+      "count": 4145
+    }
+  ],
+  "sleepHistogram": [
+    {
+      "start": 4.0,
+      "end": 4.3,
+      "count": 17611
+    },
+    {
+      "start": 4.3,
+      "end": 4.6,
+      "count": 17830
+    },
+    {
+      "start": 4.6,
+      "end": 4.9,
+      "count": 17923
+    },
+    {
+      "start": 4.9,
+      "end": 5.2,
+      "count": 17896
+    },
+    {
+      "start": 5.2,
+      "end": 5.5,
+      "count": 17981
+    },
+    {
+      "start": 5.5,
+      "end": 5.8,
+      "count": 17996
+    },
+    {
+      "start": 5.8,
+      "end": 6.1,
+      "count": 17659
+    },
+    {
+      "start": 6.1,
+      "end": 6.4,
+      "count": 18091
+    },
+    {
+      "start": 6.4,
+      "end": 6.7,
+      "count": 17859
+    },
+    {
+      "start": 6.7,
+      "end": 7.0,
+      "count": 17936
+    },
+    {
+      "start": 7.0,
+      "end": 7.3,
+      "count": 18096
+    },
+    {
+      "start": 7.3,
+      "end": 7.6,
+      "count": 17837
+    },
+    {
+      "start": 7.6,
+      "end": 7.9,
+      "count": 18060
+    },
+    {
+      "start": 7.9,
+      "end": 8.2,
+      "count": 17907
+    },
+    {
+      "start": 8.2,
+      "end": 8.5,
+      "count": 18082
+    },
+    {
+      "start": 8.5,
+      "end": 8.8,
+      "count": 17919
+    },
+    {
+      "start": 8.8,
+      "end": 9.1,
+      "count": 18109
+    },
+    {
+      "start": 9.1,
+      "end": 9.4,
+      "count": 17709
+    },
+    {
+      "start": 9.4,
+      "end": 9.7,
+      "count": 17945
+    },
+    {
+      "start": 9.7,
+      "end": 10.0,
+      "count": 18051
+    }
+  ]
+}
