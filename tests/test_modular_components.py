@@ -8,14 +8,13 @@ import pytest
 from src.etl.extract import load_raw_data
 from src.etl.load import write_processed_data
 from src.models.training import MODEL_TREES, train_dashboard_models
-from dashboard.utils import (
+from src.predictions import predict_activity_baseline, predict_calories_baseline
+from src.serving import (
     get_activity_categories,
     get_model_path,
     get_user_segments,
     load_model_metrics,
     load_user_segmentation_model,
-    predict_activity_baseline,
-    predict_calories_baseline,
 )
 
 
@@ -183,7 +182,7 @@ def test_live_inference_activity_options_match_training_categories(monkeypatch, 
     )
     frame.to_parquet(processed_dir / "data.parquet", index=False)
 
-    from dashboard.utils import load_dataset
+    from src.serving import load_dataset
 
     load_dataset.clear()
     get_activity_categories.clear()
@@ -222,7 +221,7 @@ def test_load_model_metrics_reads_what_training_wrote(monkeypatch, tmp_path):
             },
         ]
     )
-    train_dashboard_models(frame, tmp_path / "dashboard" / "models")
+    train_dashboard_models(frame, tmp_path / "artifacts")
     load_model_metrics.clear()
 
     metrics = load_model_metrics()
@@ -236,7 +235,7 @@ def test_dashboard_model_path_uses_current_runtime_root(monkeypatch, tmp_path):
     monkeypatch.setenv("FITNESS_TRACKER_ROOT", str(tmp_path))
 
     assert get_model_path("activity_classifier") == (
-        tmp_path / "dashboard" / "models" / "activity_classifier.pkl"
+        tmp_path / "artifacts" / "activity_classifier.pkl"
     )
 
 

@@ -40,12 +40,10 @@ Thumbs.db
 data_lake/streaming_input/*
 !data_lake/streaming_input/.gitkeep
 /models/
-dashboard/models/*.pkl
-
-# Local runtime / generated state
-.streamlit/secrets.toml
-.streamlit/*.json
-.streamlit/*.db
+artifacts/*.pkl
 
 # Keep the refactor plan local
 project_refactor.md
+CLAUDE.md
+frontend_imp.md
+.gitignore

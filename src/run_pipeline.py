@@ -24,7 +24,7 @@ def run_pipeline(project_root: Path | str | None = None) -> dict[str, Path]:
     paths = {
         "raw_data_dir": root / "data_lake" / "raw" / "synthetic_user_data",
         "processed_data_dir": root / "data_lake" / "processed" / "fitness_data",
-        "models_dir": root / "dashboard" / "models",
+        "models_dir": root / "artifacts",
     }
 
     raw_df = load_raw_data(paths["raw_data_dir"])

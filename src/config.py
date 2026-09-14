@@ -13,7 +13,7 @@ def get_runtime_paths() -> dict[str, Path]:
     data_lake_dir = project_root / "data_lake"
     raw_data_dir = data_lake_dir / "raw" / "synthetic_user_data"
     processed_data_dir = data_lake_dir / "processed" / "fitness_data"
-    models_dir = project_root / "dashboard" / "models"
+    models_dir = project_root / "artifacts"
     streaming_input_dir = data_lake_dir / "streaming_input"
 
     return {
